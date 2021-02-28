@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>
+            Admin Home Page
+        </title>
+        <link rel="stylesheet" href="css/admin.css"/>
+        <script type ="text/javascript" src="Javascript/admin.js"></script>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    </head>
+    <body>
+        <nav>
+            <ul id="leftNav">
+                <li><a href="admin.html" id="home">Home</a></li>
+                <li><a href="adminUsers.html" id="users">Users</a></li>
+                <li><a href="adminPosts.html" id="posts">Posts</a></li>
+                <li><img id="menuImg" src="Images/menu.png" onclick="unHide('menu'); return false;">
+            </ul>
+            <div class="menu" id="menu">
+                <ul>
+                    <li><a href="adminUsers.html" id="users">Users</a></li>
+                    <li><a href="adminPosts.html" id="posts">Posts</a></li>
+                </ul>
+            </div>
+        </nav>
+        
+        <div class ="main">
+            <div class ="leftSidebar">
+                <ul>
+                    <li><a href="pieCategories" id="categories">Categories</a></li>
+                </ul>
+            </div>
+            <div class="reports">
+                <div class ="graphs" id="pieCategories">
+                    <h2 class="reportsHead">Categories of Posts</h2>
+                    <img id="categories" src="Images/chart2.png">
+                </div>
+                <div class ="graphs" id="numUsers">
+                    
+                </div>
+                <div class ="graphs" id="numViews">
+                    <h2 class="reportsHead">Views by User</h2>
+                    <img id="views" src="Images/chart1.png">
+                </div>
+                <div class ="graphs" id="newUser"></div>
+                <div class ="graphs" id="countries">
+                    <h2 class="reportsHead">Users by Region</h2>
+                    <img id="countries" src="Images/chart3.png">
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

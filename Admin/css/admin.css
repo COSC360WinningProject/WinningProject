@@ -1,0 +1,107 @@
+body{
+    font-family:Georgia, 'Times New Roman', Times, serif;
+}
+div.menu{
+    float: right;
+    border-color: black;
+    display: none;
+    position:relative;
+    left: 9.35em;
+    top: 33.5px;
+    background-color: rgb(98, 96, 124);
+    width:130px;
+    height:80px;
+}
+a{
+    color:white;
+}
+a:hover{
+    color: rgb(51, 25, 25);
+}
+
+#menuImg{
+    float: right;
+    border-color: black;
+    position: relative;
+    bottom: 20px;
+}
+body{
+    background-color: grey;
+}
+nav{
+    background-color: rgb(30, 31, 49);
+    height:100px;
+    color:white;
+}
+.reports{
+    padding-left: 2em;
+    padding-right: 2em;
+    background-color: rgb(98, 96, 124);
+    padding-top: 5px;
+}
+#views,#categories{
+    width: 66%;
+    height: 66%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+#countries{
+    width: 64%;
+    height: 64%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.reportsHead{
+    color:rgb(227, 227, 233);
+}
+.users .enabler:hover{
+    color: white;
+}
+.users .enabler{
+    color: blue;
+}
+#leftNav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    padding-top: 20px;
+  }
+  #leftNav li{
+    display: inline;
+    font-size: 40px;
+    margin-left:33px;
+  }
+  nav a{
+    text-decoration: none;
+  }
+  #menu li{
+    list-style-type: none;
+  }
+  caption{
+      font-size: 25px;
+      margin-bottom: 10px;
+  }
+  .graphs{
+      border-color: rgb(30, 31, 49);
+      border-width: 4px;
+      border-style: solid;
+      margin-bottom:5px;
+      padding-left: 200px;
+      margin-right: 125px;
+      margin-left: 125px;
+      background-color: rgb(134, 104, 141);
+  }
+  .leftSidebar{
+      float:left;
+  }
+  .leftSidebar li{
+    list-style-type: none;
+  }
+  .leftSidebar a{
+    text-decoration: none;
+  }
+  .graphs img{
+    border-color: rgb(30, 31, 49);
+    border-width: 2px;
+    border-style: solid;
+  }
