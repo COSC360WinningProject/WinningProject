@@ -27,12 +27,18 @@ a:hover{
     right: 9px;
 }
 body{
-    background-color: grey;
+    background-color: rgb(98, 96, 124);
 }
 nav{
     background-color: rgb(30, 31, 49);
     height:100px;
     color:white;
+    position: fixed;
+    width: 100%;
+    overflow:hidden;
+    top: 0;
+    margin-left: -8px;
+    z-index: 99;
 }
 .reports{
     padding-left: 2em;
@@ -48,8 +54,8 @@ nav{
     margin-bottom: 20px;
 }
 #countries{
-    width: 64%;
-    height: 64%;
+    width: 59.2%;
+    height: 59.2%;
     margin-top: 20px;
     margin-bottom: 20px;
 }
@@ -89,15 +95,19 @@ nav{
       border-style: solid;
       margin-bottom:5px;
       padding-left: 200px;
-      margin-right: 125px;
-      margin-left: 125px;
+      margin-right: 155px;
+      margin-left: 155px;
       background-color: rgb(134, 104, 141);
   }
   .leftSidebar{
       float:left;
+      position: relative;
+      right: 17px;
   }
   .leftSidebar li{
     list-style-type: none;
+    font-size: 20px;
+    margin-bottom: 10px;
   }
   .leftSidebar a{
     text-decoration: none;
@@ -106,4 +116,7 @@ nav{
     border-color: rgb(30, 31, 49);
     border-width: 2px;
     border-style: solid;
+  }
+  body{
+      margin-top: 100px;
   }

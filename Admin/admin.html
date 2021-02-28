@@ -9,7 +9,7 @@
         <script type ="text/javascript" src="Javascript/admin.js"></script>
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     </head>
-    <body>
+    <header>
         <nav>
             <ul id="leftNav">
                 <li><a href="admin.html" id="home">Home</a></li>
@@ -24,11 +24,21 @@
                 </ul>
             </div>
         </nav>
-        
+    </header>
+    <body>
         <div class ="main">
             <div class ="leftSidebar">
                 <ul>
-                    <li><a href="pieCategories" id="categories">Categories</a></li>
+                    <li><a href=#pieCategories id="categoriesSidebar">Categories</a></li>
+                    <br>
+                    <li><a href=#numUsers id="numUsersSidebar">Number of Users</a></li>
+                    <br>
+                    <li><a href=#numViews id="viewsSidebar">Number of Views</a></li>
+                    <br>
+                    <li><a href=#newUsers id="newSidebar">New Users</a></li>
+                    <br>
+                    <li><a href=#countries id="countriesSidebar">Countries</a></li>
+                    <br>
                 </ul>
             </div>
             <div class="reports">
@@ -43,7 +53,7 @@
                     <h2 class="reportsHead">Views by User</h2>
                     <img id="views" src="Images/chart1.png">
                 </div>
-                <div class ="graphs" id="newUser"></div>
+                <div class ="graphs" id="newUsers"></div>
                 <div class ="graphs" id="countries">
                     <h2 class="reportsHead">Users by Region</h2>
                     <img id="countries" src="Images/chart3.png">
