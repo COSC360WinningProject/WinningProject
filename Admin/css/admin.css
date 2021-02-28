@@ -6,9 +6,9 @@ div.menu{
     border-color: black;
     display: none;
     position:relative;
-    left: 9.35em;
+    left: 135px;
     top: 33.5px;
-    background-color: rgb(98, 96, 124);
+    background-color: rgb(134, 104, 141);
     width:130px;
     height:80px;
 }
@@ -24,6 +24,7 @@ a:hover{
     border-color: black;
     position: relative;
     bottom: 20px;
+    right: 9px;
 }
 body{
     background-color: grey;
@@ -37,7 +38,8 @@ nav{
     padding-left: 2em;
     padding-right: 2em;
     background-color: rgb(98, 96, 124);
-    padding-top: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 #views,#categories{
     width: 66%;
