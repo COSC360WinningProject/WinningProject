@@ -6,11 +6,17 @@ div.menu{
     border-color: black;
     display: none;
     position:relative;
-    left: 135px;
-    top: 33.5px;
-    background-color: rgb(134, 104, 141);
+    left: 89.2%;
+    top: 100px;
     width:130px;
     height:80px;
+    z-index: 99;
+    position: fixed;
+}
+.menu li{
+    list-style-type: none;
+    font-size: 20px;
+    margin-bottom: 10px;
 }
 a{
     color:white;
@@ -61,6 +67,7 @@ nav{
 }
 .reportsHead{
     color:rgb(227, 227, 233);
+    margin-bottom: -8px;
 }
 .users .enabler:hover{
     color: white;
