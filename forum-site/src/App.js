@@ -29,8 +29,12 @@ function App() {
 
       <div className="posts">
       {posts.map(post => {
-        console.log(post);
-        return <Post title={post.title} body={post.body} id={post.id} key={post.id} deletePost={deletePost} />
+        return (<Post 
+        title={post.title} 
+        body={post.body} 
+        id={post.id} 
+        key={post.id} 
+        deletePost={deletePost} />)
       })}
       </div>
     </div>
