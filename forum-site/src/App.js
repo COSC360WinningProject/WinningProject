@@ -2,12 +2,23 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import { Post } from './Post';
 import { testPost } from './testPost';
+import { AdminUsers } from './AdminUsers';
 
 function App() {
   
   // set state object to store array of posts
   const [posts, setPosts] = useState([]);
   const [postCount, setPostCount] = useState(0);
+  const [APIResponse, setAPIResponse] = useState("No Response");
+
+  useEffect(() => {
+    fetch("http://localhost:9000/testAPI")
+    .then(res => res.json())
+    .then(data => {
+      setAPIResponse(data.message);
+    });
+  }, []);
+  
 
   const addPost = () => {
     //increment postCount
@@ -25,6 +36,9 @@ function App() {
     <div className="App">
       <div>
         <button className="addPostButton" onClick={addPost}>Add A Post</button>
+      </div>
+      <div className="api-container">
+        <p>{APIResponse}</p>
       </div>
 
       <div className="posts">
