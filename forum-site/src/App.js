@@ -3,7 +3,7 @@ import './App.css';
 import Form from './loginregister/Form';
 import { Post } from './Post';
 import { testPost } from './testPost';
-import { AdminUsers } from './AdminUsers';
+
 
 function App() {
 
@@ -19,7 +19,7 @@ function App() {
       setPosts(prev => [...prev, ...data]);
     });
   }, []);
-  
+
 
   const addPost = () => {
     //increment postCount
