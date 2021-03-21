@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
+import Form from './loginregister/Form';
 import { Post } from './Post';
 import { testPost } from './testPost';
 import { AdminUsers } from './AdminUsers';
 
 function App() {
-  
+
   // set state object to store array of posts
   const [posts, setPosts] = useState([]);
   const [postCount, setPostCount] = useState(0);
@@ -25,7 +26,7 @@ function App() {
     setPostCount((prevCount) => prevCount + 1);
     let newPost = new testPost();
     newPost.id = postCount;
-      setPosts((prevPosts) => [newPost, ...prevPosts]);
+    setPosts((prevPosts) => [newPost, ...prevPosts]);
   };
 
   const deletePost = (postIdToDelete) => {
@@ -35,6 +36,9 @@ function App() {
   return (
     <div className="App">
       <div>
+        <Form />
+      </div>
+      <div>
         <button className="addPostButton" onClick={addPost}>Add A Post</button>
       </div>
       <div className="api-container">
@@ -42,14 +46,14 @@ function App() {
       </div>
 
       <div className="posts">
-      {posts.map(post => {
-        return (<Post 
-        title={post.title} 
-        body={post.body} 
-        id={post.id} 
-        key={post.id} 
-        deletePost={deletePost} />)
-      })}
+        {posts.map(post => {
+          return (<Post
+            title={post.title}
+            body={post.body}
+            id={post.id}
+            key={post.id}
+            deletePost={deletePost} />)
+        })}
       </div>
     </div>
   );
