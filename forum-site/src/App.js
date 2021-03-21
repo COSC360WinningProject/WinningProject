@@ -3,7 +3,7 @@ import './App.css';
 import Form from './loginregister/Form';
 import { Post } from './Post';
 import { testPost } from './testPost';
-import { AdminUsers } from './AdminUsers';
+
 
 function App() {
 
@@ -14,12 +14,12 @@ function App() {
 
   useEffect(() => {
     fetch("http://localhost:9000/testAPI")
-    .then(res => res.json())
-    .then(data => {
-      setAPIResponse(data.message);
-    });
+      .then(res => res.json())
+      .then(data => {
+        setAPIResponse(data.message);
+      });
   }, []);
-  
+
 
   const addPost = () => {
     //increment postCount
