@@ -24,6 +24,7 @@ export const AdminUsers = (props) => {
     }
 
     return (
+        
         <div className="reports">
             <table>
                 <caption>Site Users Report</caption>
