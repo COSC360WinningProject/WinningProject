@@ -13,10 +13,10 @@ function App() {
   const [APIResponse, setAPIResponse] = useState("No Response");
 
   useEffect(() => {
-    fetch("http://localhost:9000/testAPI")
+    fetch("http://localhost:9000/posts")
     .then(res => res.json())
     .then(data => {
-      setAPIResponse(data.message);
+      setPosts(prev => [...prev, ...data]);
     });
   }, []);
   
