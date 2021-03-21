@@ -4,7 +4,7 @@ import './admin.css';
 export const adminPosts = (props) => {
 
     return (
-        <div class="reports">
+        <div className="reports">
             <img id="filter"/>
         </div>
     );

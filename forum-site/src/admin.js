@@ -1,7 +1,10 @@
 import React from 'react';
+import Chart1 from './Images/chart1.png';
+import Chart2 from './Images/chart2.png';
+import Chart3 from './Images/chart3.png';
 import './admin.css';
 
-export const admin = (props) => {
+export const Admin = (props) => {
 
     return (
         <div className="App">
@@ -23,19 +26,19 @@ export const admin = (props) => {
             <div className="reports">
                 <div className ="graphs" id="pieCategories">
                     <h2 className="reportsHead">Categories of Posts</h2>
-                    <img id="categories" src="Images/chart2.png"/>
+                    <img id="categories" src={Chart1}/>
                 </div>
                 <div className ="graphs" id="numUsers">
                     
                 </div>
                 <div className ="graphs" id="numViews">
                     <h2 className="reportsHead">Views by User</h2>
-                    <img id="views" src="Images/chart1.png"/>
+                    <img id="views" src={Chart2}/>
                 </div>
                 <div className ="graphs" id="newUsers"></div>
                 <div className ="graphs" id="countries">
                     <h2 className="reportsHead">Users by Region</h2>
-                    <img id="countries" src="Images/chart3.png"/>
+                    <img id="countries" src={Chart3}/>
                 </div>
             </div>
         </div>
