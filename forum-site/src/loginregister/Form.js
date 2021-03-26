@@ -3,7 +3,7 @@ import './Form.css';
 import FormSignup from './FormSignup';
 import FormLogin from './FormLogin';
 
-const Form = () => {
+export function Form () {
     const [isSubmitted, setIsSubmitted] = useState(false);
 
     function submitForm() {
@@ -26,4 +26,3 @@ const Form = () => {
     );
 };
 
-export default Form;

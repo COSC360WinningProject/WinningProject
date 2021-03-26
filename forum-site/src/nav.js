@@ -1,6 +1,6 @@
 import React from 'react';
 import Logo from './logo.svg'
-import './admin.css';
+import './styles/admin.css';
 
 export const navBar = (props) => {
 

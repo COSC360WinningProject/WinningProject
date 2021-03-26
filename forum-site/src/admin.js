@@ -2,7 +2,7 @@ import React from 'react';
 import Chart1 from './Images/chart1.png';
 import Chart2 from './Images/chart2.png';
 import Chart3 from './Images/chart3.png';
-import './admin.css';
+import './styles/admin.css';
 
 export const Admin = (props) => {
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import './admin.css';
+import './styles/admin.css';
 
 export const AdminPosts = (props) => {
 

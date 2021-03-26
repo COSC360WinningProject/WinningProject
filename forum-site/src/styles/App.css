@@ -2,7 +2,9 @@
   background-color: #ccc;
   text-align: center;
   display: grid;
-  grid-template-columns: auto;
+  grid-template-columns: 1fr;
+  justify-items: center;
+
 }
 
 .posts {
@@ -10,6 +12,7 @@
   display: flex;
   flex-direction: column;
   margin: 0 auto;
+  align-items: center;
 }
 
 .App-logo {
@@ -40,10 +43,7 @@
 }
 
 .post-container {
-  width: 500px;
-  height: 500px;
-  background-color: lightblue;
-  text-align: center;
+  width: 60%;
 }
 
 @keyframes App-logo-spin {
