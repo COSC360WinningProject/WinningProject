@@ -1,61 +1,52 @@
-import React, { useState, useEffect } from 'react';
-import './App.css';
-import Form from './loginregister/Form';
-import { Post } from './Post';
-import { testPost } from './testPost';
+// React Library Imports
+import React from 'react';
+import Navbar from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Nav';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+// Custom Component Imports
+import { Form } from './loginregister/Form';
+import { PostsContainer } from './PostsContainer';
+
+import { Admin } from './Admin.js';
+// StyleSheet Imports
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './styles/App.css';
+
+
 
 
 function App() {
 
-  // set state object to store array of posts
-  const [posts, setPosts] = useState([]);
-  const [postCount, setPostCount] = useState(0);
-  const [APIResponse, setAPIResponse] = useState("No Response");
-
-  useEffect(() => {
-    fetch("http://localhost:9000/posts")
-    .then(res => res.json())
-    .then(data => {
-      setPosts(prev => [...prev, ...data]);
-    });
-  }, []);
-
-
-  const addPost = () => {
-    //increment postCount
-    setPostCount((prevCount) => prevCount + 1);
-    let newPost = new testPost();
-    newPost.id = postCount;
-    setPosts((prevPosts) => [newPost, ...prevPosts]);
-  };
-
-  const deletePost = (postIdToDelete) => {
-    setPosts((prevPosts) => prevPosts.filter(post => post.id !== postIdToDelete));
-  };
-
   return (
-    <div className="App">
-      <div>
-        <Form />
-      </div>
-      <div>
-        <button className="addPostButton" onClick={addPost}>Add A Post</button>
-      </div>
-      <div className="api-container">
-        <p>{APIResponse}</p>
-      </div>
+    <Router>
+        <Navbar bg="dark" expand="lg">
+          <Nav.Link><Link to="/">Home</Link></Nav.Link>
+          <Nav.Link><Link to="/login">Login</Link></Nav.Link>
+          <Nav.Link><Link to="/admin">Admin</Link></Nav.Link>
+        </Navbar>
+        <div className="App">
+        <Switch>
+          <Route path="/admin">
 
-      <div className="posts">
-        {posts.map(post => {
-          return (<Post
-            title={post.title}
-            body={post.body}
-            id={post.id}
-            key={post.id}
-            deletePost={deletePost} />)
-        })}
-      </div>
-    </div>
+              <Admin />
+
+          </Route>
+          <Route path="/login">
+    
+            <Form />
+            
+          </Route>
+          <Route path="/">
+            <PostsContainer />
+          </Route>
+        </Switch>
+        </div>
+    </Router>
   );
 }
 

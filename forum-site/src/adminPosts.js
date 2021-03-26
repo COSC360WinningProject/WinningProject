@@ -1,7 +1,7 @@
 import React from 'react';
-import './admin.css';
+import './styles/admin.css';
 
-export const adminPosts = (props) => {
+export const AdminPosts = (props) => {
 
     return (
         <div className="reports">
