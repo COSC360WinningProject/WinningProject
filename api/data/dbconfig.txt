@@ -1,0 +1,7 @@
+
+username = doadmin
+password = zwabwtj7cj2x6z7p hide
+host = cosc360forumsite-do-user-8985545-0.b.db.ondigitalocean.com
+port = 25060
+database = defaultdb
+sslmode = REQUIRED
