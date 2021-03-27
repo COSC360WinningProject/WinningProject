@@ -1,6 +1,6 @@
 import React from 'react';
 import Logo from './logo.svg';
-import './Post.css';
+import './styles/Post.css';
 
 export const Post = (props) => {
 
