@@ -23,6 +23,7 @@ export const Admin = (props) => {
                     <br/>
                 </ul>
             </div>
+
             <div className="reports">
                 <div className ="graphs" id="pieCategories">
                     <h2 className="reportsHead">Categories of Posts</h2>

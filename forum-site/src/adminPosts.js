@@ -7,5 +7,6 @@ export const AdminPosts = (props) => {
         <div className="reports">
             <img id="filter"/>
         </div>
+
     );
 }

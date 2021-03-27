@@ -32,14 +32,10 @@ function App() {
         <div className="App">
         <Switch>
           <Route path="/admin">
-
               <Admin />
-
           </Route>
           <Route path="/login">
-    
             <Form />
-            
           </Route>
           <Route path="/">
             <PostsContainer />

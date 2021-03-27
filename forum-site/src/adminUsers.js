@@ -59,6 +59,7 @@ export const AdminUsers = (props) => {
                         <td><p className="enabler" id="JaneDoe_Status" onClick={disable}>Enabled</p></td>
                     </tr>
                 </tbody>
+
             </table>
             <br />
         </div>
