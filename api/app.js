@@ -9,12 +9,24 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var testAPIRouter = require('./routes/testAPI');
 var posts = require('./routes/posts');
+var dbTestRouter = require('./routes/dbTest');
+var dbInitRouter = require('./routes/dbInit');
 
 var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
+
+// This DB Config is accessible globally
+dbConfig = {
+  host: 'cosc360forumsite-do-user-8985545-0.b.db.ondigitalocean.com',
+  port: '25060',
+  user: 'doadmin',
+  password: 'onh69ins6p82hx6c',
+  database: 'defaultdb',
+  sslmode: 'REQUIRED'
+};
 
 app.use(cors());
 app.use(logger('dev'));
@@ -27,6 +39,8 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/testAPI', testAPIRouter);
 app.use('/posts', posts);
+app.use('/dbTest', dbTestRouter);
+app.use('/dbInit', dbInitRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
