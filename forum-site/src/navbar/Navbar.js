@@ -1,6 +1,11 @@
 import React, { Component } from 'react'
 import { Button } from './Button'
-
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+} from "react-router-dom";
 import { MenuItems } from './MenuItems'
 import './Navbar.css'
 class NavigationBar extends Component {
@@ -22,9 +27,8 @@ class NavigationBar extends Component {
                     {MenuItems.map((item, index) => {
                         return (
                             <li key={index}>
-                                <a className={item.styleName} href={item.url} >
-                                    {item.title}
-                                </a>
+                                <Link className={item.styleName} to={item.url}>{item.title}</Link>
+
                             </li>
                         )
                     })}
