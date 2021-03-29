@@ -12,7 +12,7 @@ import {
 import { Form } from './loginregister/Form';
 import { PostsContainer } from './PostsContainer';
 
-import { Admin } from './admin.js';
+import { AdminRouter } from './AdminRouter.js';
 // StyleSheet Imports
 import './styles/App.css';
 import NavigationBar from "./navbar/Navbar";
@@ -24,15 +24,15 @@ function App() {
   return (
     <Router>
 
-      {/* <Navbar bg="dark" expand="lg">
+      <Navbar bg="dark" expand="lg">
         <Nav.Link><Link to="/">Home</Link></Nav.Link>
         <Nav.Link><Link to="/login">Login</Link></Nav.Link>
-        <Nav.Link><Link to="/admin">Admin</Link></Nav.Link>
-      </Navbar> */}
+        <Nav.Link><Link to="/AdminRouter">Admin</Link></Nav.Link>
+      </Navbar>
       <div className="App">
         <NavigationBar />
         <Switch>
-          <Route path="/admin">
+          <Route path="/AdminRouter">
             <Admin />
           </Route>
           <Route path="/login">
