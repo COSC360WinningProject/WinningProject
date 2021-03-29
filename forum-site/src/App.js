@@ -1,7 +1,7 @@
 // React Library Imports
 import React from 'react';
-import Navbar from 'react-bootstrap/Navbar';
-import Nav from 'react-bootstrap/Nav';
+//import Navbar from 'react-bootstrap/Navbar';
+//import Nav from 'react-bootstrap/Nav';
 import {
   BrowserRouter as Router,
   Switch,
@@ -12,11 +12,10 @@ import {
 import { Form } from './loginregister/Form';
 import { PostsContainer } from './PostsContainer';
 
-import { Admin } from './Admin.js';
+import { Admin } from './admin.js';
 // StyleSheet Imports
-import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/App.css';
-
+import NavigationBar from "./navbar/Navbar";
 
 
 
@@ -24,15 +23,17 @@ function App() {
 
   return (
     <Router>
-        <Navbar bg="dark" expand="lg">
-          <Nav.Link><Link to="/">Home</Link></Nav.Link>
-          <Nav.Link><Link to="/login">Login</Link></Nav.Link>
-          <Nav.Link><Link to="/admin">Admin</Link></Nav.Link>
-        </Navbar>
-        <div className="App">
+
+      {/* <Navbar bg="dark" expand="lg">
+        <Nav.Link><Link to="/">Home</Link></Nav.Link>
+        <Nav.Link><Link to="/login">Login</Link></Nav.Link>
+        <Nav.Link><Link to="/admin">Admin</Link></Nav.Link>
+      </Navbar> */}
+      <div className="App">
+        <NavigationBar />
         <Switch>
           <Route path="/admin">
-              <Admin />
+            <Admin />
           </Route>
           <Route path="/login">
             <Form />
@@ -41,7 +42,7 @@ function App() {
             <PostsContainer />
           </Route>
         </Switch>
-        </div>
+      </div>
     </Router>
   );
 }
