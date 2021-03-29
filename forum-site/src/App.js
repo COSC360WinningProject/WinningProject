@@ -14,7 +14,6 @@ import { PostsContainer } from './PostsContainer';
 
 import { Admin } from './admin.js';
 // StyleSheet Imports
-import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/App.css';
 import NavigationBar from "./navbar/Navbar";
 
@@ -24,6 +23,7 @@ function App() {
 
   return (
     <Router>
+
       {/* <Navbar bg="dark" expand="lg">
         <Nav.Link><Link to="/">Home</Link></Nav.Link>
         <Nav.Link><Link to="/login">Login</Link></Nav.Link>
@@ -31,7 +31,7 @@ function App() {
       </Navbar> */}
       <div className="App">
         <NavigationBar />
-        {/* <Switch>
+        <Switch>
           <Route path="/admin">
             <Admin />
           </Route>
@@ -41,7 +41,7 @@ function App() {
           <Route path="/">
             <PostsContainer />
           </Route>
-        </Switch> */}
+        </Switch>
       </div>
     </Router>
   );
