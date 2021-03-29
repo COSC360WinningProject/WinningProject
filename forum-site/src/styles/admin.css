@@ -1,6 +1,21 @@
 body{
     font-family:Georgia, 'Times New Roman', Times, serif;
 }
+.AdminNav{
+    color: white;
+    background-color: rgb(98, 96, 124);
+    width: 100%;
+    z-index: 99;
+    height: 0px;
+    padding-top: 10px;
+}
+.AdminNavContainer{
+    background-color: transparent;
+    width: 20%;
+    float: right;
+    position: relative;
+    bottom: 70px;
+}
 div.menu{
     float: right;
     border-color: black;
