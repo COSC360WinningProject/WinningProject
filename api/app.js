@@ -8,9 +8,11 @@ var cors = require("cors");
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var testAPIRouter = require('./routes/testAPI');
-var posts = require('./routes/posts');
+var postsRouter = require('./routes/posts');
 var dbTestRouter = require('./routes/dbTest');
 var dbInitRouter = require('./routes/dbInit');
+var dbInsertTestRouter = require('./routes/dbInsertTest');
+
 
 var app = express();
 
@@ -38,9 +40,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/testAPI', testAPIRouter);
-app.use('/posts', posts);
+app.use('/posts', postsRouter);
 app.use('/dbTest', dbTestRouter);
 app.use('/dbInit', dbInitRouter);
+app.use('/dbInsertTest', dbInsertTestRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

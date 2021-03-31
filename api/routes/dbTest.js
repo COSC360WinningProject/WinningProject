@@ -9,10 +9,14 @@ router.get("/", function(req, res, next) {
         {
             throw err;
         }
-        res.send("Connected");
+        let query = "SELECT * FROM users";
+        con.query(query, function(err, results, field){
+            if(err) throw err;
+            res.json(results);
+            
+        })
+        
     })
-
-
 
 });
 

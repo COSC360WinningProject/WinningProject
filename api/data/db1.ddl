@@ -2,8 +2,6 @@ DROP TABLE IF EXISTS comments;
 DROP TABLE IF EXISTS post;
 DROP TABLE IF EXISTS users;
 
-
-
 CREATE TABLE users (
     uid                 INT AUTO_INCREMENT,
     admin               INT,
