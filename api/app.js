@@ -12,7 +12,11 @@ var postsRouter = require('./routes/posts');
 var dbTestRouter = require('./routes/dbTest');
 var dbInitRouter = require('./routes/dbInit');
 var dbInsertTestRouter = require('./routes/dbInsertTest');
-
+var singlepostCommentsRouter = require('./routes/singlepostComments');
+var userCommentHistoryRouter = require('./routes/userCommentHistory');
+var createPostRouter = require('./routes/createPost');
+var createUserRouter = require('./routes/createUser');
+var createCommentRouter = require('./routes/createComment');
 
 var app = express();
 
@@ -44,7 +48,11 @@ app.use('/posts', postsRouter);
 app.use('/dbTest', dbTestRouter);
 app.use('/dbInit', dbInitRouter);
 app.use('/dbInsertTest', dbInsertTestRouter);
-
+app.use('/singlepostComments', singlepostCommentsRouter);
+app.use('/userCommentHistory', userCommentHistoryRouter);
+app.use('/createPost', createPostRouter);
+app.use('/createUser', createUserRouter);
+app.use('/createComment', createCommentRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

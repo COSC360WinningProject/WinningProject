@@ -9,8 +9,9 @@ router.get("/", function(req, res, next) {
         {
             throw err;
         }
-        let query = "SELECT * FROM post";
-        con.query(query, function(err, results, field){
+
+        let query = "INSERT INTO users (admin, username, password, email, address, phone) VALUES(0, ?, 'password', ?, ?, ?)";
+        con.query(query,['preparedUsername', 'preparedEmail@email', 'sample address', 'sample phone'], function(err, results, field){
             if(err) throw err;
             res.json(results);
             

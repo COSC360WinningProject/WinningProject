@@ -9,8 +9,9 @@ router.get("/", function(req, res, next) {
         {
             throw err;
         }
-        let query = "SELECT * FROM post";
-        con.query(query, function(err, results, field){
+        let x = 1;
+        let query = "SELECT * FROM post JOIN comments ON post.pid = comments.pid WHERE post.pid = ?";
+        con.query(query,[x], function(err, results, field){
             if(err) throw err;
             res.json(results);
             

@@ -9,8 +9,9 @@ router.get("/", function(req, res, next) {
         {
             throw err;
         }
-        let query = "SELECT * FROM post";
-        con.query(query, function(err, results, field){
+
+        let query = "INSERT INTO comments (uid, pid, text, likes, upvotes, downvotes) VALUES(?, ?, ?, ?, ?, ?)";
+        con.query(query,[2, 2, 'sample comment', 0, 0, 0], function(err, results, field){
             if(err) throw err;
             res.json(results);
             

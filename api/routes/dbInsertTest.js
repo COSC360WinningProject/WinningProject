@@ -16,7 +16,7 @@ router.get("/", function(req, res, next) {
         }
         console.log(req.query.email);
         console.log(req.query.username);
-        let query = "INSERT INTO users (admin, username, password, email, address, phone) VALUES(1, ?, 'password', ?, '1234 road street', '555-555-5555')";
+        let query = "INSERT INTO users (admin, username, password, email, address, phone) VALUES(0, ?, 'password', ?, '6789 road street', '444-444-4444')";
         con.query(query,['preparedUsername', 'preparedEmail@email'], function(err, results, field){
             if(err) throw err;
             res.json(results);

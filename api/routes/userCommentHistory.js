@@ -9,8 +9,9 @@ router.get("/", function(req, res, next) {
         {
             throw err;
         }
-        let query = "SELECT * FROM post";
-        con.query(query, function(err, results, field){
+
+        let query = "SELECT * FROM comments WHERE uid = ?";
+        con.query(query,[2], function(err, results, field){
             if(err) throw err;
             res.json(results);
             
