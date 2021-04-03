@@ -1,7 +1,7 @@
 // React Library Imports
 import React from 'react';
-//import Navbar from 'react-bootstrap/Navbar';
-//import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Nav';
 import {
   BrowserRouter as Router,
   Switch,
@@ -12,7 +12,7 @@ import {
 import { Form } from './loginregister/Form';
 import { PostsContainer } from './PostsContainer';
 
-import { AdminRouter } from './AdminRouter.js';
+import { AdminRouter } from './adminRouter';
 // StyleSheet Imports
 import './styles/App.css';
 import NavigationBar from "./navbar/Navbar";
@@ -33,7 +33,7 @@ function App() {
         <NavigationBar />
         <Switch>
           <Route path="/AdminRouter">
-            <Admin />
+            <AdminRouter />
           </Route>
           <Route path="/login">
             <Form />

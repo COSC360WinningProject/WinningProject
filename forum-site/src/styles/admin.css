@@ -6,6 +6,8 @@ body{
     background-color: rgb(98, 96, 124);
     width: 100%;
     z-index: 99;
+    position: relative;
+    top: 1px;
     height: 0px;
     padding-top: 10px;
 }
@@ -15,6 +17,12 @@ body{
     float: right;
     position: relative;
     bottom: 70px;
+    right: 30px;
+    list-style-type: none;
+}
+.AdminNavContainer li{
+    display: inline-block;
+    margin-left: 20px;
 }
 div.menu{
     float: right;
@@ -124,7 +132,7 @@ nav{
   .leftSidebar{
       float:left;
       position: relative;
-      right: 17px;
+      left: 5px;
   }
   .leftSidebar li{
     list-style-type: none;
@@ -142,3 +150,18 @@ nav{
   body{
       margin-top: 100px;
   }
+#reportSubmit{
+  background-color:rgb(134, 104, 141);
+  border: none;
+  color: white;
+  margin-top: 7px;
+  padding: 10px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 5px;
+}
+#reportSubmit:hover{
+    color: blue;
+}
