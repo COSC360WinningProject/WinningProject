@@ -11,6 +11,7 @@ export class AdminUsers extends React.Component {
             data: [],
             caption: '',
             user: '',
+            uid: '',
         };
         this.getUsers=this.getUsers.bind(this);
         this.changeStatus = this.changeStatus.bind(this);
@@ -25,8 +26,10 @@ getUsers(){
     })
     .then(res=> res.json())
     .then(data => {
+        this.setState({users: ''});
         this.state.data.forEach(item =>{
-            this.setState({users: this.state.users + <tr>
+            this.setState({users: this.state.users + 
+                <tr>
                 <td>{item.uid}</td>
                 <td>{item.username}</td>
                 <td>{item.password}</td>
@@ -34,7 +37,8 @@ getUsers(){
                 <td>{item.address}</td>
                 <td>{item.phone}</td>
                 <td id="enabledStatus" onClick={this.focusChangeStatus}>{item.enabled==1?"enabled":"disabled"}</td>
-            </tr>});
+                </tr>
+            });
         });
     })});
     console.log(this.state.data);
@@ -52,11 +56,12 @@ handleSubmit(event){
 }
     changeStatus(e) {
         try{
-        this.changeStatus.current.focus()
         e.target.value = e.target.value=="enabled"?"disabled": "enabled";
-        this.state.status = e.target.value=="enabled"?0:1;
+        this.setState({status:e.target.value=="enabled"?0:1});
         var location = `http://localhost:9000/adminSearchForUsers?status=${this.state.status}`;
-        fetch(location)
+        fetch(location, {
+            method: "GET",
+        })
             .then(res=> res.json());
     } catch(e){
         console.log(e);
@@ -75,9 +80,9 @@ handleSubmit(event){
                         <option value ="Post">Post</option>
                     </select>
                     <input type ="text" id ="userSearch"placeholder="Search"onChange={(e)=>this.handleSearchStrChange(e)}/>
-                    <br/><input type="Submit" value="Submit" onClick={this.getUsers} id ="searchSubmit"/>
+                    <input type="Submit" value="Submit" onClick={this.getUsers} id ="searchSubmit"/>
                 </div>
-                </form>
+            </form>
         <div className="reports">
             <table>
                 <caption>{this.state.caption}</caption>

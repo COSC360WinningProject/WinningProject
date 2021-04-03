@@ -14,13 +14,13 @@ router.get("/", function(req, res, next){
             let searchType = req.query.searchType;
             let searchStr = req.query.searchStr;
             if(searchType == "Name"){
-                let query = "SELECT * FROM users WHERE name = @searchStr";
+                let query = "SELECT * FROM users WHERE name =" + searchStr;
             }
             else if(searchType == "Email"){
-                let query = "SELECT * FROM users WHERE email = @searchStr";
+                let query = "SELECT * FROM users WHERE email = " + searchStr;
             }
             else if(searchType == "Post"){
-                let query = "SELECT * FROM users WHERE uid = (SELECT uid FROM post WHERE text LIKE '%@searchStr%')";
+                let query = "SELECT * FROM users WHERE uid = (SELECT uid FROM post WHERE text LIKE '%"+searchStr+"%')";
             }
             con.query(query, function(err, results, field){
                 if(err) throw err;

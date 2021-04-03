@@ -150,7 +150,7 @@ nav{
   body{
       margin-top: 100px;
   }
-#reportSubmit{
+#reportSubmit, #searchSubmit{
   background-color:rgb(134, 104, 141);
   border: none;
   color: white;
@@ -161,7 +161,8 @@ nav{
   display: inline-block;
   font-size: 16px;
   border-radius: 5px;
+  margin-left: 5px;
 }
-#reportSubmit:hover{
+#reportSubmit:hover, #searchSubmit:hover{
     color: blue;
 }
