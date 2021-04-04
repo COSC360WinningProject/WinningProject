@@ -20,7 +20,7 @@ export class AdminUsers extends React.Component {
     }
 getUsers(){
     this.setState({caption: "Users by " + this.state.searchType});
-    var location = `http://localhost:9000/adminSearchForUsers?searchType=${this.state.searchType}?searchStr=${this.state.searchStr}`;
+    var location = `http://localhost:9000/adminSearchForUser?searchType=${this.state.searchType}&searchStr=${this.state.searchStr}`;
     this.setState({data: fetch(location, {
         method: "GET",
     })
@@ -54,7 +54,7 @@ handleSearchStrChange(event){
 handleSubmit(event){
     event.preventDefault();
 }
-    changeStatus(e) {
+changeStatus(e) {
         try{
         e.target.value = e.target.value=="enabled"?"disabled": "enabled";
         this.setState({status:e.target.value=="enabled"?0:1});
@@ -66,7 +66,7 @@ handleSubmit(event){
     } catch(e){
         console.log(e);
     }
-    }
+}
     render(){
     return (
         <div className="adminUsers">

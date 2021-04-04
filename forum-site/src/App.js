@@ -18,7 +18,6 @@ import './styles/App.css';
 import NavigationBar from "./navbar/Navbar";
 
 
-
 function App() {
 
   return (
