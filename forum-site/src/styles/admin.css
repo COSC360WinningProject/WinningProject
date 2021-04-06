@@ -1,9 +1,10 @@
-body{
-    font-family:Georgia, 'Times New Roman', Times, serif;
+body {
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
-.AdminNav{
+
+.AdminNav {
     color: white;
-    background-color: rgb(98, 96, 124);
+    background-color: white;
     width: 100%;
     z-index: 99;
     position: relative;
@@ -11,7 +12,8 @@ body{
     height: 0px;
     padding-top: 10px;
 }
-.AdminNavContainer{
+
+.AdminNavContainer {
     background-color: transparent;
     width: 20%;
     float: right;
@@ -20,155 +22,191 @@ body{
     right: 30px;
     list-style-type: none;
 }
-.AdminNavContainer li{
+
+.AdminNavContainer li {
     display: inline-block;
     margin-left: 20px;
 }
-div.menu{
+
+div.menu {
     float: right;
     border-color: black;
     display: none;
-    position:relative;
+    position: relative;
     left: 89.2%;
     top: 100px;
-    width:130px;
-    height:80px;
+    width: 130px;
+    height: 80px;
     z-index: 99;
     position: fixed;
 }
-.menu li{
+
+.menu li {
     list-style-type: none;
     font-size: 20px;
     margin-bottom: 10px;
 }
-a{
-    color:white;
+
+a {
+    color: white;
 }
-a:hover{
+
+a:hover {
     color: rgb(51, 25, 25);
 }
 
-#menuImg{
+#menuImg {
     float: right;
     border-color: black;
     position: relative;
     bottom: 20px;
     right: 9px;
 }
-body{
-    background-color: rgb(98, 96, 124);
+
+body {
+    background-color: white;
 }
-nav{
+
+nav {
     background-color: rgb(30, 31, 49);
-    height:100px;
-    color:white;
+    height: 100px;
+    color: white;
     position: fixed;
     width: 100%;
-    overflow:hidden;
+    overflow: hidden;
     top: 0;
     margin-left: -8px;
     z-index: 99;
 }
-.reports{
+
+.reports {
     padding-left: 2em;
     padding-right: 2em;
-    background-color: rgb(98, 96, 124);
+    background-color: white;
     padding-top: 10px;
     padding-bottom: 10px;
 }
-#views,#categories{
+
+#views,
+#categories {
     width: 66%;
     height: 66%;
     margin-top: 20px;
     margin-bottom: 20px;
 }
-#countries{
+
+#countries {
     width: 59.2%;
     height: 59.2%;
     margin-top: 20px;
     margin-bottom: 20px;
 }
-.reportsHead{
-    color:rgb(227, 227, 233);
+
+.reportsHead {
+    color: rgb(227, 227, 233);
     margin-bottom: -8px;
 }
-.users .enabler:hover{
+
+.users .enabler:hover {
     color: white;
 }
-.users .enabler{
+
+.users .enabler {
     color: blue;
 }
+
 #leftNav {
     list-style-type: none;
     margin: 0;
     padding: 0;
     padding-top: 20px;
-  }
-  #leftNav li{
+}
+
+#leftNav li {
     display: inline;
     font-size: 40px;
-    margin-left:33px;
-  }
-  nav a{
+    margin-left: 33px;
+}
+
+nav a {
     text-decoration: none;
-  }
-  #menu li{
+}
+
+#menu li {
     list-style-type: none;
-  }
-  caption{
-      font-size: 25px;
-      margin-bottom: 10px;
-  }
-  .graphs{
-      border-color: rgb(30, 31, 49);
-      border-width: 4px;
-      border-style: solid;
-      margin-bottom:5px;
-      padding-left: 200px;
-      margin-right: 155px;
-      margin-left: 155px;
-      background-color: rgb(134, 104, 141);
-  }
-  .leftSidebar{
-      float:left;
-      position: relative;
-      left: 5px;
-  }
-  .leftSidebar li{
+}
+
+.usersTable {
+    caption-side: top;
+}
+
+caption {
+    font-size: 25px;
+    margin-bottom: 10px;
+    color: blue;
+}
+
+.graphs {
+    border-color: rgb(30, 31, 49);
+    border-width: 4px;
+    border-style: solid;
+    margin-bottom: 5px;
+    padding-left: 200px;
+    margin-right: 155px;
+    margin-left: 155px;
+    background-color: rgb(134, 104, 141);
+}
+
+.leftSidebar {
+    float: left;
+    position: relative;
+    left: 5px;
+}
+
+.leftSidebar li {
     list-style-type: none;
     font-size: 20px;
     margin-bottom: 10px;
-  }
-  .leftSidebar a{
+}
+
+.leftSidebar a {
     text-decoration: none;
-  }
-  .graphs img{
+}
+
+.graphs img {
     border-color: rgb(30, 31, 49);
     border-width: 2px;
     border-style: solid;
-  }
-  body{
-      margin-top: 100px;
-  }
-#reportSubmit, #searchSubmit{
-  background-color:rgb(134, 104, 141);
-  border: none;
-  color: white;
-  margin-top: 7px;
-  padding: 10px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  border-radius: 5px;
-  margin-left: 5px;
 }
-#reportSubmit:hover, #searchSubmit:hover{
+
+body {
+    margin-top: 100px;
+}
+
+#reportSubmit,
+#searchSubmit {
+    background-color: rgb(134, 104, 141);
+    border: none;
+    color: white;
+    margin-top: 7px;
+    padding: 10px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+    margin-left: 5px;
+}
+
+#reportSubmit:hover,
+#searchSubmit:hover {
     color: blue;
 }
-#enabledStatus:hover{
-    color:white;
+
+.enabledStatus:hover {
+    color: white;
 }
-#enabledStatus{
+
+.enabledStatus {
     color: blue;
 }

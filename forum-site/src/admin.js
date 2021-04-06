@@ -1,9 +1,7 @@
 import React from 'react';
 import Chart1 from './Images/chart1.png';
 import './styles/admin.css';
-import {
-    BrowserRouter as Router,
-    Route} from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 
 export class Admin extends React.Component {
     constructor(props){
