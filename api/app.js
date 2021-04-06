@@ -13,6 +13,8 @@ var dbTestRouter = require('./routes/dbTest');
 var dbInitRouter = require('./routes/dbInit');
 var dbInsertTestRouter = require('./routes/dbInsertTest');
 var adminSearchForUsers = require('./routes/adminSearchForUser');
+var adminReports = require('./routes/adminReports');
+const router = require('./routes/adminNumUsers');
 
 
 var app = express();
@@ -46,6 +48,7 @@ app.use('/dbTest', dbTestRouter);
 app.use('/dbInit', dbInitRouter);
 app.use('/dbInsertTest', dbInsertTestRouter);
 app.use('/adminSearchForUser', adminSearchForUsers);
+app.use('/adminReports', adminReports);
 
 
 // catch 404 and forward to error handler

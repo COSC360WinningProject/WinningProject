@@ -11,12 +11,17 @@ export class AdminUsers extends React.Component {
             data: [],
             caption: '',
             user: '',
+            rowNum: '',
+            ids: [],
             uid: '',
         };
+        this.ref = React.createRef();
+
         this.getUsers=this.getUsers.bind(this);
         this.changeStatus = this.changeStatus.bind(this);
         this.handleSearchTypeChange = this.handleSearchTypeChange.bind(this);
         this.handleSearchStrChange = this.handleSearchStrChange.bind(this);
+        this.handleRowId = this.handleRowId.bind(this);
     }
 getUsers(){
     this.setState({caption: "Users by " + this.state.searchType});
@@ -28,15 +33,18 @@ getUsers(){
     .then(data => {
         this.setState({users: ''});
         this.state.data.forEach(item =>{
+            let tempuid = this.state.ids;
+            tempuid.push(item.uid);
+            this.setState({ids:tempuid});
             this.setState({users: this.state.users + 
-                <tr>
-                <td>{item.uid}</td>
-                <td>{item.username}</td>
-                <td>{item.password}</td>
-                <td>{item.email}</td>
-                <td>{item.address}</td>
-                <td>{item.phone}</td>
-                <td id="enabledStatus" onClick={this.focusChangeStatus}>{item.enabled==1?"enabled":"disabled"}</td>
+                <tr id = {this.handleRowId}>
+                    <td ref = {this.ref} id="id" value = {item.uid}>{item.uid}</td>
+                    <td>{item.username}</td>
+                    <td>{item.password}</td>
+                    <td>{item.email}</td>
+                    <td>{item.address}</td>
+                    <td>{item.phone}</td>
+                    <td id="enabledStatus" onClick={this.changeStatus}>{item.enabled==1?"enabled":"disabled"}</td>
                 </tr>
             });
         });
@@ -47,6 +55,10 @@ handleSearchTypeChange(event){
     this.setState({searchType: event.target.value});
     console.log(this.state.searchType);
 }
+handleRowId(){
+    this.setState({rowNum: this.state.rowNum+1});
+    return this.state.rowNum-1;
+}
 handleSearchStrChange(event){
     this.setState({searchStr: event.target.value});
     console.log(this.state.searchStr);
@@ -54,15 +66,19 @@ handleSearchStrChange(event){
 handleSubmit(event){
     event.preventDefault();
 }
-changeStatus(e) {
+changeStatus = (e) => {
         try{
-        e.target.value = e.target.value=="enabled"?"disabled": "enabled";
-        this.setState({status:e.target.value=="enabled"?0:1});
-        var location = `http://localhost:9000/adminSearchForUsers?status=${this.state.status}`;
-        fetch(location, {
-            method: "GET",
-        })
-            .then(res=> res.json());
+            this.ref.current.focus();
+            let uid = this.state.ids[e.target.parentNode.getAttribute("id")];
+            uid = this.ref.value;
+            this.setState({uid: uid});
+            e.target.value = e.target.value=="enabled"?"disabled": "enabled";
+            this.setState({status:e.target.value=="enabled"?0:1});
+            var location = `http://localhost:9000/adminSearchForUsers?status=${this.state.status}&uid = ${this.state.uid}`;
+            fetch(location, {
+                method: "GET",
+            })
+                .then(res=> res.json());
     } catch(e){
         console.log(e);
     }
@@ -88,6 +104,7 @@ changeStatus(e) {
                 <caption>{this.state.caption}</caption>
                 <thead>
                     <tr>
+                        <th>ID</th>
                         <th>Username </th>
                         <th>Number of Posts </th>
                         <th>Birthdate </th>
@@ -96,6 +113,15 @@ changeStatus(e) {
                         <th>Country </th>
                         <th>Status </th>
                     </tr>
+                    <tr id = "1">
+                        <td id="id" value = "12">12</td>
+                        <td>JohnDoe</td>
+                        <td>password</td>
+                        <td>email@email.com</td>
+                        <td>1234 567 st</td>
+                        <td>123-456-7890</td>
+                        <td id="enabledStatus" onClick={this.changeStatus}>enabled</td>
+                </tr>
                 </thead>
                 <tbody>
                     {this.state.users}

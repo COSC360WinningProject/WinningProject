@@ -166,3 +166,9 @@ nav{
 #reportSubmit:hover, #searchSubmit:hover{
     color: blue;
 }
+#enabledStatus:hover{
+    color:white;
+}
+#enabledStatus{
+    color: blue;
+}
