@@ -4,9 +4,9 @@ import {
     Switch,
     Route,
     Link} from "react-router-dom";
-import {Admin} from './admin.js';
+import { Admin } from './admin.js';
 import { AdminUsers } from './adminUsers.js';
-import {AdminPosts} from './adminPosts.js';
+import { AdminPosts } from './AdminPosts.js';
 import './styles/admin.css';
 export const AdminRouter = (props) => {
         return (

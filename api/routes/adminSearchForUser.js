@@ -20,7 +20,10 @@ router.get("/", function(req, res, next){
                 con.query(query, [searchStr], function(err, results, field)
                 {
                     if(err) throw err;
-                    res.json({'name': 'joe', 'password': 'pword', 'admin': 1});
+
+                    res.json(results);
+                    
+
                 });
             }
             else if(searchType == "email"){

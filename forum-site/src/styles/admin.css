@@ -138,6 +138,11 @@ nav a {
 
 .usersTable {
     caption-side: top;
+    padding: 2rem;
+}
+.usersTable th, .usersTable td {
+    padding: 1rem;
+    text-align: center;
 }
 
 caption {
