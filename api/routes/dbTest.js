@@ -7,6 +7,7 @@ router.get("/", function(req, res, next) {
     con.connect(function(err) {
         if(err) 
         {
+            console.log(err);
             throw err;
         }
         let query = "SELECT * FROM users";

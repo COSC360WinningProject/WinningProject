@@ -5,11 +5,13 @@ DROP TABLE IF EXISTS users;
 CREATE TABLE users (
     uid                 INT AUTO_INCREMENT,
     admin               INT,
+    name                VARCHAR(40),
     username            VARCHAR(40),
     password            VARCHAR(40),
     email               VARCHAR(40),
     address             VARCHAR(40),
     phone               VARCHAR(40),
+    enabled             INT,
     PRIMARY KEY (uid)
 );
 
@@ -22,6 +24,7 @@ CREATE TABLE post (
     likes               INT,
     upvotes             INT,
     downvotes           INT,
+    category            VARCHAR(40),
     PRIMARY KEY (pid)
 );
 
@@ -39,6 +42,7 @@ CREATE TABLE comments (
     FOREIGN KEY (pid) REFERENCES post (pid),
     FOREIGN KEY (replyId) REFERENCES comments (cid)
 );
+INSERT INTO users (name, password, enabled) VALUES ('Joe', 'pword', 1);
 
 INSERT INTO users (admin, username, password, email, address, phone) VALUES(1, 'u1', 'password', 'abc@example.com', '1234 road street', '555-555-5555');
 INSERT INTO users (admin, username, password, email, address, phone) VALUES(0, 'u2', 'password', 'abc1@example.com', '6789 road street', '444-444-4444');
