@@ -5,11 +5,13 @@ DROP TABLE IF EXISTS users;
 CREATE TABLE users (
     uid                 INT AUTO_INCREMENT,
     admin               INT,
+    name                VARCHAR(40),
     username            VARCHAR(40),
     password            VARCHAR(40),
     email               VARCHAR(40),
     address             VARCHAR(40),
     phone               VARCHAR(40),
+    enabled             INT,
     PRIMARY KEY (uid)
 );
 
@@ -22,6 +24,7 @@ CREATE TABLE post (
     likes               INT,
     upvotes             INT,
     downvotes           INT,
+    category            VARCHAR(40),
     PRIMARY KEY (pid)
 );
 
@@ -40,9 +43,11 @@ CREATE TABLE comments (
     FOREIGN KEY (replyId) REFERENCES comments (cid)
 );
 
-INSERT INTO users (admin, username, password, email, address, phone) VALUES(1, 'u1', 'password', 'abc@example.com', '1234 road street', '555-555-5555');
-INSERT INTO users (admin, username, password, email, address, phone) VALUES(0, 'u2', 'password', 'abc1@example.com', '6789 road street', '444-444-4444');
-INSERT INTO users (admin, username, password, email, address, phone) VALUES(0, 'u1', 'password', 'abc2@example.com', '456 road street', '666-666-6666');
+INSERT INTO users (admin, name, username, password, email, address, phone, enabled) VALUES (1, 'Joe', 'ashitaNoJoe', 'pword', 'joe@ashita.com', '1212 tomorrow lane', '111-222-3333',  1);
+
+INSERT INTO users (admin,name, username, password, email, address, phone, enabled) VALUES(1, 'user1', 'u1', 'password', 'abc1@example.com', '1234 road street', '555-555-5555', 1);
+INSERT INTO users (admin,name, username, password, email, address, phone, enabled) VALUES(0, 'user2', 'u2', 'password', 'abc2@example.com', '6789 road street', '444-444-4444', 1);
+INSERT INTO users (admin,name, username, password, email, address, phone, enabled) VALUES(0, 'user3', 'u3', 'password', 'abc3@example.com', '4567 road street', '666-666-6666', 1);
 INSERT INTO post (uid, title, text, likes, upvotes, downvotes) VALUES(1, 'Post 1', 'About 1', 100, 55, 10);
 INSERT INTO post (uid, title, text, likes, upvotes, downvotes) VALUES(1, 'Post 2', 'About 2', 89, 10, 10);
 INSERT INTO post (uid, title, text, likes, upvotes, downvotes) VALUES(3, 'Post 3', 'About 3', 10, 55, 10);

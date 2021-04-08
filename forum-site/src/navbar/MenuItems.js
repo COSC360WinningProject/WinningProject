@@ -6,7 +6,7 @@ export const MenuItems = [
     },
     {
         title: 'Admin',
-        url: '/admin',
+        url: '/adminRouter',
         styleName: 'nav-links'
     },
     {
