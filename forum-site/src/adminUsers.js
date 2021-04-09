@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './styles/admin.css';
 import { AdminUsersTable } from './adminUsersTable';
+
 //INSERT INTO users (username, password, email, address, phone, enabled) VALUES ('Joe', 'pword', 'email@email.email', 'fleetwood mac street', '911', 0);
-export function AdminUsers (props) {
+export function AdminUsers(props) {
 
 
     // constructor(props){
@@ -81,24 +82,32 @@ export function AdminUsers (props) {
     //     }
     // }
 
+    const [searchType, setSearchType] = useState("");
+    const [searchStr, setSearchStr] = useState("");
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(e)
+    }
+
     return (
         <div className="adminUsers">
-            <form>
-            <div id="filter">
+            <form onSubmit={handleSubmit}>
+                <div id="filter">
                     <label for="filter">Search By:</label>
-                    <br/>
-                    <select name ="filterSelect" id ="filterSelect">
+                    <br />
+                    <select name="filterSelect" id="filterSelect">
                         <option value="Select">Select</option>
                         <option value="Name">Name</option>
-                        <option value ="Email">Email</option>
-                        <option value ="Post">Post</option>
+                        <option value="Email">Email</option>
+                        <option value="Post">Post</option>
                     </select>
-                    <input type ="text" id ="userSearch"placeholder="Search" />
-                    <input type="Submit" value="Submit" id ="searchSubmit"/>
+                    <input type="text" id="userSearch" placeholder="Search" />
+                    <input type="Submit" value="Submit" id="searchSubmit" />
                 </div>
             </form>
 
-            <AdminUsersTable caption="caption"/>
+            <AdminUsersTable caption="caption" />
         </div>
     );
 }

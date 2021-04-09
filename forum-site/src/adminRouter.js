@@ -3,17 +3,18 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Link} from "react-router-dom";
+    Link
+} from "react-router-dom";
 import { Admin } from './admin.js';
 import { AdminUsers } from './adminUsers.js';
-import { AdminPosts } from './AdminPosts.js';
+import { AdminPosts } from './adminPosts.js';
 import './styles/admin.css';
 export const AdminRouter = (props) => {
-        return (
-    
+    return (
+
         <Router>
             <div className="AdminNav" expand="lg">
-                <ul className = "AdminNavContainer">
+                <ul className="AdminNavContainer">
                     <li><Link to="/admin">AdminHome </Link></li>
                     <li><Link to="/AdminUsers">Users </Link></li>
                     <li><Link to="/AdminPosts">Posts</Link></li>
@@ -31,6 +32,6 @@ export const AdminRouter = (props) => {
                 </Route>
             </Switch>
         </Router>
-    
+
     );
 }

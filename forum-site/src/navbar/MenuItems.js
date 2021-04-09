@@ -15,13 +15,14 @@ export const MenuItems = [
         styleName: 'nav-links'
     },
     {
-        title: 'Contact us',
-        url: '#',
+        title: 'Profile',
+        url: '/profile',
         styleName: 'nav-links'
     },
     {
         title: 'Sign up',
-        url: '#',
+        url: '/signup',
         styleName: 'nav-links-mobile'
     }
+
 ]

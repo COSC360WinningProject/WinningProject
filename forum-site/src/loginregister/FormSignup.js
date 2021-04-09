@@ -2,10 +2,13 @@ import React from 'react';
 import validate from './validate';
 import useForm from './useForm';
 import './Form.css';
+import {
+    Link
+} from "react-router-dom";
 
-const FormSignup = ({ submitForm }) => {
+export const FormSignup = (props) => {
     const { handleChange, handleSubmit, values, errors } = useForm(
-        submitForm,
+        props.submitForm,
         validate
     );
 
@@ -14,7 +17,7 @@ const FormSignup = ({ submitForm }) => {
             <form onSubmit={handleSubmit} className='form' noValidate>
                 <h1>
                     Create an account
-        </h1>
+                    </h1>
                 <div className='form-inputs'>
                     <label className='form-label'>Username</label>
                     <input
@@ -65,13 +68,11 @@ const FormSignup = ({ submitForm }) => {
                 </div>
                 <button className='form-input-btn' type='submit'>
                     Sign up
-        </button>
+                    </button>
                 <span className='form-input-login'>
-                    Already have an account? Login <a href='#'>here</a>
+                    Already have an account? Login <Link to="/login">here</Link>
                 </span>
             </form>
         </div>
     );
 };
-
-export default FormSignup;

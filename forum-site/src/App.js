@@ -8,10 +8,13 @@ import {
 } from "react-router-dom";
 
 // Custom Component Imports
-import { NavigationBar}  from "./navbar/Navigationbar";
+import { NavigationBar } from "./navbar/Navigationbar";
 import { Form } from './loginregister/Form';
 import { PostsContainer } from './PostsContainer';
 import { AdminRouter } from './adminRouter';
+import { FormLogin } from "./loginregister/FormLogin.js";
+import { Profile } from "./Profile";
+import { Content } from './homepage/content.js';
 // StyleSheet Imports
 import './styles/App.css';
 
@@ -27,11 +30,17 @@ function App() {
           <Route path="/AdminRouter">
             <AdminRouter />
           </Route>
+          <Route path="/signup">
+            <Form isSignup='true' />
+          </Route>
           <Route path="/login">
-            <Form />
+            <Form isSignup='false' />
+          </Route>
+          <Route path="/profile">
+            <Profile />
           </Route>
           <Route path="/">
-            <PostsContainer />
+            <Content />
           </Route>
         </Switch>
       </div>

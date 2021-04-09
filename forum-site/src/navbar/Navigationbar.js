@@ -1,16 +1,14 @@
 import React, { useState } from 'react'
 import { Button } from './Button'
 import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
+
     Link
 } from "react-router-dom";
 import { MenuItems } from './MenuItems'
 import './Navbar.css'
 
 
-export function NavigationBar (props) {
+export function NavigationBar(props) {
 
     const [clicked, setClicked] = useState(false);
 
@@ -36,7 +34,7 @@ export function NavigationBar (props) {
                 })}
             </ul>
 
-            <Button>Sign Up</Button>
+            <Button><Link to="signup">Sign Up</Link></Button>
         </nav>
     );
 }
