@@ -38,10 +38,14 @@ function App() {
     } 
   }
 
+  const handleLogout = () => {
+    setUser(null);
+  }
+
   return (
     <Router>
       <div className="App">
-        <NavigationBar user={user}/>
+        <NavigationBar user={user} onLogout={handleLogout}/>
         <Switch>
           <Route path="/AdminRouter">
             <AdminRouter />

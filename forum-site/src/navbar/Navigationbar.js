@@ -16,6 +16,17 @@ export function NavigationBar(props) {
         setClicked((prevClicked) => !prevClicked);
     };
 
+    let button;
+    if(props.user)
+    {
+        button = (<Button onClick={props.onLogout}>Sign Out</Button>)
+    }
+    else
+    {
+        button = (<Button><Link to="signup">Sign Up</Link></Button>)
+        
+    }
+
     return (
         <nav className="NavbarItems">
 
@@ -35,7 +46,7 @@ export function NavigationBar(props) {
                 })}
             </ul>
 
-            <Button><Link to="signup">Sign Up</Link></Button>
+            {button}
         </nav>
     );
 }
