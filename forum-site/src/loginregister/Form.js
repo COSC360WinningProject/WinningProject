@@ -20,7 +20,7 @@ export function Form(props) {
                 {props.isSignup === "true" ? (
                     <FormSignup submitForm={submitForm} />
                 ) : (
-                    <FormLogin />
+                    <FormLogin onLogin={props.onLogin} submitForm={submitForm}/>
                 )}
             </div>
         </>

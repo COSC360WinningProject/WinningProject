@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import Table from 'react-bootstrap/Table';
 
 
-export function Profile() {
+export function Profile(props) {
 
     const [profileData, setProfileData] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:9000/showProfile?username=ashitaNoJoe`, {
+        fetch(`http://localhost:9000/showProfile?username=${props.user}`, {
             method: "GET",
         })
             .then(res => res.json())

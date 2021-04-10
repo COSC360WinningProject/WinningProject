@@ -1,5 +1,5 @@
 // React Library Imports
-import React from 'react';
+import React, { useState } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -22,6 +22,22 @@ import './styles/App.css';
 
 function App() {
 
+  const [user, setUser] = useState("");
+
+  const handleLogin = (user) => {
+    
+    if(user)
+    {
+      setUser(user);
+      console.log(user + " is logged in");
+    } 
+    else
+    {
+      setUser(null);
+      console.log('login failed');
+    } 
+  }
+
   return (
     <Router>
       <div className="App">
@@ -34,10 +50,10 @@ function App() {
             <Form isSignup='true' />
           </Route>
           <Route path="/login">
-            <Form isSignup='false' />
+            <Form onLogin={handleLogin} isSignup='false' />
           </Route>
           <Route path="/profile">
-            <Profile />
+            <Profile user={user}/>
           </Route>
           <Route path="/">
             <Content />
