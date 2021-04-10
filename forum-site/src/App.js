@@ -23,9 +23,19 @@ import './styles/App.css';
 function App() {
 
   const [user, setUser] = useState("");
+
   const handleLogin = (user) => {
-    console.log(user + " is logged in");
-    setUser(user);
+    
+    if(user)
+    {
+      setUser(user);
+      console.log(user + " is logged in");
+    } 
+    else
+    {
+      setUser(null);
+      console.log('login failed');
+    } 
   }
 
   return (
@@ -43,7 +53,7 @@ function App() {
             <Form onLogin={handleLogin} isSignup='false' />
           </Route>
           <Route path="/profile">
-            <Profile />
+            <Profile user={user}/>
           </Route>
           <Route path="/">
             <Content />

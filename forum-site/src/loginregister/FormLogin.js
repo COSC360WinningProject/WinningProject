@@ -20,10 +20,9 @@ export const FormLogin = (props) => {
             console.log(e);
             let loggedInUser = await handleSubmit(e);
             console.log(loggedInUser);
-            if(loggedInUser){
-                props.onLogin(loggedInUser);
-            }
-            else {
+            props.onLogin(loggedInUser);
+            
+            if(!loggedInUser) {
                 alert('login failed');
             }
             

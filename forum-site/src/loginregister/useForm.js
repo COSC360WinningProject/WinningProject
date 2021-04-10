@@ -20,7 +20,7 @@ const useForm = (callback, validate) => {
 
     const  handleSubmit = async(e) => {
             e.preventDefault();
-            console.log(e.target.props);
+            console.log(e.target);
             console.log("submit event triggered");
             console.log(values);
             console.log(e.target);
@@ -39,6 +39,15 @@ const useForm = (callback, validate) => {
 
             success = content.login;
             let loggedInUser = content.user;
+            
+            //reset form
+            setValues({
+                username: '',
+                email: '',
+                password: '',
+                password2: ''
+            });
+            
             return loggedInUser;
             
     }
