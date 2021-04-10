@@ -7,16 +7,35 @@ import {
 } from "react-router-dom";
 
 
-export const FormLogin = ({ submitForm }) => {
+export const FormLogin = (props) => {
+
     const { handleChange, handleSubmit, values, errors } = useForm(
-        submitForm,
+        props.submitForm,
         validate
     );
+
+    const loginVerification = (e) => {
+        
+        (async () => {
+            console.log(e);
+            let loggedInUser = await handleSubmit(e);
+            console.log(loggedInUser);
+            if(loggedInUser){
+                props.onLogin(loggedInUser);
+            }
+            else {
+                alert('login failed');
+            }
+            
+        })();
+        
+        
+    }
 
 
     return (
         <div className='form-content-right'>
-            <form onSubmit={handleSubmit} className='form' noValidate>
+            <form onSubmit={loginVerification} className='form' noValidate>
                 <h1>
                     Login
         </h1>

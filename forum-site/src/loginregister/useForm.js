@@ -18,13 +18,30 @@ const useForm = (callback, validate) => {
         });
     };
 
-    const handleSubmit = e => {
-        e.preventDefault();
-        console.log("submit event triggered");
+    const  handleSubmit = async(e) => {
+            e.preventDefault();
+            console.log(e.target.props);
+            console.log("submit event triggered");
+            console.log(values);
+            console.log(e.target);
+            let success;
+        
+            const rawResponse = await fetch('http://localhost:9000/testAPI', {
+                method: 'POST',
+                body: JSON.stringify(values),
+                headers: {
+                    'accept': 'application/json',
+                    'Content-Type' : 'application/json'
+                }
+            });
+            const content = await rawResponse.json();
+            console.log(content);
 
-        setErrors(validate(values));
-        setIsSubmitting(true);
-    };
+            success = content.login;
+            let loggedInUser = content.user;
+            return loggedInUser;
+            
+    }
 
     useEffect(
         () => {
