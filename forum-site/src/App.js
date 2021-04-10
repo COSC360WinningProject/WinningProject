@@ -41,7 +41,7 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <NavigationBar />
+        <NavigationBar user={user}/>
         <Switch>
           <Route path="/AdminRouter">
             <AdminRouter />

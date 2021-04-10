@@ -23,6 +23,7 @@ export function NavigationBar(props) {
             <div className="menu-icon" onClick={handleClick}>
                 <i className={clicked ? 'fas fa-times' : 'fas fa-bars'}></i>
             </div>
+            <h3 className="logged-in-user">{props.user ? props.user : ""}</h3>
 
             <ul className={clicked ? 'nav-menu-active' : 'nav-menu'}>
                 {MenuItems.map((item, index) => {
