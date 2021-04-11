@@ -4,25 +4,24 @@ import Table from 'react-bootstrap/Table';
 
 export function AdminUsersTable(props) {
 
+    const { searchType , searchStr } = props;
     const [data, setData] = useState([]);
 
     /** 
      * TODO: find a way to pass in type and name from 
      * TODO: outer component, currently using hardcoded placeholders
     **/
-    const [searchType, setSearchType] = useState('name');
-    const [searchName, setSearchName] = useState('joe');
     
 
     // * useEffect will run whenever the components in the dependency array update
     // * dependecy array is the array given as the second argument
     useEffect(() => {
-        fetch(`http://localhost:9000/adminSearchForUser?searchType=Name&searchStr=joe`, {
+        fetch(`http://localhost:9000/adminSearchForUser?searchType=${searchType}&searchStr=${searchStr}`, {
             method: "GET",
         })
         .then(res => res.json())
         .then(resData => setData(resData));
-    }, []);     // * dependecy array is empty so useEffect will only run on page load
+    }, [searchStr, searchType]);     // * dependecy array is empty so useEffect will only run on page load
     // TODO: update dependency array so that useEffect runs when the select item changes
     // ? might have to change this to be one element for adminUsers and adminUsersTable together
     
