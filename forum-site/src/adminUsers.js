@@ -87,14 +87,14 @@ export function AdminUsers(props) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(e)
+        console.log(e.target);
     }
 
     return (
         <div className="adminUsers">
             <form onSubmit={handleSubmit}>
                 <div id="filter">
-                    <label for="filter">Search By:</label>
+                    <label htmlFor="filter">Search By:</label>
                     <br />
                     <select name="filterSelect" id="filterSelect">
                         <option value="Select">Select</option>
