@@ -6,14 +6,11 @@ import { AdminUsersTable } from './adminUsersTable';
 export function AdminUsers(props) {
 
 
-    const [searchType, setSearchType] = useState("");
-    const [searchStr, setSearchStr] = useState("");
+    const [searchType, setSearchType] = useState("username");
+    const [searchStr, setSearchStr] = useState("ashitaNoJoe");
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(e.target.filterSelect.value);
-        console.log(e.target.userSearch.value);
-
         setSearchType(e.target.filterSelect.value);
         setSearchStr(e.target.userSearch.value);
     }
@@ -43,7 +40,7 @@ export function AdminUsers(props) {
                 </div>
             </form>
 
-            <AdminUsersTable searchType={searchType} searchStr={searchStr} caption="caption" />
+            <AdminUsersTable searchType={searchType} searchStr={searchStr}handleSubmit={handleSubmit} caption="caption" />
         </div>
     );
 }

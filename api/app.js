@@ -21,6 +21,8 @@ var createPostRouter = require('./routes/createPost');
 var createUserRouter = require('./routes/createUser');
 var createCommentRouter = require('./routes/createComment');
 var showProfileRouter = require('./routes/showProfile');
+var updateEnabledRouter = require('./routes/changeUserEnabledStatus');
+var loginRouter = require('./routes/login');
 
 var app = express();
 
@@ -61,6 +63,8 @@ app.use('/createUser', createUserRouter);
 app.use('/createComment', createCommentRouter);
 app.use('/showProfile', showProfileRouter);
 app.use('/adminNumUsers', adminNumUsersRouter)
+app.use('/updateEnabled', updateEnabledRouter);
+app.use('/login', loginRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

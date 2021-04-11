@@ -14,9 +14,9 @@ router.get("/", function(req, res, next){
             let searchType = req.query.searchType.toLowerCase();
             let searchStr = req.query.searchStr.toLowerCase();
             let query = "";
-            if(searchType === "name"){
+            if(searchType === "username"){
                 console.log(searchStr);
-                query = "SELECT * FROM users WHERE name=?";
+                query = "SELECT * FROM users WHERE username=?";
                 con.query(query, [searchStr], function(err, results, field)
                 {
                     if(err) throw err;
