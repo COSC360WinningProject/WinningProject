@@ -3,12 +3,12 @@ body {
 }
 
 .AdminNav {
-    color: white;
-    background-color: white;
+    color: grey;
     width: 100%;
     z-index: 99;
     position: relative;
-    top: 1px;
+    top: 8px;
+    right: 100px;
     height: 0px;
     padding-top: 10px;
 }
@@ -21,6 +21,7 @@ body {
     bottom: 70px;
     right: 30px;
     list-style-type: none;
+   
 }
 
 .AdminNavContainer li {
@@ -48,7 +49,7 @@ div.menu {
 }
 
 a {
-    color: white;
+    color: rgb(162, 236, 226);
 }
 
 a:hover {
@@ -136,14 +137,6 @@ nav a {
     list-style-type: none;
 }
 
-.usersTable {
-    caption-side: top;
-    padding: 2rem;
-}
-.usersTable th, .usersTable td {
-    padding: 1rem;
-    text-align: center;
-}
 
 caption {
     font-size: 25px;
@@ -159,7 +152,7 @@ caption {
     padding-left: 200px;
     margin-right: 155px;
     margin-left: 155px;
-    background-color: rgb(134, 104, 141);
+    background: linear-gradient(90deg, rgb(110, 94, 254) 0%, rgba(73, 63, 252, 1) 100%);
 }
 
 .leftSidebar {
@@ -190,7 +183,7 @@ body {
 
 #reportSubmit,
 #searchSubmit {
-    background-color: rgb(134, 104, 141);
+    background: linear-gradient(90deg, rgb(110, 94, 254) 0%, rgba(73, 63, 252, 1) 100%);
     border: none;
     color: white;
     margin-top: 7px;
@@ -205,7 +198,7 @@ body {
 
 #reportSubmit:hover,
 #searchSubmit:hover {
-    color: blue;
+    color:rgb(30, 31, 49);
 }
 
 .enabledStatus:hover {
