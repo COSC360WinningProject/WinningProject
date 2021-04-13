@@ -60,20 +60,16 @@ export function Profile(props) {
         newData.append('newAddress', newAddress);
         newData.append('newPhone', newPhone);
 
+        console.log(newData);
         
         
 
         fetch('http://localhost:9000/updateProfile', {
                 method: 'POST',
                 body: newData,
-                headers: {
-                    'accept': 'application/json',
-                    'Content-Type' : 'application/json'
-                }
             })
-            .then(res => res.json())
             .then(res => console.log(res));
-        console.log(profileData);
+
     }
 
     const handleImageSubmit = (e) => {
@@ -107,7 +103,7 @@ export function Profile(props) {
                     return (
                         <>
                         <img src={el.profileImageURL} width="200px" height="200px"></img>
-                        <Form onSubmit={handleSubmit}>
+                        <Form onSubmit={handleSubmit} encType="multipart/form-data">
                             <Form.Group as={Row} controlId="profileFormUsername">
                                 <Form.Label column sm={2} style={{color: "black"}}>Username</Form.Label>
                                 <Col sm={4}>
@@ -145,7 +141,7 @@ export function Profile(props) {
                                 </Col>
                             </Form.Group>
                             <Form.Group as={Row} >
-                                <Col sm={5}>
+                                <Col sm={6}>
                                     <Form.Control type="submit" value="Update Profile"></Form.Control>
                                 </Col>
                             </Form.Group>
@@ -158,7 +154,7 @@ export function Profile(props) {
                                 </Col>
                             </Form.Group>
                             <Form.Group as={Row} >
-                                <Col sm={5}>
+                                <Col sm={6}>
                                     <Form.Control type="submit" value="Update Profile Picture"></Form.Control>
                                 </Col>
                             </Form.Group>
