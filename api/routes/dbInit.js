@@ -24,6 +24,9 @@ router.get("/", function(req, res, next) {
                 console.log(`${command} run.`);
             });
         }
+        con.end(function(err){
+            if(err) throw err;
+        })
     })
 
 

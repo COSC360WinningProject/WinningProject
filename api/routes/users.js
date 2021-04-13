@@ -15,6 +15,10 @@ router.get("/", function(req, res, next) {
             res.json(results);
             
         })
+        con.end(function(err){
+            if(err) throw err;
+            console.log(err);
+        })
         
     })
 

@@ -25,6 +25,10 @@ export const FormLogin = (props) => {
             if(!loggedInUser) {
                 alert('login failed');
             }
+            else
+            {
+                alert('login successful');
+            }
             
         })();
         

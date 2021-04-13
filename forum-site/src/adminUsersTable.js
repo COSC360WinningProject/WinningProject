@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
+
 import Table from 'react-bootstrap/Table';
+import Button from 'react-bootstrap/Button';
 
 
 export function AdminUsersTable(props) {
@@ -10,19 +12,20 @@ export function AdminUsersTable(props) {
      * TODO: find a way to pass in type and name from 
      * TODO: outer component, currently using hardcoded placeholders
     **/
-    const [searchType, setSearchType] = useState('name');
-    const [searchName, setSearchName] = useState('joe');
     
 
     // * useEffect will run whenever the components in the dependency array update
     // * dependecy array is the array given as the second argument
+    console.log(props.searchType);
+    console.log(props.searchStr);
+    let url = `http://localhost:9000/adminSearchForUser?searchType=${props.searchType}&searchStr=${props.searchStr}`
     useEffect(() => {
-        fetch(`http://localhost:9000/adminSearchForUser?searchType=Name&searchStr=joe`, {
+        fetch(url, {
             method: "GET",
         })
         .then(res => res.json())
         .then(resData => setData(resData));
-    }, []);     // * dependecy array is empty so useEffect will only run on page load
+    }, [props.searchStr]);     // * dependecy array is empty so useEffect will only run on page load
     // TODO: update dependency array so that useEffect runs when the select item changes
     // ? might have to change this to be one element for adminUsers and adminUsersTable together
     
@@ -30,6 +33,20 @@ export function AdminUsersTable(props) {
 
     //  for debugging
     console.log(data);
+
+    const userToggleEnable = (e) => {
+        console.log(e.target.id);
+        console.log(e.target.value);
+        fetch('http://localhost:9000/updateEnabled', {
+                method: 'POST',
+                body: JSON.stringify({status : e.target.value, uid : e.target.id}),
+                headers: {
+                    'accept': 'application/json',
+                    'Content-Type' : 'application/json'
+                }
+            });
+    }
+
 
     return (
         <div className="reports">
@@ -53,12 +70,15 @@ export function AdminUsersTable(props) {
                             <tr>
                                 <td>{el.uid}</td>
                                 <td>{el.username}</td>
-                                <td>{el.name}</td>
+                                <td>{el.firstname} {el.lastname}</td>
                                 <td>{el.email}</td>
                                 <td>{el.address}</td>
                                 <td>{el.phone}</td>
-                                <td>{el.admin}</td>
-                                <td>{el.enabled}</td>
+                                <td>{el.admin==1?"Yes":"No"}</td>
+                                <td>{el.enabled==1?"Enabled":"Disabled"}</td>
+                                <td>
+                                    <Button id={el.uid} value={el.enabled} onClick={userToggleEnable}>Enable/Disable</Button>
+                                </td>
                             </tr>
                         )
                     })}
