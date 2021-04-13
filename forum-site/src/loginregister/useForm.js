@@ -23,32 +23,65 @@ const useForm = (callback, validate) => {
             console.log(e.target);
             console.log("submit event triggered");
             console.log(values);
-            console.log(e.target);
+            
             let success;
-        
-            const rawResponse = await fetch('http://localhost:9000/login', {
-                method: 'POST',
-                body: JSON.stringify(values),
-                headers: {
-                    'accept': 'application/json',
-                    'Content-Type' : 'application/json'
-                }
-            });
-            const content = await rawResponse.json();
-            console.log(content);
+            if(values.username && values.password2)
+            {
+                console.log("this is a signup not login");
+                const rawResponse = await fetch('http://localhost:9000/signup', {
+                    method: 'POST',
+                    body: JSON.stringify(values),
+                    headers: {
+                        'accept': 'application/json',
+                        'Content-Type' : 'application/json'
+                    }
+                });
+                const content = await rawResponse.json();
+                
 
-            success = content.login;
-            let loggedInUser = content.user;
+                success = content.login;
+                let loggedInUser = content.user;
+                
+                //reset form
+                setValues({
+                    username: '',
+                    email: '',
+                    password: '',
+                    password2: ''
+                });
+                
+                return loggedInUser;
+            }
+            else
+            {
+                console.log("this is a login not a signup");
+                const rawResponse = await fetch('http://localhost:9000/login', {
+                    method: 'POST',
+                    body: JSON.stringify(values),
+                    headers: {
+                        'accept': 'application/json',
+                        'Content-Type' : 'application/json'
+                    }
+                });
+                const content = await rawResponse.json();
+                
+
+                success = content.login;
+                let loggedInUser = content.user;
+                
+                //reset form
+                setValues({
+                    username: '',
+                    email: '',
+                    password: '',
+                    password2: ''
+                });
+                
+                return loggedInUser;
+
+            }
+        
             
-            //reset form
-            setValues({
-                username: '',
-                email: '',
-                password: '',
-                password2: ''
-            });
-            
-            return loggedInUser;
             
     }
 

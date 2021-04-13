@@ -21,10 +21,10 @@ var postsRouter = require('./routes/posts');
 var singlepostCommentsRouter = require('./routes/singlepostComments');
 var userCommentHistoryRouter = require('./routes/userCommentHistory');
 var createPostRouter = require('./routes/createPost');
-var createUserRouter = require('./routes/createUser');
 var createCommentRouter = require('./routes/createComment');
 var showProfileRouter = require('./routes/showProfile');
 var loginRouter = require('./routes/login');
+var signupRouter = require('./routes/signup');
 var updateProfileRouter = require('./routes/updateProfile');
 var updateProfilePictureRouter = require('./routes/updateProfilePicture');
 
@@ -77,12 +77,12 @@ app.use('/testAPI', testAPIRouter);
 // GENERAL USER ROUTES
 app.use('/users', usersRouter);
 app.use('/login', loginRouter);
+app.use('/signup', signupRouter);
 app.use('/showProfile', showProfileRouter);
 app.use('/userCommentHistory', userCommentHistoryRouter);
 app.use('/posts', postsRouter);
 app.use('/singlepostComments', singlepostCommentsRouter);
 app.use('/createPost', createPostRouter);
-app.use('/createUser', createUserRouter);
 app.use('/createComment', createCommentRouter);
 app.use('/updateProfile', updateProfileRouter);
 app.use('/updateProfilePicture', updateProfilePictureRouter);
