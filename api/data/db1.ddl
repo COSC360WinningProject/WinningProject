@@ -12,6 +12,8 @@ CREATE TABLE users (
     email               VARCHAR(40),
     address             VARCHAR(40),
     phone               VARCHAR(40),
+    profileImageURL     VARCHAR(100),
+    profileImage        LONGBLOB,
     enabled             INT,
     PRIMARY KEY (uid)
 );

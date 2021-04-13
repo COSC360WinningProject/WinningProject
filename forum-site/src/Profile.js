@@ -12,12 +12,33 @@ export function Profile(props) {
     const [profileData, setProfileData] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:9000/showProfile?username=${props.user}`, {
-            method: "GET",
-        })
-            .then(res => res.json())
-            .then(resData => setProfileData(resData));
-    }, []);
+        if(props.user)
+        {
+            fetch(`http://localhost:9000/showProfile?username=${props.user}`, {
+                method: "GET",
+            })
+                .then(res => res.json())
+                .then(resData => {
+                    
+                    if(!resData[0].profileImageURL && !resData[0].profileImage)
+                    {
+                        resData[0].profileImageURL = 'http://localhost:9000/images/blank-profile.png';
+                    }
+                    else
+                    {
+                        resData[0].profileImageURL = 'http://localhost:9000/' + resData[0].profileImageURL;
+                    }
+                    console.log(resData);
+                    setProfileData(resData);
+                });
+        }
+            
+    }, [props.user]);
+
+    const handleImage = (e) => {
+        console.log(e.target);
+        console.log(e.target.files[0]);
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -29,76 +50,122 @@ export function Profile(props) {
         let newPhone = e.target.profileFormPhone.value || profileData[0].phone;
         let username = e.target.profileFormUsername.value;
 
-        let newData = {
-            'username' : username,
-            'newFirstName' :  newFirstName,
-            'newLastName': newLastName,
-            'newEmail' : newEmail,
-            'newAddress' : newAddress,
-            'newPhone' : newPhone
-        }
+
+        let newData = new FormData();
+
+        newData.append('username' , username)
+        newData.append('newFirstName',  newFirstName);
+        newData.append('newLastName', newLastName);
+        newData.append('newEmail', newEmail);
+        newData.append('newAddress', newAddress);
+        newData.append('newPhone', newPhone);
+
+        
+        
 
         fetch('http://localhost:9000/updateProfile', {
                 method: 'POST',
-                body: JSON.stringify(newData),
+                body: newData,
                 headers: {
                     'accept': 'application/json',
                     'Content-Type' : 'application/json'
                 }
             })
+            .then(res => res.json())
+            .then(res => console.log(res));
         console.log(profileData);
     }
 
+    const handleImageSubmit = (e) => {
+        e.preventDefault();
+        alert('updating profile picture');
+        let newPicture = e.target.profileFormPicture.files[0];
+        console.log(newPicture);
 
-    return (
-        <Container className="client-profile-container">
-            {profileData.map(el => {
-                return (
-                    <Form onSubmit={handleSubmit}>
-                        <Form.Group as={Row} controlId="profileFormUsername">
-                            <Form.Label column sm={1} style={{color: "black"}}>Username</Form.Label>
-                            <Col sm={4}>
-                                <Form.Control plaintext readOnly value={el.username} style={{color: "black"}}/>
-                            </Col>
-                        </Form.Group>
-                        <Form.Group as={Row} controlId="profileFormFirstName">
-                            <Form.Label column sm={1} style={{color: "black"}}>First Name</Form.Label>
-                            <Col sm={4}>
-                                <Form.Control type="text" placeholder={el.firstname}></Form.Control>
-                            </Col>
-                        </Form.Group>
-                        <Form.Group as={Row} controlId="profileFormLastName">
-                            <Form.Label column sm={1} style={{color: "black"}}>Last Name</Form.Label>
-                            <Col sm={4}>
-                                <Form.Control type="text" placeholder={el.lastname}></Form.Control>
-                            </Col>
-                        </Form.Group>
-                        <Form.Group as={Row} controlId="profileFormEmail">
-                            <Form.Label column sm={1} style={{color: "black"}}>email</Form.Label>
-                            <Col sm={4}>
-                                <Form.Control type="text" placeholder={el.email}></Form.Control>
-                            </Col>
-                        </Form.Group>
-                        <Form.Group as={Row} controlId="profileFormAddress">
-                            <Form.Label column sm={1} style={{color: "black"}}>Address</Form.Label>
-                            <Col sm={4}>
-                                <Form.Control type="text" placeholder={el.address}></Form.Control>
-                            </Col>
-                        </Form.Group>
-                        <Form.Group as={Row} controlId="profileFormPhone">
-                            <Form.Label column sm={1} style={{color: "black"}}>Phone</Form.Label>
-                            <Col sm={4}>
-                                <Form.Control type="text" placeholder={el.phone}></Form.Control>
-                            </Col>
-                        </Form.Group>
-                        <Form.Group as={Row}>
-                            <Col sm={5}>
-                                <Form.Control type="submit" value="Update Profile"></Form.Control>
-                            </Col>
-                        </Form.Group>
-                        
-                    </Form>
-                )})}
-        </Container>
-    );
+        let data = new FormData();
+        data.append('file', newPicture, newPicture.name );
+        data.append('user', profileData[0].username);
+
+        fetch('http://localhost:9000/updateProfilePicture', {
+            method: 'POST',
+            body: data
+        })
+        .then(res => console.log(res));
+    }
+
+    const loginErr = (<h1>You are not logged in!</h1>);
+
+    if(!profileData[0])
+    {
+        return loginErr;
+    }
+    else
+    {
+        return (
+            <Container className="client-profile-container">
+                {profileData.map(el => {
+                    return (
+                        <>
+                        <img src={el.profileImageURL} width="200px" height="200px"></img>
+                        <Form onSubmit={handleSubmit}>
+                            <Form.Group as={Row} controlId="profileFormUsername">
+                                <Form.Label column sm={2} style={{color: "black"}}>Username</Form.Label>
+                                <Col sm={4}>
+                                    <Form.Control plaintext readOnly value={el.username} style={{color: "black"}}/>
+                                </Col>
+                            </Form.Group>
+                            <Form.Group as={Row} controlId="profileFormFirstName">
+                                <Form.Label column sm={2} style={{color: "black"}}>First Name</Form.Label>
+                                <Col sm={4}>
+                                    <Form.Control type="text" placeholder={el.firstname}></Form.Control>
+                                </Col>
+                            </Form.Group>
+                            <Form.Group as={Row} controlId="profileFormLastName">
+                                <Form.Label column sm={2} style={{color: "black"}}>Last Name</Form.Label>
+                                <Col sm={4}>
+                                    <Form.Control type="text" placeholder={el.lastname}></Form.Control>
+                                </Col>
+                            </Form.Group>
+                            <Form.Group as={Row} controlId="profileFormEmail">
+                                <Form.Label column sm={2} style={{color: "black"}}>email</Form.Label>
+                                <Col sm={4}>
+                                    <Form.Control type="text" placeholder={el.email}></Form.Control>
+                                </Col>
+                            </Form.Group>
+                            <Form.Group as={Row} controlId="profileFormAddress">
+                                <Form.Label column sm={2} style={{color: "black"}}>Address</Form.Label>
+                                <Col sm={4}>
+                                    <Form.Control type="text" placeholder={el.address}></Form.Control>
+                                </Col>
+                            </Form.Group>
+                            <Form.Group as={Row} controlId="profileFormPhone">
+                                <Form.Label column sm={2} style={{color: "black"}}>Phone</Form.Label>
+                                <Col sm={4}>
+                                    <Form.Control type="text" placeholder={el.phone}></Form.Control>
+                                </Col>
+                            </Form.Group>
+                            <Form.Group as={Row} >
+                                <Col sm={5}>
+                                    <Form.Control type="submit" value="Update Profile"></Form.Control>
+                                </Col>
+                            </Form.Group>
+                        </Form>
+                        <Form onSubmit={handleImageSubmit} encType="multipart/form-data">
+                            <Form.Group as={Row} controlId="profileFormPicture">
+                                <Form.Label column sm={2} style={{color: "black"}}>Picture</Form.Label>
+                                    <Col sm={4}>
+                                    <Form.Control required type="file" accept="image/png, image/jpeg" onChange={handleImage}></Form.Control>
+                                </Col>
+                            </Form.Group>
+                            <Form.Group as={Row} >
+                                <Col sm={5}>
+                                    <Form.Control type="submit" value="Update Profile Picture"></Form.Control>
+                                </Col>
+                            </Form.Group>
+                        </Form>
+                        </>
+                    )})}
+            </Container>
+        );
+    }
 }

@@ -11,9 +11,10 @@ router.get("/", function (req, res, next) {
 
         let username = req.query.username;
 
-        query = "SELECT username, firstname, lastname, email, address, phone FROM users WHERE username=?";
+        query = "SELECT username, firstname, lastname, email, address, phone, profileImageURL, profileImage FROM users WHERE username=?";
         con.query(query, [username], function (err, results, field) {
             if (err) throw err;
+            console.log(results);
             res.json(results);
         });
         con.end(function(err){

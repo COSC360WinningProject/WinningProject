@@ -3,7 +3,8 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var cors = require("cors");
+var cors = require('cors');
+
 
 // ROOT ROUTE
 var indexRouter = require('./routes/index');
@@ -25,6 +26,7 @@ var createCommentRouter = require('./routes/createComment');
 var showProfileRouter = require('./routes/showProfile');
 var loginRouter = require('./routes/login');
 var updateProfileRouter = require('./routes/updateProfile');
+var updateProfilePictureRouter = require('./routes/updateProfilePicture');
 
 // ADMIN ROUTES
 var adminSearchForUsers = require('./routes/adminSearchForUser');
@@ -55,6 +57,7 @@ dbConfig = {
   sslmode: 'REQUIRED'
 };
 
+
 app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
@@ -82,6 +85,7 @@ app.use('/createPost', createPostRouter);
 app.use('/createUser', createUserRouter);
 app.use('/createComment', createCommentRouter);
 app.use('/updateProfile', updateProfileRouter);
+app.use('/updateProfilePicture', updateProfilePictureRouter);
 
 // ADMIN ROUTES
 app.use('/adminSearchForUser', adminSearchForUsers);
