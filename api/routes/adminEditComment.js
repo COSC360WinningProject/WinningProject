@@ -5,6 +5,7 @@ var mysql = require('mysql');
 router.post("/", function(req, res, next){
     let con = mysql.createConnection(dbConfig);
     let cid = req.query.cid;
+    let text = req.query.text;
     con.connect(function(err){
         if(err){
             throw err
@@ -12,10 +13,13 @@ router.post("/", function(req, res, next){
         let admin = req.query.admin;
         if(admin==1){
             console.log(username);
-            let query = "DELETE * FROM comments WHERE cid = ?";
-            con.query(query, [cid], function(err, results, field){
+            let query = "UPDATE post SET text = ? WHERE cid = ?";
+            con.query(query, [text], [cid], function(err, results, field){
                 if(err) throw err;
                 res.json(results);
+            })
+            con.end(function(err){
+                if(err) throw err;
             })
         }
     })

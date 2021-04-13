@@ -18,6 +18,10 @@ router.post("/", function(req, res, next){
             if(err) throw err;
             res.json(results);
         })
+        con.end(function(err){
+            if(err) throw err;
+
+        })
         
     })
 });

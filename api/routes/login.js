@@ -34,6 +34,10 @@ router.post("/", function(req, res, next) {
             
             
         })
+        con.end(function(err){
+            if(err) throw err;
+
+        })
     })
 
 });

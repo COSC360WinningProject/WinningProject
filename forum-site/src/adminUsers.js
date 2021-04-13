@@ -6,8 +6,8 @@ import { AdminUsersTable } from './adminUsersTable';
 export function AdminUsers(props) {
 
 
-    const [searchType, setSearchType] = useState("username");
-    const [searchStr, setSearchStr] = useState("ashitaNoJoe");
+    const [searchType, setSearchType] = useState("");
+    const [searchStr, setSearchStr] = useState("");
 
     const handleSubmit = (e) => {
         e.preventDefault();
