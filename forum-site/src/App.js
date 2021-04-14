@@ -23,19 +23,18 @@ import './styles/App.css';
 function App() {
 
   const [user, setUser] = useState("");
+  const [isAdmin, setIsAdmin] = useState(0);
 
-  const handleLogin = (user) => {
-    
-    if(user)
-    {
+  const handleLogin = (user, isAdmin) => {
+
+    if (user) {
       setUser(user);
-      console.log(user + " is logged in");
-    } 
-    else
-    {
+      console.log(user + " is logged in, isAdmin: " + isAdmin);
+    }
+    else {
       setUser(null);
       console.log('login failed');
-    } 
+    }
   }
 
   const handleLogout = () => {
@@ -45,7 +44,7 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <NavigationBar user={user} onLogout={handleLogout}/>
+        <NavigationBar user={user} onLogout={handleLogout} />
         <Switch>
           <Route path="/AdminRouter">
             <AdminRouter />
@@ -57,7 +56,7 @@ function App() {
             <Form onLogin={handleLogin} isSignup='false' />
           </Route>
           <Route path="/profile">
-            <Profile user={user}/>
+            <Profile user={user} />
           </Route>
           <Route path="/">
             <Content />

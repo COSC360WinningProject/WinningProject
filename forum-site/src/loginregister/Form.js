@@ -6,7 +6,7 @@ import { FormLogin } from './FormLogin';
 export function Form(props) {
     const [isSubmitted, setIsSubmitted] = useState(false);
 
-    console.log(Object.keys(props));
+
     function submitForm() {
         setIsSubmitted(true);
     }
@@ -20,7 +20,7 @@ export function Form(props) {
                 {props.isSignup === "true" ? (
                     <FormSignup submitForm={submitForm} />
                 ) : (
-                    <FormLogin onLogin={props.onLogin} submitForm={submitForm}/>
+                    <FormLogin onLogin={props.onLogin} submitForm={submitForm} />
                 )}
             </div>
         </>

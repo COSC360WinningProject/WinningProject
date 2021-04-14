@@ -25,8 +25,6 @@ CREATE TABLE posts (
     text                VARCHAR(40),
     media               LONGBLOB,
     likes               INT,
-    upvotes             INT,
-    downvotes           INT,
     category            VARCHAR(40),
     PRIMARY KEY (pid)
 );
@@ -51,12 +49,12 @@ INSERT INTO users (admin, firstname, lastname, username, password, email, addres
 INSERT INTO users (admin,firstname,lastname, username, password, email, address, phone, enabled) VALUES(1, 'user1', 'u1last', 'u1', 'password', 'abc1@example.com', '1234 road street', '555-555-5555', 1);
 INSERT INTO users (admin,firstname,lastname, username, password, email, address, phone, enabled) VALUES(0, 'user2', 'u2last', 'u2', 'password', 'abc2@example.com', '6789 road street', '444-444-4444', 1);
 INSERT INTO users (admin,firstname,lastname, username, password, email, address, phone, enabled) VALUES(0, 'user3', 'u3last', 'u3', 'password', 'abc3@example.com', '4567 road street', '666-666-6666', 1);
-INSERT INTO posts (uid, title, text, likes, upvotes, downvotes) VALUES(1, 'Post 1', 'About 1', 100, 55, 10);
-INSERT INTO posts (uid, title, text, likes, upvotes, downvotes) VALUES(1, 'Post 2', 'About 2', 89, 10, 10);
-INSERT INTO posts (uid, title, text, likes, upvotes, downvotes) VALUES(3, 'Post 3', 'About 3', 10, 55, 10);
-INSERT INTO comments (uid, pid, text, likes, upvotes, downvotes) VALUES(2, 1, 'very funny', 4, 1, 2);
-INSERT INTO comments (uid, pid, text, likes, upvotes, downvotes) VALUES(2, 1, 'could be better tho', 5, 7, 1);
-INSERT INTO comments (uid, pid, text, likes, upvotes, downvotes) VALUES(2, 2, 'sick', 5, 3, 1);
-INSERT INTO comments (uid, pid, text, likes, upvotes, downvotes) VALUES(2, 3, 'bs', 1, 8, 25);
+INSERT INTO posts (uid, title, text, likes) VALUES(1, 'Post 1', 'About 1', 100);
+INSERT INTO posts (uid, title, text, likes) VALUES(1, 'Post 2', 'About 2', 89);
+INSERT INTO posts (uid, title, text, likes) VALUES(3, 'Post 3', 'About 3', 10);
+INSERT INTO comments (uid, pid, text, likes) VALUES(2, 1, 'very funny', 4);
+INSERT INTO comments (uid, pid, text, likes) VALUES(2, 1, 'could be better tho');
+INSERT INTO comments (uid, pid, text, likes) VALUES(2, 2, 'sick');
+INSERT INTO comments (uid, pid, text, likes) VALUES(2, 3, 'bs');
 
 

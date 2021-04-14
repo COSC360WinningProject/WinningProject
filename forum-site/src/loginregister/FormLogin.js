@@ -15,24 +15,23 @@ export const FormLogin = (props) => {
     );
 
     const loginVerification = (e) => {
-        
+
         (async () => {
-            console.log(e);
+
             let loggedInUser = await handleSubmit(e);
-            console.log(loggedInUser);
-            props.onLogin(loggedInUser);
-            
-            if(!loggedInUser) {
+
+            props.onLogin(loggedInUser.user, loggedInUser.isAdmin);
+
+            if (!loggedInUser) {
                 alert('login failed');
             }
-            else
-            {
+            else {
                 alert('login successful');
             }
-            
+
         })();
-        
-        
+
+
     }
 
 

@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react';
 
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
-import { AdminCommentsTable} from './adminCommentsTable';
+import { AdminCommentsTable } from './adminCommentsTable';
+import { AdminEditPostForm } from './adminEditPostForm'
+
 
 
 export function AdminPostsTable(props) {
@@ -13,7 +15,7 @@ export function AdminPostsTable(props) {
      * TODO: find a way to pass in type and name from 
      * TODO: outer component, currently using hardcoded placeholders
     **/
-    
+
 
     // * useEffect will run whenever the components in the dependency array update
     // * dependecy array is the array given as the second argument
@@ -24,12 +26,12 @@ export function AdminPostsTable(props) {
         fetch(url, {
             method: "GET",
         })
-        .then(res => res.json())
-        .then(resData => setData(resData));
+            .then(res => res.json())
+            .then(resData => setData(resData));
     }, [props.searchStr]);     // * dependecy array is empty so useEffect will only run on page load
     // TODO: update dependency array so that useEffect runs when the select item changes
     // ? might have to change this to be one element for adminUsers and adminUsersTable together
-    
+
 
 
     //  for debugging
@@ -38,27 +40,21 @@ export function AdminPostsTable(props) {
     const deletePost = (e) => {
         console.log(e.target.id);
         fetch('http://localhost:9000/adminDeletePost', {
-                method: 'POST',
-                body: JSON.stringify({ pid : e.target.id}),
-                headers: {
-                    'accept': 'application/json',
-                    'Content-Type' : 'application/json'
-                }
-            });
+            method: 'POST',
+            body: JSON.stringify({ pid: e.target.id }),
+            headers: {
+                'accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        });
     }
-    const editPost = (e) => {
-        console.log(e.target.id);
-        fetch('http://localhost:9000/adminEditPost', {
-                method: 'POST',
-                body: JSON.stringify({ pid : e.target.id}, {text: e.target.text}),
-                headers: {
-                    'accept': 'application/json',
-                    'Content-Type' : 'application/json'
-                }
-            });
-    }
-    const showComments = (e) => {
+    const showCommentsHandler = (e) => {
         //Make comments table visible
+        e.target.style.display = e.target.style.display == "none" ? "inline" : "none";
+    }
+    const showEditPostHandler = (e) => {
+        //Make comments table visible
+        e.target.style.display = e.target.style.display == "none" ? "inline" : "none";
     }
 
 
@@ -90,14 +86,19 @@ export function AdminPostsTable(props) {
                                     <td>{el.downvotes}</td>
                                     <td>{el.category}</td>
                                     <td>
-                                        <Button onClick = {editPost}>Edit</Button>
+                                        <Button onClick={showEditPostHandler}>Edit</Button>
                                         <Button id={el.pid} onClick={deletePost}>Delete</Button>
-                                        <Button onClick = {showComments}>Comments</Button>
+                                        <Button onClick={showCommentsHandler}>Comments</Button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3">
+                                        <AdminEditPostForm title={el.title} text={el.text} category={el.category} style={{ display: "none" }} className="editPostsForm" pid={el.pid} />
                                     </td>
                                 </tr>
                                 <tr>
                                     <td colspan="8">
-                                        <AdminCommentsTable handleSubmit={props.handleSubmit} pid={el.pid} caption = "caption"/>
+                                        <AdminCommentsTable style={{ display: "none" }} className="commentsTable" handleSubmit={props.handleSubmit} pid={el.pid} caption="caption" />
                                     </td>
                                 </tr>
                             </>
