@@ -1,12 +1,6 @@
 body {
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
-.commentsTableHidden{
-    visibility: hidden;
-}
-.commentTableVisible{
-    visibility:visible;
-}
 .AdminNav {
     color: grey;
     width: 100%;

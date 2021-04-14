@@ -10,7 +10,6 @@ import {
 // Custom Component Imports
 import { NavigationBar } from "./navbar/Navigationbar";
 import { Form } from './loginregister/Form';
-import { PostsContainer } from './PostsContainer';
 import { AdminRouter } from './adminRouter';
 import { FormLogin } from "./loginregister/FormLogin.js";
 import { Profile } from "./Profile";

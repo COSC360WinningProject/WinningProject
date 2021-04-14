@@ -1,63 +1,170 @@
-.post-wrapper .post{
+.posts-container .actualpost {
     display: grid;
+  
     width: 100%;
-    margin: 10px;
-    padding-top: 5px;
-    grid-template-columns: 1fr 15fr;
+  
+    grid-template-columns: 1fr 12fr;
     grid-template-rows: 1fr auto 1fr;
+  
+    margin: 10px 0px;
+  
     grid-template-areas:
-        "post-sidebar post-title"
-        "post-sidebar post-body"
-        "post-sidebar post-footer"
-}
-
-.post-wrapper .post .post-sidebar{
-    grid-area: post-sidebar;
-    background-color:rgb(245,245,245);
+      "sidebar title"
+      "sidebar body"
+      "sidebar footer";
+  
+    background-color: white;
+  }
+  
+  .posts-container .actualpost:hover {
+    cursor: pointer;
+  }
+  
+  .posts-container .actualpost .sidebar {
+    grid-area: sidebar;
+  
     display: flex;
     flex-direction: column;
     align-items: center;
-    flex: 1;
-}
-
-.post-wrapper .post .post-sidebar> svg{
-    color: rgb(100,100,100);
-}
-
-.post-wrapper .post .post-sidebar> svg:first-child:hover{
+  
+    padding-top: 5px;
+  
+    background-color: rgb(245, 245, 245);
+  }
+  
+  .posts-container .actualpost .sidebar > svg {
+    color: rgb(130, 130, 130);
+  }
+  
+  .posts-container .actualpost .sidebar > svg:hover {
+    border-radius: 2px;
+  
+    background-color: rgb(220, 220, 220);
+  }
+  
+  .posts-container .actualpost .sidebar > .upvote:hover {
     color: rgb(200, 0, 0);
-}
-
-.post-wrapper .post .post-sidebar> svg::hover{
-    border-radius: 5px;
-    color: rgb(220, 220, 220);
-}
-
-.post-wrapper .post .post-sidebar> .upvote:hover{
-    color: rgb(200, 0, 0);
-}
-.post-wrapper .post .post-sidebar> .downvote:hover{
-    color: blue
-}
-
-
-.post-wrapper .post .post-sidebar> span{
+  }
+  
+  .posts-container .actualpost .sidebar > .downvote:hover {
+    color: blue;
+  }
+  
+  .posts-container .actualpost .sidebar > span {
     font-weight: 600;
+    font-size: 13px;
+  }
+  
+  .posts-container .actualpost .title {
+    grid-area: title;
+  
+    display: flex;
+  
+    align-items: center;
+  }
+  
+  .posts-container .actualpost .body {
+    grid-area: body;
+  }
+  
+  .posts-container .actualpost .footer {
+    grid-area: footer;
+    align-items: center;
+  
+    display: flex;
+    padding-left: 5px;
+  
+    color: rgb(130, 130, 130);
+  }
+  
+  .posts-container .actualpost .title > img {
+    min-width: 16px;
+    min-height: 16px;
+    max-width: 16px;
+    max-height: 16px;
+  
+    margin: 0px 5px;
+    border-radius: 50%;
+  }
+  
+  .posts-container .actualpost .title > .subreddit-name {
+    font-weight: 600;
+    font-size: 12px;
+  }
+  
+  .posts-container .actualpost .title > .subreddit-name:hover {
+    text-decoration: underline;
+  }
+  
+  .posts-container .actualpost .title > .username {
+    padding-left: 5px;
+    font-size: 12px;
+  
+    color: rgb(150, 150, 150);
+  }
+  
+  .posts-container .actualpost .title > .underline:hover {
+    text-decoration: underline;
+  }
+  
+  .posts-container .actualpost .title > .button {
+    margin: 8px;
+    padding: 4px 8px;
+  
+    font-size: 11px;
+  }
+  
+  .posts-container .actualpost .body > .titletext {
+    margin-left: 5px;
+  
+    font-size: 18px;
+    font-weight: 600;
+  }
+  
+  .posts-container .actualpost .body > img {
+    object-fit: cover;
+    object-position: center;
+  
+    max-height: 500px;
+    width: 100%;
+  }
+  
+  .posts-container .actualpost .body > .description {
+    margin-top: 10px;
+    margin-left: 5px;
+  
+    display: block;
+  }
+  
+  .posts-container .actualpost .footer .footer-action {
+    display: flex;
+    align-items: center;
+    margin: 0px 5px;
+    padding: 3px;
+  }
+  
+  .posts-container .actualpost .footer {
+    margin-left: 0px;
+  }
+  
+  .posts-container .actualpost .footer  {
+    margin-right: 0px;
+  }
+  
+  .posts-container .actualpost .footer svg {
+    margin-right: 5px;
+  }
+  
+  .posts-container .actualpost .footer span {
     font-size: 14px;
-
-}
-
-.post-wrapper .post .post-title{
-    grid-area: post-title;
-    background-color: green;
-}
-
-.post-wrapper .post .post-body{
-    grid-area: post-body;
-    background-color: blue;
-}
-.post-wrapper .post .post-footer{
-    grid-area: post-footer;
-    background-color: yellow;
-}
-
+    font-weight: 600;
+  }
+  
+  .posts-container .actualpost .footer svg {
+    font-size: 16px;
+  }
+  
+  .posts-container .actualpost .footer {
+    border-radius: 5px;
+    background-color: rgb(230, 230, 230);
+  }
