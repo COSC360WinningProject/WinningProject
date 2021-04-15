@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 
 export function AdminReportsFilter(props) {
     const [filter, setFilter] = useState("");
-    const postsFilters = ["Likes", "Category", "Count"];
+    const postsFilters = ["Likes",  "Count"];
     const usersFilters = ["Enabled", "Count"];
-    const commentsFilters = ["Likes", "Upvotes & Downvotes", "Count"];
+    const commentsFilters = ["Likes", "Upvotes&Downvotes", "Count"];
     let filters=[];
     const report = props.report;
     console.log(report);
@@ -23,12 +23,10 @@ export function AdminReportsFilter(props) {
         setFilter(e.target.value);
     }
     return(
-        <div id="filter">
-            <label for="filter">Filter By:</label><br/>
+        
             <select name ="filterSelect" id ="filterSelect" onChange={(e)=>handleFilterChange(e)}>
                 <option value="select">Select</option>
                 {filters.map((filter) => <option value = {filter}>{filter}</option>)}
             </select>
-        </div>
     )
 }

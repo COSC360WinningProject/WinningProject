@@ -11,8 +11,8 @@ export function Admin(props) {
         const [report, setReport] = useState("");
         const [reportsHead, setReportsHead] = useState("");
 
-        let url = `http://localhost:9000/admin` + props.filter + props.report + `?filter=${props.filter}&report=${props.report}`;
-
+        let url = `http://localhost:9000/admin` + report + `Reports` + `?filter=${filter}&report=${report}`;
+    console.log(url);
     const handleSubmit = (e) =>{
         e.preventDefault();
     }
@@ -20,13 +20,14 @@ export function Admin(props) {
         setReport(e.target.value);
     }
     const getReports = () =>{
-        let filter = filter;
-        let reportType = report;
-        setReportsHead(reportType + " By: " + filter);
+        setReportsHead(report + filter + " By: " + " Category");
         setData(fetch(url)
             .then(res=> res.json())
             .then(resData =>setData(resData)
         ));
+}
+const handleFilterChange = (e) =>{
+    setFilter(e.target.filter);
 }
     return (
         <div className="App">
@@ -38,14 +39,17 @@ export function Admin(props) {
                         <label for ="reports">Report Type:</label><br/>
                         <select name ="reports" id ="reportSelect" onChange={(e)=>handleReportChange(e)}>
                             <option value="select">Select</option>
-                            <option value ="posts">Posts</option>
-                            <option value ="users">Users</option>
-                            <option value ="comments">Comments</option>
+                            <option value ="Users">Users</option>
+                            <option value ="Posts">Posts</option>
+                            <option value ="Comments">Comments</option>
                         </select>
                     </div>
                     <br/>
-                    <AdminReportsFilter report = {report}/>
-                    <br/>
+                    <div id="filter">
+                        <label for="filter">Filter By:</label><br/>
+                        <AdminReportsFilter id="filter1" report = {report.toLowerCase()} onChange={(e)=>handleFilterChange(e)} filter = ""/>
+                        <br/>
+                    </div>
                     <input type="Submit" value="Submit" onClick={getReports} id ="reportSubmit"/>
                 </form>
             </div>
@@ -57,16 +61,14 @@ export function Admin(props) {
                     chartType="ColumnChart"
                     loader={<div>Loading Chart</div>}
                     data={[
-                        ['Category', 'Upvotes', 'Downvotes'],
-                        ['Category1', 10000, 1200],
-                        ['Category2', 16000, 2000],
-                        ['Category3', 5000, 1000],
+                        ['Category', filter],
+                        {data},
                     ]}
                     options={{
                         title: reportsHead,
                         chartArea: {width: '30%'},
                         hAxis: {
-                            title: report,
+                            title: "Category",
                             minValue: 0,
                         },
                         vAxis: {
