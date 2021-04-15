@@ -27,9 +27,8 @@ export function AdminUsers(props) {
     return (
         <div className="adminUsers">
             <form onSubmit={handleSubmit}>
-                <div id="filter">
-                    <label htmlFor="filter">Search By:</label>
-                    <br />
+                <div id="filter" className = "userFilterClass">
+                    <label id = "userSearchLabel"htmlFor="filter">Search By:</label>
                     <select name="filterSelect" id="filterSelect" onChange={handleTypeChange} required>
                         <option value="Username">UserName</option>
                         <option value="Email">Email</option>
@@ -39,7 +38,8 @@ export function AdminUsers(props) {
                     <input type="Submit" value="Submit" id="searchSubmit" />
                 </div>
             </form>
-
+            <h2 id = "userCaption">Showing results for </h2>
+            <br/>
             <AdminUsersTable searchType={searchType} searchStr={searchStr}handleSubmit={handleSubmit} caption="caption" />
         </div>
     );

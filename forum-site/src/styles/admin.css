@@ -153,7 +153,24 @@ caption {
     margin-left: 155px;
     background: linear-gradient(90deg, rgb(110, 94, 254) 0%, rgba(73, 63, 252, 1) 100%);
 }
-
+#filterSelect{
+    margin-left: 5px;
+    margin-right: 50px;
+}
+.userFilterClass, .postFilterClass{
+    float: right;
+    position: relative;
+    left: 230px;
+}
+#userCaption, #postCaption{
+    margin-left: 30px;
+}
+#userSearch, #postSearch{
+    margin-right: 50px;
+}
+#userSearchLabel, #postSearchLabel{
+    margin-right: 5px;
+}
 .leftSidebar {
     float: left;
     position: relative;

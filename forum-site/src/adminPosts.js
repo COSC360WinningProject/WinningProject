@@ -28,19 +28,19 @@ export function AdminPosts(props) {
         <div className="adminPosts">
             <form onSubmit={handleSubmit}>
                 <div id="filter">
-                    <label htmlFor="filter">Search By:</label>
-                    <br />
-                    <div id ="postsFilter">
+                <div id ="postsFilter" className="postFilterClass">
+                    <label htmlFor="filter" id="postSearchLabel">Search By:</label>
                         <select name="filterSelect" id="filterSelect" onChange={handleTypeChange} required>
                             <option value="Title">Title</option>
                             <option value="Category">Category</option>
                         </select>
+                        <input type="text" id="postSearch" placeholder="Search" onChange={handleStrChange} required/>
+                        <input type="Submit" value="Submit" id="searchSubmit" />
                     </div>
-                    <input type="text" id="postSearch" placeholder="Search" onChange={handleStrChange} required/>
-                    <input type="Submit" value="Submit" id="searchSubmit" />
                 </div>
             </form>
-
+            <h2 id="postCaption">Showing results for </h2>
+            <br/>
             <AdminPostsTable searchType={searchType} searchStr={searchStr}handleSubmit={handleSubmit} caption="caption" />
             
         </div>

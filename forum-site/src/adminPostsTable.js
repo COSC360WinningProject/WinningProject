@@ -64,7 +64,6 @@ export function AdminPostsTable(props) {
 
     return (
         <div className="reports">
-            <h2>Showing results for </h2>
             <Table striped bordered className="postsTable">
                 <thead>
                     <tr>
