@@ -92,7 +92,7 @@ export function AdminPostsTable(props) {
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td colspan="3">
+                                    <td colspan="7">
                                         <AdminEditPostForm title={el.title} text={el.text} category={el.category} style={{ display: "none" }} className="editPostsForm" pid={el.pid} />
                                     </td>
                                 </tr>

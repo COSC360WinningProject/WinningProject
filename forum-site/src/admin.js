@@ -1,76 +1,82 @@
-import React from 'react';
 import Chart1 from './Images/chart1.png';
 import './styles/admin.css';
 import { BrowserRouter as Router } from "react-router-dom";
+import{ Chart } from "react-google-charts";
+import React, { useState, useEffect } from 'react';
+import { AdminReportsFilter } from './adminReportsFilter';
 
-export class Admin extends React.Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            filter: '',
-            report: '',
-            reportsHead: '',
-            data: [],
-        };
-        this.handleFilterChange = this.handleFilterChange.bind(this);
-        this.handleReportChange = this.handleReportChange.bind(this);
+export function Admin(props) {
+        const [filter, setFilter] = useState("");
+        const [data, setData] = useState([]);
+        const [report, setReport] = useState("");
+        const [reportsHead, setReportsHead] = useState("");
+
+        let url = `http://localhost:9000/admin` + props.filter + props.report + `?filter=${props.filter}&report=${props.report}`;
+
+    const handleSubmit = (e) =>{
+        e.preventDefault();
     }
-    handleSubmit(event){
-        event.preventDefault();
+    const handleReportChange = (e) =>{
+        setReport(e.target.value);
     }
-    handleFilterChange(event){
-        this.setState({filter: event.target.value});
-        console.log(this.state.filter);
-    }
-    handleReportChange (event){
-        this.setState({report: event.target.value});
-    }
-    getReports = () =>{
-        let filter = this.state.filter;
-        let reportType = this.state.report;
-        this.setState({reportsHead: this.state.report +" By "+ this.state.filter});
-        this.setState({data: fetch("http://localhost9000/admin" + filter + reportType)
+    const getReports = () =>{
+        let filter = filter;
+        let reportType = report;
+        setReportsHead(reportType + " By: " + filter);
+        setData(fetch(url)
             .then(res=> res.json())
-            .then(data =>{
-        })});
+            .then(resData =>setData(resData)
+        ));
 }
-render(){
     return (
         <div className="App">
       <div className ="main">
           <Router>
             <div className ="leftSidebar">
-                <form onSubmit = {this.handleSubmit}>
-                <div id="filter">
-                    <label for="filter">Filter By:</label><br/>
-                    <select name ="filterSelect" id ="filterSelect" onChange={(e)=>this.handleFilterChange(e)}>
-                        <option value="select">Select</option>
-                        <option value ="Likes">Likes</option>
-                        <option value ="Category">Category</option>
-                    </select>
-                </div>
-                <div id ="reportType">
-                    <label for ="reports">Report Type:</label><br/>
-                    <select name ="reports" id ="reportSelect" onChange={(e)=>this.handleReportChange(e)}>
-                        <option value="select">Select</option>
-                        <option value ="NumPosts">NumPosts</option>
-                        <option value ="NumUsers">NumUsers</option>
-                        <option value ="NumComments">NumComments</option>
-                    </select>
-                </div>
-                <input type="Submit" value="Submit" onClick={this.getReports} id ="reportSubmit"/>
+                <form onSubmit = {handleSubmit}>
+                    <div id ="reportType">
+                        <label for ="reports">Report Type:</label><br/>
+                        <select name ="reports" id ="reportSelect" onChange={(e)=>handleReportChange(e)}>
+                            <option value="select">Select</option>
+                            <option value ="posts">Posts</option>
+                            <option value ="users">Users</option>
+                            <option value ="comments">Comments</option>
+                        </select>
+                    </div>
+                    <br/>
+                    <AdminReportsFilter report = {report}/>
+                    <br/>
+                    <input type="Submit" value="Submit" onClick={getReports} id ="reportSubmit"/>
                 </form>
             </div>
             </Router>
-            <div className="reports">
-                <div className ="graphs" id="pieCategories">
-                    <h2 className="reportsHead">{this.state.reportsHead}</h2>
-                    <img id="categories" src={Chart1}/>
+                <div className ="graphs" style={{display: 'flex', maxWidth: 900}}>
+                    <h2 className="reportsHead">{reportsHead}</h2>
+                    <Chart width = {600}
+                    height={450}
+                    chartType="ColumnChart"
+                    loader={<div>Loading Chart</div>}
+                    data={[
+                        ['Category', 'Upvotes', 'Downvotes'],
+                        ['Category1', 10000, 1200],
+                        ['Category2', 16000, 2000],
+                        ['Category3', 5000, 1000],
+                    ]}
+                    options={{
+                        title: reportsHead,
+                        chartArea: {width: '30%'},
+                        hAxis: {
+                            title: report,
+                            minValue: 0,
+                        },
+                        vAxis: {
+                            title: filter,
+                        },
+                        }}
+                        legendToggle
+                        />
                 </div>
-                
-            </div>
         </div>
     </div>
   );
-}
 }

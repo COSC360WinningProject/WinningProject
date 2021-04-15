@@ -135,7 +135,7 @@ export function Profile(props) {
                                 <Form.Group as={Row} controlId="profileFormPicture">
                                     <Form.Label column sm={2} style={{ color: "black" }}>Picture</Form.Label>
                                     <Col sm={4}>
-                                        <Form.Control required type="file" accept="image/png, image/jpeg" onChange={handleImage}></Form.Control>
+                                        <Form.Control required type="file" accept="image/png, image/jpeg" ></Form.Control>
                                     </Col>
                                 </Form.Group>
                                 <Form.Group as={Row} >
