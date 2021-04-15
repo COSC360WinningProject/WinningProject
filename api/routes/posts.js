@@ -8,7 +8,10 @@ router.get("/", function (req, res, next) {
         if (err) {
             throw err;
         }
-        let query = "SELECT * FROM posts";
+        let query = `SELECT posts.pid, username, profileImageURL, title, posts.text, media, posts.likes, category,  COUNT(cid) AS commentcount ` +
+        `FROM posts JOIN users ON posts.uid = users.uid ` + 
+        `JOIN comments ON posts.pid = comments.pid ` +
+        `GROUP BY pid, username, title, text, media, likes, category;`;
         con.query(query, function (err, results, field) {
             if (err) throw err;
             res.json(results);

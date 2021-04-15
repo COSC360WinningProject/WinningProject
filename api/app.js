@@ -31,7 +31,7 @@ var updateProfilePictureRouter = require('./routes/updateProfilePicture');
 // ADMIN ROUTES
 var adminSearchForUsers = require('./routes/adminSearchForUser');
 var adminReports = require('./routes/adminReports');
-var adminCommentsReportsRouter = require('./routes/adminCommentsReports');
+var adminCategoryReportsRouter = require('./routes/adminCategoryReports');
 var updateEnabledRouter = require('./routes/changeUserEnabledStatus');
 var adminDeleteCommentRouter = require('./routes/adminDeleteComment');
 var adminDeletePostRouter = require('./routes/adminDeletePost');
@@ -90,7 +90,7 @@ app.use('/updateProfilePicture', updateProfilePictureRouter);
 // ADMIN ROUTES
 app.use('/adminSearchForUser', adminSearchForUsers);
 app.use('/adminReports', adminReports);
-app.use('/adminCommentsReports', adminCommentsReportsRouter)
+app.use('/adminCategoryReports', adminCategoryReportsRouter)
 app.use('/updateEnabled', updateEnabledRouter);
 app.use('/adminDeleteComment', adminDeleteCommentRouter);
 app.use('/adminDeletePost', adminDeletePostRouter);

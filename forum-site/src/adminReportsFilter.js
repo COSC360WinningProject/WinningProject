@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 export function AdminReportsFilter(props) {
-    const [filter, setFilter] = useState("");
+    
     const postsFilters = ["Likes",  "Count"];
     const usersFilters = ["Enabled", "Count"];
     const commentsFilters = ["Likes", "Upvotes&Downvotes", "Count"];
@@ -20,7 +20,7 @@ export function AdminReportsFilter(props) {
     }
 
     const handleFilterChange = (e) =>{
-        setFilter(e.target.value);
+        props.onChange(e);
     }
     return(
         

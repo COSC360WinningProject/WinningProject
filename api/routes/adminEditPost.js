@@ -10,8 +10,8 @@ router.post("/", function(req, res, next){
         if(err){
             throw err
         }
-        let admin = req.query.admin;
-        if(admin==1){
+        //let admin = req.query.admin;
+        //if(admin==1){
             console.log(username);
             let query = "UPDATE post SET text = ? WHERE pid = ?";
             con.query(query, [text], [pid], function(err, results, field){
@@ -22,7 +22,7 @@ router.post("/", function(req, res, next){
                 if(err) throw err;
 
             })
-        }
+        //}
     })
 });
 module.exports = router;

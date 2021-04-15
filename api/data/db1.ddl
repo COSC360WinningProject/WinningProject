@@ -35,8 +35,6 @@ CREATE TABLE comments (
     pid                 INT,
     text                VARCHAR(500),
     likes               INT,
-    upvotes             INT,
-    downvotes           INT,
     replyId             INT,    
     PRIMARY KEY (cid),
     FOREIGN KEY (uid) REFERENCES users (uid),
@@ -53,8 +51,8 @@ INSERT INTO posts (uid, title, text, likes) VALUES(1, 'Post 1', 'About 1', 100);
 INSERT INTO posts (uid, title, text, likes) VALUES(1, 'Post 2', 'About 2', 89);
 INSERT INTO posts (uid, title, text, likes) VALUES(3, 'Post 3', 'About 3', 10);
 INSERT INTO comments (uid, pid, text, likes) VALUES(2, 1, 'very funny', 4);
-INSERT INTO comments (uid, pid, text, likes) VALUES(2, 1, 'could be better tho');
-INSERT INTO comments (uid, pid, text, likes) VALUES(2, 2, 'sick');
-INSERT INTO comments (uid, pid, text, likes) VALUES(2, 3, 'bs');
+INSERT INTO comments (uid, pid, text, likes) VALUES(2, 1, 'could be better tho', 3);
+INSERT INTO comments (uid, pid, text, likes) VALUES(2, 2, 'sick', 5);
+INSERT INTO comments (uid, pid, text, likes) VALUES(2, 3, 'bs', 9);
 
 

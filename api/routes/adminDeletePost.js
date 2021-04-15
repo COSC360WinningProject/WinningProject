@@ -9,8 +9,8 @@ router.post("/", function(req, res, next){
         if(err){
             throw err
         }
-        let admin = req.query.admin;
-        if(admin==1){
+        //let admin = req.query.admin;
+        //if(admin==1){
             console.log(username);
             let query = "DELETE * FROM post WHERE pid = ?";
             con.query(query, [pid], function(err, results, field){
@@ -21,7 +21,7 @@ router.post("/", function(req, res, next){
                 if(err) throw err;
 
             })
-        }
+        //}
     })
 });
 module.exports = router;

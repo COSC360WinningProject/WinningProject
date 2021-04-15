@@ -20,7 +20,7 @@ export function Profile(props) {
                 .then(resData => {
 
                     if (!resData[0].profileImageURL && !resData[0].profileImage) {
-                        resData[0].profileImageURL = 'http://localhost:9000/images/blank-profile.png';
+                        resData[0].profileImageURL = 'http://localhost:9000/images/users/blank-profile.png';
                     }
                     else {
                         resData[0].profileImageURL = 'http://localhost:9000/' + resData[0].profileImageURL;

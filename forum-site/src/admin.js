@@ -6,28 +6,37 @@ import React, { useState, useEffect } from 'react';
 import { AdminReportsFilter } from './adminReportsFilter';
 
 export function Admin(props) {
-        const [filter, setFilter] = useState("");
-        const [data, setData] = useState([]);
-        const [report, setReport] = useState("");
-        const [reportsHead, setReportsHead] = useState("");
+    const [filter, setFilter] = useState("");
+    const [data, setData] = useState([]);
+    const [report, setReport] = useState("");
+    const [reportsHead, setReportsHead] = useState("");
+    const [chartData, setChartData] = useState([]);
 
-        let url = `http://localhost:9000/admin` + report + `Reports` + `?filter=${filter}&report=${report}`;
+    let url = `http://localhost:9000/adminCategoryReports?filter=${filter}&report=${report}`;
     console.log(url);
     const handleSubmit = (e) =>{
         e.preventDefault();
     }
     const handleReportChange = (e) =>{
+        console.log(e.target.value);
         setReport(e.target.value);
     }
     const getReports = () =>{
         setReportsHead(report + filter + " By: " + " Category");
-        setData(fetch(url)
+        fetch(url)
             .then(res=> res.json())
             .then(resData =>setData(resData)
-        ));
+        );
+        console.log(data);
+        data.map(function(obj){
+            setChartData(prev => [...prev, [...Object.values(obj)]]);
+        })
+        
+        console.log(chartData);
 }
 const handleFilterChange = (e) =>{
-    setFilter(e.target.filter);
+    console.log(e.target);
+    setFilter(e.target.value);
 }
     return (
         <div className="App">
@@ -47,7 +56,7 @@ const handleFilterChange = (e) =>{
                     <br/>
                     <div id="filter">
                         <label for="filter">Filter By:</label><br/>
-                        <AdminReportsFilter id="filter1" report = {report.toLowerCase()} onChange={(e)=>handleFilterChange(e)} filter = ""/>
+                        <AdminReportsFilter id="filter1" report = {report.toLowerCase()} onChange={handleFilterChange} filter = ""/>
                         <br/>
                     </div>
                     <input type="Submit" value="Submit" onClick={getReports} id ="reportSubmit"/>
@@ -55,28 +64,7 @@ const handleFilterChange = (e) =>{
             </div>
             </Router>
                 <div className ="graphs" style={{display: 'flex', maxWidth: 900}}>
-                    <h2 className="reportsHead">{reportsHead}</h2>
-                    <Chart width = {600}
-                    height={450}
-                    chartType="ColumnChart"
-                    loader={<div>Loading Chart</div>}
-                    data={[
-                        ['Category', filter],
-                        {data},
-                    ]}
-                    options={{
-                        title: reportsHead,
-                        chartArea: {width: '30%'},
-                        hAxis: {
-                            title: "Category",
-                            minValue: 0,
-                        },
-                        vAxis: {
-                            title: filter,
-                        },
-                        }}
-                        legendToggle
-                        />
+                    
                 </div>
         </div>
     </div>

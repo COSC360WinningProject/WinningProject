@@ -16,6 +16,7 @@ export const Post = (props) => {
     // assign props
     const { id, likes, username, profilepic, title, description, commentcount, imgsrc } = props;
 
+    console.log(props);
 
     return (
         <div className="actualpost">
@@ -25,7 +26,7 @@ export const Post = (props) => {
                 <ArrowDownwardIcon className="downvote" />
             </div>
             <div className="title">
-                <img src="https://helpx.adobe.com/content/dam/help/en/stock/how-to/visual-reverse-image-search/jcr_content/main-pars/image/visual-reverse-image-search-v2_intro.jpg)" />
+                <img src="https://helpx.adobe.com/content/dam/help/en/stock/how-to/visual-reverse-image-search/jcr_content/main-pars/image/visual-reverse-image-search-v2_intro.jpg" />
 
                 <span className="username">Posted by</span>
                 <span className="username underline">Username</span>
@@ -35,7 +36,7 @@ export const Post = (props) => {
             <div className="body">
                 <span className="titletext">title</span>
 
-                <img src={imgsrc} />
+                <img src="https://helpx.adobe.com/content/dam/help/en/stock/how-to/visual-reverse-image-search/jcr_content/main-pars/image/visual-reverse-image-search-v2_intro.jpg" />
                 <span className="description">Description comes here</span>
             </div>
             <div className="footer">

@@ -18,7 +18,7 @@ router.get("/", function(req, res, next){
         if(searchStr && searchType){
             if(searchType === "title"){
                 console.log('inside if');
-                query = "SELECT pid, username, title, likes, upvotes, downvotes, category FROM posts JOIN users ON posts.uid = users.pid WHERE title=?";
+                query = "SELECT pid, username, title, likes, category FROM posts JOIN users ON posts.uid = users.pid WHERE title=?";
                 con.query(query, [searchStr], function(err, results, field)
                 {
                     if(err) throw err;
@@ -26,7 +26,7 @@ router.get("/", function(req, res, next){
                 });
             }
             else if(searchType == "category"){
-                query = "SELECT pid, username, title, likes, upvotes, downvotes, category FROM posts JOIN users ON posts.uid = users.pid posts WHERE category=?";
+                query = "SELECT pid, username, title, likes, category FROM posts JOIN users ON posts.uid = users.pid posts WHERE category=?";
                 con.query(query, [searchStr], function(err, results, field)
                 {
                     if(err) throw err;
@@ -36,7 +36,7 @@ router.get("/", function(req, res, next){
             
         }
         else{
-            query = "SELECT pid, username, title, likes, upvotes, downvotes, category FROM posts JOIN users ON posts.uid = users.uid;";
+            query = "SELECT pid, username, title, likes, category FROM posts JOIN users ON posts.uid = users.uid;";
             console.log('inside else');
             con.query(query, function(err, results, field)
             {

@@ -10,8 +10,8 @@ router.post("/", function(req, res, next){
         if(err){
             throw err
         }
-        let admin = req.body.admin;
-        if(admin==1){
+        //let admin = req.body.admin;
+        //if(admin==1){
             console.log(username);
             let query = "DELETE FROM comment WHERE cid=?";
             con.query(query, [cid], function(err, results, field){
@@ -21,7 +21,7 @@ router.post("/", function(req, res, next){
             con.end(function(err){
                 if(err) throw err;
             })
-        }
+        //}
     })
 });
 module.exports = router;

@@ -5,7 +5,7 @@ var mysql = require('mysql');
 
 var storage = multer.diskStorage({
     destination: function (req, file, callback) {
-        callback(null, './public/images');
+        callback(null, './public/images/users');
     },
     filename : function (req, file ,callback) {
         callback(null, file.originalname);
@@ -17,7 +17,7 @@ var upload = multer({storage : storage});
 router.post("/", upload.single('file'), function(req, res, next){
     console.log(req.file.originalname);
     console.log(req.body.user);
-    let newpfpPath = '/images/' + req.file.originalname;
+    let newpfpPath = '/images/users/' + req.file.originalname;
     let username = req.body.user;
 
 
