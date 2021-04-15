@@ -27,6 +27,13 @@ router.get("/", function(req, res, next){
                     else if(filter=="count")
                         query = "SELECT category, Count(pid) FROM posts GROUP BY category";
                 }
+            else if(reports=="users"){
+                    if(filter=="posts")
+                        query = "SELECT username, Count(pid) FROM users JOIN posts ON users.uid = posts.uid GROUP BY username";
+                    else if(filter=="comments")
+                        query = "SELECT username, Count(cid) FROM users JOIN comments ON users.uid = comments.uid GROUP BY username";
+                    
+            }
             con.query(query, function(err, results, field){
                 if(err) throw err;
                 res.json(results);

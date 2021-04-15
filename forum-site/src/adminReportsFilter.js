@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 export function AdminReportsFilter(props) {
     
     const postsFilters = ["Likes",  "Count"];
-    const usersFilters = ["Enabled", "Count"];
+    const usersFilters = ["posts", "comments"];
     const commentsFilters = ["Likes", "Count"];
     let filters=[];
     const report = props.report;
