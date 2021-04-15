@@ -85,11 +85,12 @@ if(chartData[0]){
                     chartType="ColumnChart"
                     loader={<div>Loading Chart</div>}
                     data={[
-                        ['Category', 'likes'],
-                        [chartData[0][1], chartData[0][0]],
-                        [chartData[1][1], chartData[1][0]],
-                        [chartData[2][1], chartData[2][0]],
-                        [chartData[3][1], chartData[3][0]]
+                        ['Category', filter],
+                        ...[...chartData],
+                        // [chartData[0][1], chartData[0][0]],
+                        // [chartData[1][1], chartData[1][0]],
+                        // [chartData[2][1], chartData[2][0]],
+                        // [chartData[3][1], chartData[3][0]]
                         
                     ]}
                     options={{
