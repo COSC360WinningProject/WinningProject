@@ -1,0 +1,55 @@
+:root{
+    --primary: #3acbf7;
+}
+
+.create-post-btn {
+    position: fixed;
+    bottom: 5%;
+    right: 5%;
+    padding: 8px 20px;
+    border-radius: 4px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
+
+.create-post-btn:hover {
+    padding: 8px 20px;
+    transition: all 0.3s ease-out;
+    background: #fff;
+    color: #6568F4;
+    transition: 250ms;
+}
+
+.create-post-btn--primary{
+    background-color: var(--primary);
+
+}
+
+
+.create-post-btn--outline{
+    background-color: transparent;
+    color: #fff;
+    padding: 8px 20px;
+    border-radius: 4px;
+    border: 1px solid var(--primary);
+    transition: all 0.3s ease-out;
+}
+
+
+.create-post-btn--medium{
+    padding: 8px 20px;
+    border-radius: 4px;
+    font-size: 18px;
+    color: #fff;
+
+}
+
+.create-post-btn--large{
+    padding: 12px 26px;
+    border-radius: 4px;
+    font-size: 20px;
+    color: #fff;
+    
+}

@@ -47,7 +47,7 @@ export function AdminCommentsTable(props) {
 
 
     return (
-        <div className="reports">
+        <div className="reports" id={props.id} style={{display : "none"}}>
             <h2>{props.caption}</h2>
             <Table striped bordered className="commentsTable">
                 <thead>

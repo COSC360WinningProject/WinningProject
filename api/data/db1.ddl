@@ -24,6 +24,7 @@ CREATE TABLE posts (
     title               VARCHAR(40),
     text                VARCHAR(40),
     media               LONGBLOB,
+    mediaURL            VARCHAR(100),
     likes               INT,
     category            VARCHAR(40),
     PRIMARY KEY (pid)
@@ -47,9 +48,9 @@ INSERT INTO users (admin, firstname, lastname, username, password, email, addres
 INSERT INTO users (admin,firstname,lastname, username, password, email, address, phone, enabled) VALUES(1, 'user1', 'u1last', 'u1', 'password', 'abc1@example.com', '1234 road street', '555-555-5555', 1);
 INSERT INTO users (admin,firstname,lastname, username, password, email, address, phone, enabled) VALUES(0, 'user2', 'u2last', 'u2', 'password', 'abc2@example.com', '6789 road street', '444-444-4444', 1);
 INSERT INTO users (admin,firstname,lastname, username, password, email, address, phone, enabled) VALUES(0, 'user3', 'u3last', 'u3', 'password', 'abc3@example.com', '4567 road street', '666-666-6666', 1);
-INSERT INTO posts (uid, title, text, likes) VALUES(1, 'Post 1', 'About 1', 100);
-INSERT INTO posts (uid, title, text, likes) VALUES(1, 'Post 2', 'About 2', 89);
-INSERT INTO posts (uid, title, text, likes) VALUES(3, 'Post 3', 'About 3', 10);
+INSERT INTO posts (uid, title, text, likes, category, mediaURL) VALUES(1, 'Post 1', 'About 1', 100, 'category1', '/images/posts/a.jpg');
+INSERT INTO posts (uid, title, text, likes, category) VALUES(1, 'Post 2', 'About 2', 89, 'category2');
+INSERT INTO posts (uid, title, text, likes, category) VALUES(3, 'Post 3', 'About 3', 10, 'category2');
 INSERT INTO comments (uid, pid, text, likes) VALUES(2, 1, 'very funny', 4);
 INSERT INTO comments (uid, pid, text, likes) VALUES(2, 1, 'could be better tho', 3);
 INSERT INTO comments (uid, pid, text, likes) VALUES(2, 2, 'sick', 5);

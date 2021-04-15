@@ -15,11 +15,19 @@ router.get("/", function(req, res, next){
             console.log("filter: " + filter);
             console.log("report: " + report);
             let query = "";
-            if(report != "post")
-                query = "SELECT ?, category, COUNT(*) AS Count FROM ? AS r JOIN posts ON r.pid = posts.pid GROUP BY category";
-            else
-                query = "SELECT ?, category, COUNT(*) AS Count FROM ? GROUP BY category";
-            con.query(query, [filter, report], function(err, results, field){
+            if(report == "comments"){
+                if(filter=="likes")
+                    query = "SELECT comments.likes, category FROM comments JOIN posts ON comments.pid = posts.pid GROUP BY category, likes";
+                else if(filter == "count"){
+                    query = "SELECT Count(*), category FROM comments GROUP BY category";
+                }
+            }else if(report=="posts"){
+                    if(filter=="likes")
+                        query = "SELECT posts.likes, category, FROM posts JOIN comments ON comments.pid = posts.pid GROUP BY category, likes";
+                    else if(filter=="count")
+                        query = "SELECT Count(*), category FROM comments GROUP BY category";
+                }
+            con.query(query, function(err, results, field){
                 if(err) throw err;
                 res.json(results);
             })

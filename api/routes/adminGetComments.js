@@ -9,8 +9,8 @@ router.get("/", function(req, res, next){
             throw err
         }
 
-            let pid = req.query.pid;
-            let query = "SELECT cid, username, text, likes, FROM comments JOIN users ON comments.uid = users.uid WHERE pid = ?";
+            let pid = Number(req.query.pid);
+            let query = "SELECT cid, username, text, likes FROM comments JOIN users ON comments.uid = users.uid WHERE pid = ?";
             con.query(query, [pid], function(err, results, field){
                 if(err) throw err;
                 console.log(results);

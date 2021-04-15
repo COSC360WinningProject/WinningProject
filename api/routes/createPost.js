@@ -1,8 +1,24 @@
 var express = require('express');
+var multer = require('multer');
 var router = express.Router();
 var mysql = require('mysql');
 
-router.get("/", function(req, res, next) {
+var storage = multer.diskStorage({
+    destination: function(req, file, callback) {
+        callback(null, './public/images/posts');
+    },
+    filename : function (req, file, callback) {
+        callback(null, file.originalname);
+    }
+})
+
+var upload = multer({storage : storage});
+
+router.get("/", upload.single('file'), function(req, res, next) {
+    console.log(req.file.originalname);
+    console.log(req.body);
+
+    let newPostMediaPath = '/images/posts/' + req.file.originalname;
     let con = mysql.createConnection(dbConfig);
     con.connect(function(err) {
         if(err) 

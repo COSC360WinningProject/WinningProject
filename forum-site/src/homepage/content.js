@@ -1,16 +1,24 @@
 import React from 'react';
-
+import { useState } from 'react';
 import './content.css';
 import TrendingToday from './TrendingToday';
 import { Posts } from './Posts';
-import { Button } from '../navbar/Button.js';
+import { CreatePostButton } from './CreatePostButton';
+import { CreatePost } from './CreatePost';
+
+
 
 export function Content() {
-    
+    const [show, setShow] = useState(false);
+    const closeHandler = () => setShow(false);
+
+
+
     return <div className="content">
 
         <TrendingToday />
-        <Button style={{position: 'fixed', bottom: '50px',right: '50px' }}>Create a post</Button>
+        <CreatePostButton onClick={() => setShow(true)}>Create a Post</CreatePostButton>
+        <CreatePost show={show} close={closeHandler} />
         <Posts />
     </div>
 }

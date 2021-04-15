@@ -31,7 +31,7 @@ export function Posts(props) {
                         description={post.text}
                         commentcount={post.commentcount}
                         likes={post.likes}
-                        imgsrc={post.media}
+                        imgsrc={post.mediaURL}
                     />
                )
             })}

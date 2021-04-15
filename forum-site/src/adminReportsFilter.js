@@ -4,10 +4,10 @@ export function AdminReportsFilter(props) {
     
     const postsFilters = ["Likes",  "Count"];
     const usersFilters = ["Enabled", "Count"];
-    const commentsFilters = ["Likes", "Upvotes&Downvotes", "Count"];
+    const commentsFilters = ["Likes", "Count"];
     let filters=[];
     const report = props.report;
-    console.log(report);
+    
 
     if(report=="users"){
         filters = usersFilters;

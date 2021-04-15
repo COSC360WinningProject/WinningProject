@@ -50,7 +50,11 @@ export function AdminPostsTable(props) {
     }
     const showCommentsHandler = (e) => {
         //Make comments table visible
-        e.target.style.display = e.target.style.display == "none" ? "inline" : "none";
+        console.log(e.target.value);
+        let postComments = document.getElementById("post" + e.target.value);
+        console.log(postComments);
+
+        postComments.style.display = postComments.style.display == "none" ? "block" : "none";
     }
     const showEditPostHandler = (e) => {
         //Make comments table visible
@@ -87,8 +91,8 @@ export function AdminPostsTable(props) {
                                     <td>{el.category}</td>
                                     <td>
                                         <Button onClick={showEditPostHandler}>Edit</Button>
-                                        <Button id={el.pid} onClick={deletePost}>Delete</Button>
-                                        <Button onClick={showCommentsHandler}>Comments</Button>
+                                        <Button  value={el.pid} onClick={deletePost}>Delete</Button>
+                                        <Button value={el.pid} onClick={showCommentsHandler}>Comments</Button>
                                     </td>
                                 </tr>
                                 <tr>
@@ -98,7 +102,7 @@ export function AdminPostsTable(props) {
                                 </tr>
                                 <tr>
                                     <td colspan="8">
-                                        <AdminCommentsTable style={{ display: "none" }} className="commentsTable" handleSubmit={props.handleSubmit} pid={el.pid} caption="caption" />
+                                        <AdminCommentsTable id={"post" + el.pid}style={{ display: "none" }} className="commentsTable" handleSubmit={props.handleSubmit} pid={el.pid} caption="caption" />
                                     </td>
                                 </tr>
                             </>

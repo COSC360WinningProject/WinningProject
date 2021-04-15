@@ -22,21 +22,21 @@ export const Post = (props) => {
         <div className="actualpost">
             <div className="sidebar">
                 <ArrowUpwardIcon className="upvote" />
-                <span>51</span>
+                <span>{likes}</span>
                 <ArrowDownwardIcon className="downvote" />
             </div>
             <div className="title">
-                <img src="https://helpx.adobe.com/content/dam/help/en/stock/how-to/visual-reverse-image-search/jcr_content/main-pars/image/visual-reverse-image-search-v2_intro.jpg" />
+                <img src={profilepic ? "http://localhost:9000" + profilepic : "http://localhost:9000/images/users/blank-profile.png"} />
 
                 <span className="username">Posted by</span>
-                <span className="username underline">Username</span>
+                <span className="username underline">{username}</span>
                 <div className="spacer"></div>
 
             </div>
             <div className="body">
-                <span className="titletext">title</span>
+                <span className="titletext">{title}</span>
 
-                <img src="https://helpx.adobe.com/content/dam/help/en/stock/how-to/visual-reverse-image-search/jcr_content/main-pars/image/visual-reverse-image-search-v2_intro.jpg" />
+                <img src={imgsrc ? "http://localhost:9000" + imgsrc : ""} />
                 <span className="description">Description comes here</span>
             </div>
             <div className="footer">
