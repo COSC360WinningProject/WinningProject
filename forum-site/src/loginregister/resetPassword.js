@@ -64,8 +64,8 @@ export const ResetPassword = (props) =>{
 if(!isUser){
     return(
         <div className="form-content-right">
-            <h1>Forgot Password</h1>
             <form className="form"onsubmit={checkForEmail}>
+            <h1>Forgot Password</h1>
                 <div className="form-inputs">
                     <label className='form-label'>Email</label>
                         <input
