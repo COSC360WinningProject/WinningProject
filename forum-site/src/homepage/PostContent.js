@@ -17,6 +17,7 @@ export const PostContent = (props) => {
     let { pid } = useParams();
 
     const [postData , setPostData] = useState({});
+    const [commentsData, setCommentsData] = useState({});
 
     useEffect(() => {
         console.log("before fetch");
@@ -25,6 +26,12 @@ export const PostContent = (props) => {
         })
         .then(res => res.json())
         .then(data => setPostData(data[0]))
+        console.log("second fetch");
+        fetch(`http://localhost:9000/singlePostComments?pid=${pid}`, {
+            method: 'GET'
+        })
+        .then(res => res.json())
+        .then(data => setCommentsData(data));
 
     }, []);
 
@@ -72,8 +79,9 @@ export const PostContent = (props) => {
 
             </div>
             <div className="comment-container">
-                <Comment />
-                <Comment />
+                {commentsData.map(comment => {
+                    return (<Comment user={comment.username} text={comment.text} likes={comment.likes}/>);
+                })}
             </div>
             <div className="add-comment-container">
                 <h2>Leave A Comment</h2>

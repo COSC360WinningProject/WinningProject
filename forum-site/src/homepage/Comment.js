@@ -12,17 +12,16 @@ export const Comment = (props) => {
     return (
         <div className="comment">
             <div className="comment-header">
-                <p>Dakshin</p>
+                <p>{props.user}</p>
                 <span> 12:11</span>
             </div>
 
             <div className="comment-body">
-                <p>Never seen something this ugly</p>
+                <p>{props.text}</p>
             </div>
             <div className="comment-footer" >
 
-                <span className="likes"><FavouriteOutlined className="favourite-icon" />21</span>
-                <span className="comments"><ModeCommentIcon /> 0 </span>
+                <span className="likes"><FavouriteOutlined className="favourite-icon" />{props.likes}</span>
             </div>
 
         </div>

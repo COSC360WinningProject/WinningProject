@@ -3,15 +3,16 @@ var router = express.Router();
 var mysql = require('mysql');
 
 router.get("/", function(req, res, next) {
+    let pid = req.query.pid;
     let con = mysql.createConnection(dbConfig);
     con.connect(function(err) {
         if(err) 
         {
             throw err;
         }
-        let x = 1;
-        let query = "SELECT * FROM post JOIN comments ON post.pid = comments.pid WHERE post.pid = ?";
-        con.query(query,[x], function(err, results, field){
+        
+        let query = "SELECT username, text, likes FROM comments JOIN users ON comments.uid = users.uid WHERE pid = ?";
+        con.query(query,[pid], function(err, results, field){
             if(err) throw err;
             res.json(results);
             
