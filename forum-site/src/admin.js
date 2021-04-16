@@ -34,11 +34,11 @@ export function Admin(props) {
     }
     const getReports = (e) =>{
         e.preventDefault();
-        setReportsHead(report + filter + " By: " + " Category");
         let url = `http://localhost:9000/adminCategoryReports?filter=${filter}&report=${report}`;
         fetch(url)
         .then(res => res.json())
         .then(resData => setData(resData));
+        setReportsHead(report + filter + " By: " + " Category");
         
         
 
