@@ -2,7 +2,9 @@ import React from 'react';
 import './Posts.css';
 
 
-
+import {
+    Link
+  } from "react-router-dom";
 import ArrowUpwardIcon from "@material-ui/icons/ArrowUpward";
 import ArrowDownwardIcon from "@material-ui/icons/ArrowDownward";
 
@@ -19,6 +21,7 @@ export const Post = (props) => {
     console.log(props);
 
     return (
+        <Link to={"/postcontent/" + id}>
         <div className="actualpost">
             <div className="sidebar">
                 <ArrowUpwardIcon className="upvote" />
@@ -37,12 +40,12 @@ export const Post = (props) => {
                 <span className="titletext">{title}</span>
 
                 <img src={imgsrc ? "http://localhost:9000" + imgsrc : ""} />
-                <span className="description">Description comes here</span>
+                <span className="description">{description}</span>
             </div>
             <div className="footer">
                 <div className="comments footer-action">
                     <ModeCommentIcon className="comment-icon" />
-                    <span>51 Comments</span>
+                    <span>{commentcount} Comments</span>
                 </div>
                 <div className="share footer-action">
                     <ShareIcon />
@@ -55,5 +58,6 @@ export const Post = (props) => {
 
             </div>
         </div>
+        </Link>
     )
 }

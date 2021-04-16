@@ -14,21 +14,27 @@ var storage = multer.diskStorage({
 
 var upload = multer({storage : storage});
 
-router.get("/", upload.single('file'), function(req, res, next) {
+router.post("/", upload.single('file'), function(req, res, next) {
     console.log(req.file.originalname);
     console.log(req.body);
+    let imagePath = "/images/posts/" + req.file.originalname;
+    let username = req.body.username;
+    let title = req.body.title;
+    let text = req.body.description;
+    let category = req.body.category;
 
-    let newPostMediaPath = '/images/posts/' + req.file.originalname;
+    
     let con = mysql.createConnection(dbConfig);
     con.connect(function(err) {
         if(err) 
         {
             throw err;
         }
-
-        let query = "INSERT INTO post (uid, title, text, likes, upvotes, downvotes) VALUES(?, ?, ?, 0, 0, 0)";
-        con.query(query,[2, 'Post 4', 'About 4'], function(err, results, field){
+        
+        let query = "INSERT INTO posts (uid, title, text, category, mediaURL, likes) VALUES((SELECT uid FROM users WHERE username = ? LIMIT 1), ?, ?, ?, ?, 0)";
+        con.query(query,[username, title, text, category, imagePath], function(err, results, field){
             if(err) throw err;
+            console.log(results);
             res.json(results);
             
         })

@@ -27,18 +27,23 @@ export function Content(props) {
         if(props.user){
             let title =  e.target.title.value;
             let description = e.target.description.value;
-            let image = e.target.image.value;
+            let image = e.target.image.files[0];
             let category = e.target.category.value;
 
             let data = new FormData();
+            data.append('file', image, image.name);
             data.append('title', title);
             data.append('description', description);
             data.append('category', category);
+            data.append('username', props.user);
 
             fetch("http://localhost:9000/createPost", {
                 method: 'POST',
                 body: data
             })
+            .then(res => res.json())
+            .then(data => console.log(data));
+
             e.target.title.value = "";
             e.target.description.value = "";
             e.target.image.value = null;

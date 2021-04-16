@@ -14,6 +14,7 @@ import { Admin } from './admin';
 import { FormLogin } from "./loginregister/FormLogin.js";
 import { Profile } from "./Profile";
 import { Content } from './homepage/content.js';
+import { PostContent } from './homepage/PostContent';
 // StyleSheet Imports
 import './styles/App.css';
 
@@ -47,6 +48,9 @@ function App() {
         <Switch>
           <Route path="/admin">
             <Admin user={user} isAdmin={isAdmin}/>
+          </Route>
+          <Route path="/postcontent/:pid">
+            <PostContent />
           </Route>
           <Route path="/signup">
             <Form isSignup='true' />

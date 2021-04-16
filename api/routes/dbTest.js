@@ -10,7 +10,7 @@ router.get("/", function(req, res, next) {
             console.log(err);
             throw err;
         }
-        let query = "SELECT * FROM users";
+        let query = "SELECT * FROM posts";
         con.query(query, function(err, results, field){
             if(err) throw err;
             res.json(results);

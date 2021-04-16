@@ -18,6 +18,7 @@ var testAPIRouter = require('./routes/testAPI');
 // GENERAL USER ROUTES
 var usersRouter = require('./routes/users');
 var postsRouter = require('./routes/posts');
+var singlePostRouter = require('./routes/singlePost');
 var singlepostCommentsRouter = require('./routes/singlepostComments');
 var userCommentHistoryRouter = require('./routes/userCommentHistory');
 var createPostRouter = require('./routes/createPost');
@@ -27,6 +28,10 @@ var loginRouter = require('./routes/login');
 var signupRouter = require('./routes/signup');
 var updateProfileRouter = require('./routes/updateProfile');
 var updateProfilePictureRouter = require('./routes/updateProfilePicture');
+var checkForEmailRouter = require('./routes/checkForEmail');
+//var forgotPasswordRouter = require('./routes/forgotPassword');
+//var emailerRouter = require('./routes/emailer');
+//var forgotPasswordRouter = require('./routes/forgotPassword');
 
 // ADMIN ROUTES
 var adminSearchForUsers = require('./routes/adminSearchForUser');
@@ -80,11 +85,15 @@ app.use('/signup', signupRouter);
 app.use('/showProfile', showProfileRouter);
 app.use('/userCommentHistory', userCommentHistoryRouter);
 app.use('/posts', postsRouter);
+app.use('/singlePost', singlePostRouter);
 app.use('/singlepostComments', singlepostCommentsRouter);
 app.use('/createPost', createPostRouter);
 app.use('/createComment', createCommentRouter);
 app.use('/updateProfile', updateProfileRouter);
 app.use('/updateProfilePicture', updateProfilePictureRouter);
+app.use('/checkForEmail', checkForEmailRouter);
+//app.use('/emailer', emailerRouter);
+//app.use('/forgotPassword', forgotPasswordRouter);
 
 // ADMIN ROUTES
 app.use('/adminSearchForUser', adminSearchForUsers);
