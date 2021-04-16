@@ -12,8 +12,8 @@ export function Content(props) {
     
     const [show, setShow] = useState(false);
     const showHandler = () => {
-        console.log(props.user);
-        if(!props.user){
+        console.log(`Content.js:showHandler Logged In User: ${props.loggedInUser}`);
+        if(!props.loggedInUser){
             alert("Must Be Logged In To Create A Post");
         }
         else {
@@ -23,8 +23,8 @@ export function Content(props) {
     const closeHandler = () => setShow(false);
     const createPostHandler = (e) => {
         e.preventDefault();
-        console.log(props.user);
-        if(props.user){
+        console.log(`Content.js:createPostHandler LoggedInUser: ${props.loggedInUser}`);
+        if(props.loggedInUser){
             let title =  e.target.title.value;
             let description = e.target.description.value;
             let image = e.target.image.files[0];
@@ -35,7 +35,7 @@ export function Content(props) {
             data.append('title', title);
             data.append('description', description);
             data.append('category', category);
-            data.append('username', props.user);
+            data.append('username', props.loggedInUser);
 
             fetch("http://localhost:9000/createPost", {
                 method: 'POST',
@@ -63,6 +63,6 @@ export function Content(props) {
         <TrendingToday />
         <CreatePostButton onClick={showHandler}>Create a Post</CreatePostButton>
         <CreatePost show={show} close={closeHandler} onSubmit={createPostHandler} />
-        <Posts />
+        <Posts loggedInUser={props.loggedInUser}/>
     </div>
 }

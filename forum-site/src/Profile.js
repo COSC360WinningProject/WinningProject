@@ -12,8 +12,8 @@ export function Profile(props) {
     const [profileData, setProfileData] = useState([]);
 
     useEffect(() => {
-        if (props.user) {
-            fetch(`http://localhost:9000/showProfile?username=${props.user}`, {
+        if (props.loggedInUser) {
+            fetch(`http://localhost:9000/showProfile?username=${props.loggedInUser}`, {
                 method: "GET",
             })
                 .then(res => res.json())
@@ -30,7 +30,7 @@ export function Profile(props) {
                 });
         }
 
-    }, [props.user]);
+    }, [props.loggedInUser]);
 
     const handleSubmit = (e) => {
         e.preventDefault();

@@ -17,13 +17,13 @@ export function Posts(props) {
         .then(data => setPosts(data));
     }, []);
 
-    console.log(posts);
 
     return (
         <div className="posts-container">
             {posts.map(post => {
                return( 
-                <Post 
+                <Post
+                        loggedInUser={props.loggedInUser} 
                         id={post.pid} 
                         username={post.username}
                         profilepic={post.profileImageURL}

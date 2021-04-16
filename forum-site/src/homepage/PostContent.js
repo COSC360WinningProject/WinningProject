@@ -17,7 +17,7 @@ export const PostContent = (props) => {
     let { pid } = useParams();
 
     const [postData , setPostData] = useState({});
-    const [commentsData, setCommentsData] = useState({});
+    const [commentsData, setCommentsData] = useState([]);
 
     useEffect(() => {
         console.log("before fetch");
@@ -32,8 +32,35 @@ export const PostContent = (props) => {
         })
         .then(res => res.json())
         .then(data => setCommentsData(data));
+        console.log(`PostContent.js:useEffect loggedInUser:`);
 
     }, []);
+
+    const addCommentHandler = (e) => {
+        e.preventDefault();
+        console.log(props);
+        let user = props.loggedInUser;
+        let text = e.target.commentText.value;
+        
+        let formData = {
+            'user' : user,
+            'text' : text,
+            'pid' : pid
+        }
+        fetch("http://localhost:9000/createComment", {
+            method: 'POST',
+            headers: {
+                'accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
+        })
+        .then(res => res.json())
+        .then(resData => {
+            console.log(`PostContent.js:addCommentHandler data:`);
+            console.log(resData)
+        });
+    }
 
 
     return (
@@ -85,8 +112,8 @@ export const PostContent = (props) => {
             </div>
             <div className="add-comment-container">
                 <h2>Leave A Comment</h2>
-                <form>
-                    <textarea placeholder='Add Your Comment'></textarea>
+                <form onSubmit={addCommentHandler} encType="multipart/form-data">
+                    <textarea name="commentText" placeholder='Add Your Comment'></textarea>
                     <div className="comment-btn">
                         <input type="submit" value='Comment' />
                         <button id='clear' href='#'>Cancel</button>

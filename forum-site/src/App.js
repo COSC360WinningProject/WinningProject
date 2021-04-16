@@ -29,6 +29,7 @@ function App() {
 
     if (user) {
       setUser(user);
+      setIsAdmin(isAdmin);
       console.log(user + " is logged in, isAdmin: " + isAdmin);
     }
     else {
@@ -50,7 +51,7 @@ function App() {
             <Admin user={user} isAdmin={isAdmin}/>
           </Route>
           <Route path="/postcontent/:pid">
-            <PostContent />
+            <PostContent loggedInUser={user}/>
           </Route>
           <Route path="/signup">
             <Form isSignup='true' />
@@ -59,10 +60,10 @@ function App() {
             <Form onLogin={handleLogin} isSignup='false' />
           </Route>
           <Route path="/profile">
-            <Profile user={user} />
+            <Profile loggedInUser={user} />
           </Route>
           <Route path="/">
-            <Content user={user}/>
+            <Content loggedInUser={user}/>
           </Route>
         </Switch>
       </div>
