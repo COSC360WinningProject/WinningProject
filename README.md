@@ -3,8 +3,8 @@
 <br>
 
 >This project will fully implement a reddit-style discussion forum, from a hand-styled  
->front end using HTML5/CSS and Javascript, to a MySQL database and server-side  
->scripting using PHP? (node pls), and hosted using ???.  
+>front end using the React framework, to a MySQL database and server-side  
+>scripting using Node.js, and hosted using ???.  
 >The website will allow users to login, create a post and view/comment on other posts,  
 >along with the functionalities outlined in the Requirements section.
 
