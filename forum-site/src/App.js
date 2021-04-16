@@ -59,6 +59,9 @@ function App() {
           <Route path="/login">
             <Form onLogin={handleLogin} isSignup='false' />
           </Route>
+          <Route path ="/resetPassword">
+            <Form isResetPassword = 'true' />
+          </Route>
           <Route path="/profile">
             <Profile loggedInUser={user} />
           </Route>

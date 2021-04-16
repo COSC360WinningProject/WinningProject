@@ -3,18 +3,18 @@ import validate from './validate';
 import useForm from './useForm';
 import './Form.css';
 import {
-    Link
+    Link,
+    Redirect
 } from "react-router-dom";
 
 export const ResetPassword = (props) =>{
     const [isUser, setIsUser] = useState();
-    const[emai, setEmail] = useState();
+    const[email, setEmail] = useState();
     const [message, setMessage] = useState();
     const { handleChange, handleSubmit, values, errors } = useForm(
         props.submitForm,
         validate
     );
-    let email = req.body.email;
     let url = `http://localhost:9000/resetPassword?email=${email}`;
 
     useEffect(() => {
@@ -25,6 +25,7 @@ export const ResetPassword = (props) =>{
 
     const checkForEmail = (e) =>{
         e.preventDefault();
+        setEmail(e.target.email);
         fetch(url, {
             method: "GET",
         })
@@ -37,21 +38,30 @@ export const ResetPassword = (props) =>{
             });
     }
     const sendResetEmail = (e) =>{
-      e.preventDefault();
-      if(!isUser){
-        setMessage("Email not found");
-        alert(message);
-        axios
-        .post('http://localhost:9000/forgotPassword', {
-            email: req.body.email,
-        })
-        .then(res => {
-            console.log(res.data);
-            setMessage("Recovery email sent");
+      fetch("http://localhost:9000/emailer", {
+          method: "POST",
+          body: JSON.stringify({email:email}),
+          headers: {
+            'accept': 'application/json',
+            'Content-Type' : 'application/json'
+            }
         })
     }
 
+    const setPassword = (e) =>{
+        e.preventDefault();
+        fetch(`http://localhost9000/resetPassword`,{
+            method: "POST",
+            body: JSON.stringify({newPassword : e.target.password}, {email: email}),
+            headers: {
+                'accept': 'application/json',
+                'Content-Type' : 'application/json'
+            }
+        });
+        return <Redirect to="/login" />
+    }
 
+if(!isUser){
     return(
         <div className="form-content-right">
             <h1>Forgot Password</h1>
@@ -68,7 +78,7 @@ export const ResetPassword = (props) =>{
                         />
                 </div>
                 <button className='form-input-btn' type='submit'>
-                    Reset Password
+                    Send Confirmation Email
                 </button>
                 <span className='form-input-login'>
                     Don't have an account?  Register <Link to="/signup">here</Link>
@@ -79,4 +89,31 @@ export const ResetPassword = (props) =>{
             </form>
         </div>
     )
+    }
+    else{
+        return(
+            <div className="form-content-right">
+            <h1>Reset Password</h1>
+            <form className="form"onsubmit={setPassword}>
+                <div className="form-inputs">
+                    <label className='form-label'>New Password</label>
+                        <input
+                            className='form-input'
+                            type='password'
+                            name='password'
+                            placeholder='Enter new password'
+                            value={values.password}
+                            onChange={handleChange}
+                        />
+                </div>
+                <button className='form-input-btn' type='submit'>
+                    Reset Password
+                </button>
+                <span className='form-input-login'>
+                    Don't have an account?  Register <Link to="/signup">here</Link>
+                </span>
+            </form>
+        </div>
+        )
+    }
 }

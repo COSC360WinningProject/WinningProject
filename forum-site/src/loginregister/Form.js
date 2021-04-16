@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './Form.css';
 import { FormSignup } from './FormSignup';
 import { FormLogin } from './FormLogin';
+import { ResetPassword } from './resetPassword';
 
 export function Form(props) {
     const [isSubmitted, setIsSubmitted] = useState(false);
@@ -20,7 +21,12 @@ export function Form(props) {
                 {props.isSignup === "true" ? (
                     <FormSignup submitForm={submitForm} />
                 ) : (
-                    <FormLogin onLogin={props.onLogin} submitForm={submitForm} />
+                    props.isResetPassword=== "true" ? (
+                        <ResetPassword submitForm = {submitForm} />
+                    ) : (
+                        <FormLogin onLogin={props.onLogin} submitForm={submitForm} />
+                    )
+                    
                 )}
             </div>
         </>

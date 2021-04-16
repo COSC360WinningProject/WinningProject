@@ -75,7 +75,7 @@ export const FormLogin = (props) => {
                 </span>
                 <br/>
                 <span className='form-input-login'>
-                    Forgot your password? Reset your password <Link to="/resetPassword.js">here</Link>
+                    Forgot your password? Reset your password <Link to="/resetPassword">here</Link>
                 </span>
             </form>
         </div>
