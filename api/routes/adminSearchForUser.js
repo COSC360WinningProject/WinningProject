@@ -8,9 +8,8 @@ router.get("/", function(req, res, next){
         if(err){
             throw err
         }
-       // let admin = req.query.admin;
-        //if(admin){
-            //console.log(username);
+       let admin = req.body.isAdmin;
+        if(admin){
             let searchType = req.query.searchType.toLowerCase();
             let searchStr = req.query.searchStr.toLowerCase();
             let query = "";
@@ -41,15 +40,10 @@ router.get("/", function(req, res, next){
                 if(err) throw err;
 
             })
-            // else if(searchType == "post"){
-            //     query = "SELECT * FROM users WHERE uid = (SELECT uid FROM post WHERE text LIKE '%?%')";
-            //     con.query(query, [searchStr], function(err, results, field)
-            //     {
-            //         if(err) throw err;
-            //         res.json(results);
-            //     });
-            // }
-         //}
+         }
+         else{
+            res.status(500).send('User not logged in as admin');
+        }
     })
 });
 module.exports = router;

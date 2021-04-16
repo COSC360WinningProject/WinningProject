@@ -20,9 +20,6 @@ router.post("/", upload.single('file'), function(req, res, next){
     let newpfpPath = '/images/users/' + req.file.originalname;
     let username = req.body.user;
 
-
-
-
     let con = mysql.createConnection(dbConfig);
     
 

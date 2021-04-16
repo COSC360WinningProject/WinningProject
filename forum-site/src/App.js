@@ -10,7 +10,7 @@ import {
 // Custom Component Imports
 import { NavigationBar } from "./navbar/Navigationbar";
 import { Form } from './loginregister/Form';
-import { AdminRouter } from './adminRouter';
+import { Admin } from './admin';
 import { FormLogin } from "./loginregister/FormLogin.js";
 import { Profile } from "./Profile";
 import { Content } from './homepage/content.js';
@@ -45,8 +45,8 @@ function App() {
       <div className="App">
         <NavigationBar user={user} onLogout={handleLogout} />
         <Switch>
-          <Route path="/AdminRouter">
-            <AdminRouter />
+          <Route path="/admin">
+            <Admin user={user} isAdmin={isAdmin}/>
           </Route>
           <Route path="/signup">
             <Form isSignup='true' />
@@ -58,7 +58,7 @@ function App() {
             <Profile user={user} />
           </Route>
           <Route path="/">
-            <Content />
+            <Content user={user}/>
           </Route>
         </Switch>
       </div>

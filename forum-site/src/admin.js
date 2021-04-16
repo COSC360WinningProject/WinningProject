@@ -4,6 +4,8 @@ import { BrowserRouter as Router } from "react-router-dom";
 import{ Chart } from "react-google-charts";
 import React, { useState, useEffect } from 'react';
 import { AdminReportsFilter } from './adminReportsFilter';
+import { AdminPosts } from './adminPosts';
+import { AdminUsers } from './adminUsers';
 
 export function Admin(props) {
     const [filter, setFilter] = useState("");
@@ -11,6 +13,7 @@ export function Admin(props) {
     const [report, setReport] = useState("");
     const [reportsHead, setReportsHead] = useState("");
     const [chartData, setChartData] = useState([]);
+    const[chartType, setChartType] = useState("");
 
     useEffect(() => {
         console.log("re-rendering");
@@ -18,6 +21,12 @@ export function Admin(props) {
         console.log(data);
         console.log("chartdata");
         console.log(chartData);
+        if(report=="users"){
+            setChartType("Username");
+        }
+        else{
+            setChartType("Category");
+        }
         
         setChartData([]);
 
@@ -38,7 +47,11 @@ export function Admin(props) {
         fetch(url)
         .then(res => res.json())
         .then(resData => setData(resData));
-        setReportsHead(report + filter + " By: " + " Category");
+        if(report!="users")
+            setReportsHead(report + filter + " By: " + chartType);
+        else{
+            setReportsHead(filter + " By: " + chartType);
+        }
         
         
 
@@ -52,9 +65,9 @@ const handleFilterChange = (e) =>{
 
 
 
-if(chartData[0]){
+if(chartData[0]&&props.isAdmin){
     return (
-        <div className="App">
+    <div className="App">
       <div className ="main">
           <Router>
             <div className ="leftSidebar">
@@ -85,7 +98,7 @@ if(chartData[0]){
                     chartType="ColumnChart"
                     loader={<div>Loading Chart</div>}
                     data={[
-                        ['Category', filter],
+                        [chartType, filter],
                         ...[...chartData],
                         // [chartData[0][1], chartData[0][0]],
                         // [chartData[1][1], chartData[1][0]],
@@ -109,11 +122,13 @@ if(chartData[0]){
                 
                 </div>
         </div>
+        <AdminUsers/>
+        <AdminPosts/>
     </div>
 
     )
 }
-
+else if(props.isAdmin){
     return (
         <div className="App">
       <div className ="main">
@@ -143,7 +158,16 @@ if(chartData[0]){
                     
                 
                 </div>
+                <br/>
+                <AdminUsers/>
+                <AdminPosts/>
         </div>
     </div>
   );
+}
+else{
+    return(
+        <h1>You are not logged in as an admin!</h1>
+    )
+}
 }

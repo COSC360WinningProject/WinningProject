@@ -8,7 +8,8 @@ router.get("/", function(req, res, next){
         if(err){
             throw err
         }
-
+        let admin = req.body.isAdmin;
+        if(admin==1){
         let searchType = req.query.searchType.toLowerCase();
         let searchStr = req.query.searchStr.toLowerCase();
         console.log(searchType);
@@ -48,6 +49,11 @@ router.get("/", function(req, res, next){
         con.end(function(err){
             if(err) throw err;
         })
+    }
+    else{
+        res.status(500).send('User not logged in as admin');
+    }
     })
+
 });
 module.exports = router;

@@ -8,8 +8,8 @@ router.get("/", function(req, res, next){
         if(err){
             throw err
         }
-        //let admin = req.query.admin;
-        //if(admin==1){
+        let admin = req.body.isAdmin;
+        if(admin==1){
             let filter = req.query.filter.toLowerCase();
             let report = req.query.report.toLowerCase(); 
             console.log("filter: " + filter);
@@ -20,19 +20,32 @@ router.get("/", function(req, res, next){
                     query = "SELECT category, SUM(comments.likes) AS likes FROM comments JOIN posts ON comments.pid = posts.pid GROUP BY category";
                 else if(filter == "count"){
                     query = "SELECT category, Count(cid) FROM comments JOIN posts ON comments.pid = posts.pid GROUP BY category";
+
                 }
+                else{
+                    res.sendStatus(500);
+                }
+                
             }else if(report=="posts"){
                     if(filter=="likes")
                         query = "SELECT category, SUM(posts.likes) AS likes FROM posts JOIN comments ON comments.pid = posts.pid GROUP BY category";
                     else if(filter=="count")
                         query = "SELECT category, Count(pid) FROM posts GROUP BY category";
+                    else{
+                        res.sendStatus(500);
+                    }
                 }
-            else if(reports=="users"){
+            else if(report=="users"){
                     if(filter=="posts")
                         query = "SELECT username, Count(pid) FROM users JOIN posts ON users.uid = posts.uid GROUP BY username";
                     else if(filter=="comments")
                         query = "SELECT username, Count(cid) FROM users JOIN comments ON users.uid = comments.uid GROUP BY username";
-                    
+                    else{
+                        res.sendStatus(500);
+                    }
+            }
+            else{
+                res.sendStatus(500);
             }
             con.query(query, function(err, results, field){
                 if(err) throw err;
@@ -42,7 +55,10 @@ router.get("/", function(req, res, next){
                 if(err) throw err;
 
             })
-        //}
+        }
+        else{
+            res.status(500).send('User not logged in as admin');
+        }
     })
 });
 module.exports = router;

@@ -18,7 +18,9 @@ router.post("/", function (req, res, next) {
         }
         let query = "SELECT username, admin from users WHERE email=? AND password=?";
         con.query(query, [email, password], function (err, results, field) {
-            if (err) throw err;
+            if (err){
+                console.log(err);
+            }
 
             // query was successful
             console.log(results);
@@ -28,7 +30,7 @@ router.post("/", function (req, res, next) {
             res.json({
                 'login': success,
                 'user': returnUser,
-                'isAdmin': results[0].admin
+                'isAdmin': results[0].admin ? results[0].admin : 0
             });
 
 
