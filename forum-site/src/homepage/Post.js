@@ -33,7 +33,7 @@ export const Post = (props) => {
                 <span>{likes}</span>
                 <ArrowDownwardIcon className="downvote" />
             </div>
-            <Link to={"/postcontent/" + pid}>
+            
             <div className="title">
                 <img src={profilepic ? "http://localhost:9000" + profilepic : "http://localhost:9000/images/users/blank-profile.png"} alt ="Profile pic: "/>
 
@@ -43,12 +43,14 @@ export const Post = (props) => {
 
             </div>
             <div className="body">
-                <span className="titletext">{title}</span>
+                <Link to={"/PostContent/" + pid}>
+                    <span className="titletext">{title}</span>
+                </Link>
 
-                <img src={imgsrc ? "http://localhost:9000" + imgsrc : ""} alt={"Title: " + title + " Description: " + description} />
+                <img src={imgsrc ? "http://localhost:9000" + imgsrc : "http://localhost:9000/images/posts/mybutterfly.jpg"} alt={"Title: " + title + " Description: " + description} />
                 <span className="description">{description}</span>
             </div>
-            </Link>
+            
             <div className="footer">
                 <div className="comments footer-action">
                     <ModeCommentIcon className="comment-icon" />
