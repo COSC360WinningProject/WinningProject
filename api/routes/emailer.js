@@ -4,6 +4,18 @@ const defaultEmailData = {from: 'EvilReddit@gmail.com'};
 var express = require('express');
 var router = express.Router();
 
+router.get("/", function(req, res, next){
+    let con = mysql.createConnection(dbConfig);
+    con.connect(function(err){
+        if(err){
+            throw err
+        }
+        else{
+            sendEmail();
+        }
+    })
+})
+
 const randomString = length => {
     let text="";
             const possible = "abcdefghijklmnopqrstuvwxyz0123456789_-.";
@@ -14,6 +26,7 @@ const randomString = length => {
 }
 const sendEmail = () =>{
     let email = req.body.email;
+    console.log("Email: " + email);
             if(email){
                 const token = randomString(40);
                 const emailData = {
@@ -33,5 +46,6 @@ const sendEmail = () =>{
     .sendMail(completeEmailData)
     .then(info => console.log(`Message sent: ${info.response}`))
     .catch(err => console.log(`Problem sending email: ${err}`));
+    res.json(token);
 }
 module.exports = router;

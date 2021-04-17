@@ -16,18 +16,24 @@ import BookmarkIcon from "@material-ui/icons/Bookmark";
 export const Post = (props) => {
 
     // assign props
-    const { id, likes, username, profilepic, title, description, commentcount, imgsrc } = props;
+    const { pid, likes, username, profilepic, title, description, commentcount, imgsrc } = props;
 
-    console.log(props);
+    const likeHandler = (e) => {
+        console.log("adding like");
+        fetch(`http://localhost:9000/like?pid=${pid}`, {
+            method: 'GET'
+        })
+    }
 
     return (
-        <Link to={"/postcontent/" + id}>
+        
         <div className="actualpost">
             <div className="sidebar">
-                <ArrowUpwardIcon className="upvote" />
+                <ArrowUpwardIcon className="upvote" onClick={likeHandler}/>
                 <span>{likes}</span>
                 <ArrowDownwardIcon className="downvote" />
             </div>
+            <Link to={"/postcontent/" + pid}>
             <div className="title">
                 <img src={profilepic ? "http://localhost:9000" + profilepic : "http://localhost:9000/images/users/blank-profile.png"} />
 
@@ -57,7 +63,8 @@ export const Post = (props) => {
                 </div>
 
             </div>
+            </Link>
         </div>
-        </Link>
+        
     )
 }

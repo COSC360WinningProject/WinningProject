@@ -38,10 +38,9 @@ export function AdminPostsTable(props) {
     console.log(data);
 
     const deletePost = (e) => {
-        console.log(e.target.id);
         fetch('http://localhost:9000/adminDeletePost', {
             method: 'POST',
-            body: JSON.stringify({ pid: e.target.id }),
+            body: JSON.stringify({ pid: e.target.value }),
             headers: {
                 'accept': 'application/json',
                 'Content-Type': 'application/json'
@@ -51,14 +50,18 @@ export function AdminPostsTable(props) {
     const showCommentsHandler = (e) => {
         //Make comments table visible
         console.log(e.target.value);
-        let postComments = document.getElementById("post" + e.target.value);
+        let postComments = document.getElementById("post" + e.target.value + "comments");
         console.log(postComments);
 
         postComments.style.display = postComments.style.display == "none" ? "block" : "none";
     }
     const showEditPostHandler = (e) => {
-        //Make comments table visible
-        e.target.style.display = e.target.style.display == "none" ? "inline" : "none";
+        //Make edit section visible
+        console.log(e.target.value);
+        let postEdit = document.getElementById("post" + e.target.value + "editSection");
+        console.log(postEdit);
+
+        postEdit.style.display = postEdit.style.display == "none" ? "block" : "none";
     }
 
 
@@ -89,19 +92,19 @@ export function AdminPostsTable(props) {
                                     <td>{el.downvotes}</td>
                                     <td>{el.category}</td>
                                     <td>
-                                        <Button onClick={showEditPostHandler}>Edit</Button>
+                                        <Button value={el.pid} onClick={showEditPostHandler}>Edit</Button>
                                         <Button  value={el.pid} onClick={deletePost}>Delete</Button>
                                         <Button value={el.pid} onClick={showCommentsHandler}>Comments</Button>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td colspan="7">
-                                        <AdminEditPostForm title={el.title} text={el.text} category={el.category} style={{ display: "none" }} className="editPostsForm" pid={el.pid} />
+                                <tr >
+                                    <td colspan="8" >
+                                        <AdminEditPostForm id={"post" + el.pid + "editSection"} pid={el.pid} title={el.title} text={el.text} category={el.category} style={{ display: "none" }} className="editPostsForm" />
                                     </td>
                                 </tr>
                                 <tr>
                                     <td colspan="8">
-                                        <AdminCommentsTable id={"post" + el.pid}style={{ display: "none" }} className="commentsTable" handleSubmit={props.handleSubmit} pid={el.pid} caption="caption" />
+                                        <AdminCommentsTable id={"post" + el.pid + "comments"} pid={el.pid} className="commentsTable" handleSubmit={props.handleSubmit} caption="caption" />
                                     </td>
                                 </tr>
                             </>

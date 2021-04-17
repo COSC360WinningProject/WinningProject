@@ -11,7 +11,7 @@ router.get("/", function(req, res, next){
         let email = req.query.email;
         if(email){
             let query = "SELECT email FROM users WHERE email = ?";
-            con.query(query, function(err, results, field)
+            con.query(query, [email], function(err, results, field)
             {
                 if(err) throw err;
                 res.json(results);

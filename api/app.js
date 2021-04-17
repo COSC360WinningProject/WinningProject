@@ -18,6 +18,7 @@ var testAPIRouter = require('./routes/testAPI');
 // GENERAL USER ROUTES
 var usersRouter = require('./routes/users');
 var postsRouter = require('./routes/posts');
+var likeRouter = require('./routes/like');
 var singlePostRouter = require('./routes/singlePost');
 var singlepostCommentsRouter = require('./routes/singlepostComments');
 var userCommentHistoryRouter = require('./routes/userCommentHistory');
@@ -31,6 +32,7 @@ var updateProfilePictureRouter = require('./routes/updateProfilePicture');
 var checkForEmailRouter = require('./routes/checkForEmail');
 var resetPasswordRouter = require('./routes/resetPassword');
 var emailerRouter = require('./routes/emailer');
+var getTrendingRouter = require('./routes/getTrending');
 
 // ADMIN ROUTES
 var adminSearchForUsers = require('./routes/adminSearchForUser');
@@ -80,6 +82,7 @@ app.use('/testAPI', testAPIRouter);
 // GENERAL USER ROUTES
 app.use('/users', usersRouter);
 app.use('/login', loginRouter);
+app.use('/like', likeRouter);
 app.use('/signup', signupRouter);
 app.use('/showProfile', showProfileRouter);
 app.use('/userCommentHistory', userCommentHistoryRouter);
@@ -93,6 +96,7 @@ app.use('/updateProfilePicture', updateProfilePictureRouter);
 app.use('/checkForEmail', checkForEmailRouter);
 app.use('/resetPassword', resetPasswordRouter);
 app.use('/emailer', emailerRouter);
+app.use('/getTrending', getTrendingRouter);
 
 // ADMIN ROUTES
 app.use('/adminSearchForUser', adminSearchForUsers);

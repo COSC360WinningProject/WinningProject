@@ -4,17 +4,21 @@ var mysql = require('mysql');
 
 router.post("/", function(req, res, next){
     let con = mysql.createConnection(dbConfig);
-    let pid = req.query.pid;
-    let text = req.query.text;
+    let pid = req.body.pid;
+    let text = req.body.text;
+    let title = req.body.title;
+    let category = req.body.category;
     con.connect(function(err){
         if(err){
             throw err
         }
-        let admin = req.body.isAdmin;
-        if(admin==1){
-            console.log(username);
-            let query = "UPDATE post SET text = ? WHERE pid = ?";
-            con.query(query, [text], [pid], function(err, results, field){
+        
+            let query = `UPDATE posts ` +
+            `SET text = ?, ` +
+            `title = ?, ` +
+            `category = ? ` +
+            `WHERE pid = ?;`;
+            con.query(query, [text, title, category, pid], function(err, results, field){
                 if(err) throw err;
                 res.json(results);
             })
@@ -23,9 +27,7 @@ router.post("/", function(req, res, next){
 
             })
         }
-        else{
-            res.status(500).send('User not logged in as admin');
-        }
-    })
+       
+    )
 });
 module.exports = router;

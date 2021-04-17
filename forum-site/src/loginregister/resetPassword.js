@@ -9,13 +9,15 @@ import {
 
 export const ResetPassword = (props) =>{
     const [isUser, setIsUser] = useState();
-    const[email, setEmail] = useState();
-    const [message, setMessage] = useState();
+    const[email, setEmail] = useState("");
+    const [message, setMessage] = useState("");
+    const [token, setToken] = useState("");
+    const [serverToken, setServerToken] = useState("");
     const { handleChange, handleSubmit, values, errors } = useForm(
         props.submitForm,
         validate
     );
-    let url = `http://localhost:9000/resetPassword?email=${email}`;
+    let url = `http://localhost:9000/checkForEmail?email=${email}`;
 
     useEffect(() => {
         if(isUser){
@@ -25,7 +27,7 @@ export const ResetPassword = (props) =>{
 
     const checkForEmail = (e) =>{
         e.preventDefault();
-        setEmail(e.target.email);
+        setEmail(e.target.email.value);
         fetch(url, {
             method: "GET",
         })
@@ -40,16 +42,23 @@ export const ResetPassword = (props) =>{
     const sendResetEmail = (e) =>{
       fetch("http://localhost:9000/emailer", {
           method: "POST",
-          body: JSON.stringify({email:email}),
+          body: JSON.stringify({'email' : email}),
           headers: {
             'accept': 'application/json',
             'Content-Type' : 'application/json'
             }
+        }).then(res => res.json())
+        .then(resData => {
+            setServerToken(resData);
         })
+    }
+    const tokenChangeHandler = (e) =>{
+        setToken(e.target.value);
     }
 
     const setPassword = (e) =>{
         e.preventDefault();
+        
         fetch(`http://localhost9000/resetPassword`,{
             method: "POST",
             body: JSON.stringify({newPassword : e.target.password}, {email: email}),
@@ -64,7 +73,7 @@ export const ResetPassword = (props) =>{
 if(!isUser){
     return(
         <div className="form-content-right">
-            <form className="form"onsubmit={checkForEmail}>
+            <form className="form" onSubmit={checkForEmail}>
             <h1>Forgot Password</h1>
                 <div className="form-inputs">
                     <label className='form-label'>Email</label>
@@ -73,7 +82,6 @@ if(!isUser){
                             type='email'
                             name='email'
                             placeholder='Enter your email'
-                            value={values.email}
                             onChange={handleChange}
                         />
                 </div>
@@ -106,6 +114,7 @@ if(!isUser){
                             onChange={handleChange}
                         />
                 </div>
+                <input type="text" onchange ="tokenChangeHandler"/>
                 <button className='form-input-btn' type='submit'>
                     Reset Password
                 </button>

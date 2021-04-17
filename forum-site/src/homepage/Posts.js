@@ -24,7 +24,7 @@ export function Posts(props) {
                return( 
                 <Post
                         loggedInUser={props.loggedInUser} 
-                        id={post.pid} 
+                        pid={post.pid} 
                         username={post.username}
                         profilepic={post.profileImageURL}
                         title={post.title}

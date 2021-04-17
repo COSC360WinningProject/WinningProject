@@ -36,11 +36,11 @@ CREATE TABLE comments (
     pid                 INT,
     text                VARCHAR(500),
     likes               INT,
-    replyId             INT,    
     PRIMARY KEY (cid),
-    FOREIGN KEY (uid) REFERENCES users (uid),
-    FOREIGN KEY (pid) REFERENCES posts (pid),
-    FOREIGN KEY (replyId) REFERENCES comments (cid)
+    FOREIGN KEY (uid) REFERENCES users (uid)
+        ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (pid) REFERENCES posts (pid)
+        ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 INSERT INTO users (admin, firstname, lastname, username, password, email, address, phone, enabled) VALUES (1, 'Joe', 'Ippo', 'ashitaNoJoe', 'pword', 'joe@ashita.com', '1212 tomorrow lane', '111-222-3333',  1);

@@ -8,9 +8,8 @@ router.get("/", function(req, res, next){
         if(err){
             throw err
         }
-        let pid = Number(req.query.pid);
-        let query = "SELECT cid, username, text, likes FROM comments JOIN users ON comments.uid = users.uid WHERE pid = ?";
-        con.query(query, [pid], function(err, results, field){
+        let query = "SELECT pid, title, text, mediaURL, category FROM posts  ORDER BY likes DESC LIMIT 5"
+        con.query(query, function(err, results, field){
             if(err) throw err;
             console.log(results);
             res.json(results);

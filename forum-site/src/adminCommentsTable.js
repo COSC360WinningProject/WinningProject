@@ -30,6 +30,8 @@ export function AdminCommentsTable(props) {
 
     const showEditCommentHandler = (e) => {
         //Make comments table visible
+        console.log("commentsTable props");
+        console.log(props);
         e.target.style.display = e.target.style.display == "none" ? "inline" : "none";
     }
     const deleteComment = async (e) => {
@@ -37,7 +39,7 @@ export function AdminCommentsTable(props) {
 
         await fetch('http://localhost:9000/adminDeleteComment', {
             method: 'POST',
-            body: JSON.stringify({ cid: e.target.id }),
+            body: JSON.stringify({ cid: e.target.value, pid: props.pid }),
             headers: {
                 'accept': 'application/json',
                 'Content-Type': 'application/json'
@@ -74,12 +76,12 @@ export function AdminCommentsTable(props) {
                                     <td>{el.downvotes}</td>
                                     <td>
                                         <Button onClick={showEditCommentHandler}>Edit</Button>
-                                        <Button id={el.cid} onClick={deleteComment}>Delete</Button>
+                                        <Button value={el.cid} onClick={deleteComment}>Delete</Button>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td colspan="1">
-                                        <AdminEditCommentForm text={el.text} style={{ display: "none" }} className="editPostsForm" pid={el.pid} />
+                                        <AdminEditCommentForm cid={el.cid} pid={props.pid} text={el.text} style={{ display: "none" }} className="editPostsForm"  />
                                     </td>
                                 </tr>
                             </>

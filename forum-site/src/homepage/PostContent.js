@@ -36,6 +36,13 @@ export const PostContent = (props) => {
 
     }, []);
 
+    const likeHandler = (e) => {
+        console.log("adding like");
+        fetch(`http://localhost:9000/like?pid=${pid}`, {
+            method: 'GET'
+        })
+    }
+
     const addCommentHandler = (e) => {
         e.preventDefault();
         console.log(props);
@@ -68,7 +75,7 @@ export const PostContent = (props) => {
             <div className="post">
                 <div className="actualpost">
                     <div className="sidebar">
-                        <ArrowUpwardIcon className="upvote" />
+                        <ArrowUpwardIcon className="upvote" onClick={likeHandler} />
                         <span>{postData.likes}</span>
                         <ArrowDownwardIcon className="downvote" />
                     </div>

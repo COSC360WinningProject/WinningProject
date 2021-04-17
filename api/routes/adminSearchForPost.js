@@ -8,8 +8,6 @@ router.get("/", function(req, res, next){
         if(err){
             throw err
         }
-        let admin = req.body.isAdmin;
-        if(admin==1){
         let searchType = req.query.searchType.toLowerCase();
         let searchStr = req.query.searchStr.toLowerCase();
         console.log(searchType);
@@ -19,7 +17,7 @@ router.get("/", function(req, res, next){
         if(searchStr && searchType){
             if(searchType === "title"){
                 console.log('inside if');
-                query = "SELECT pid, username, title, likes, category FROM posts JOIN users ON posts.uid = users.pid WHERE title=?";
+                query = "SELECT pid, username, title, likes, text category FROM posts JOIN users ON posts.uid = users.pid WHERE title=?";
                 con.query(query, [searchStr], function(err, results, field)
                 {
                     if(err) throw err;
@@ -27,7 +25,7 @@ router.get("/", function(req, res, next){
                 });
             }
             else if(searchType == "category"){
-                query = "SELECT pid, username, title, likes, category FROM posts JOIN users ON posts.uid = users.pid posts WHERE category=?";
+                query = "SELECT pid, username, title, likes, text, category FROM posts JOIN users ON posts.uid = users.pid posts WHERE category=?";
                 con.query(query, [searchStr], function(err, results, field)
                 {
                     if(err) throw err;
@@ -37,7 +35,7 @@ router.get("/", function(req, res, next){
             
         }
         else{
-            query = "SELECT pid, username, title, likes, category FROM posts JOIN users ON posts.uid = users.uid;";
+            query = "SELECT pid, username, title, likes, text, category FROM posts JOIN users ON posts.uid = users.uid;";
             console.log('inside else');
             con.query(query, function(err, results, field)
             {
@@ -49,10 +47,7 @@ router.get("/", function(req, res, next){
         con.end(function(err){
             if(err) throw err;
         })
-    }
-    else{
-        res.status(500).send('User not logged in as admin');
-    }
+    
     })
 
 });

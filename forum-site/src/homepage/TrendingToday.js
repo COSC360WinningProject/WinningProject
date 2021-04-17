@@ -1,60 +1,32 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+
+
+import TrendingItem from './TrendingItem';
 
 import './TrendingToday.css';
 
 export default function TrendingToday() {
+
+    const [trendingItems, setTrendingItems] = useState([]);
+
+    useEffect(() => {
+        fetch("http://localhost:9000/getTrending", {
+            method: 'GET',
+        })
+        .then(res => res.json())
+        .then(resData => setTrendingItems(resData))
+    }, [])
+
+
     return <div className="trending-today-section">
         <span className="title">Trending Today !</span>
         <div className="items">
-
-            <div className="trending-item hoverable" style={{ backgroundImage: `linear-gradient(to top, rgba(0, 0, 0, 0.7) 35%, transparent), url(https://helpx.adobe.com/content/dam/help/en/stock/how-to/visual-reverse-image-search/jcr_content/main-pars/image/visual-reverse-image-search-v2_intro.jpg)` }}>
-                <div className="context">
-                    <span className="title">Trending 1</span>
-                    <br />
-                    <span className="description">Description 1</span>
-                    <div className="subreddit">
-
-                        <span>r/trending1</span>
-                    </div>
-                </div>
-            </div>
-
-            <div className="trending-item hoverable" style={{ backgroundImage: `linear-gradient(to top, rgba(0, 0, 0, 0.7) 35%, transparent), url(https://helpx.adobe.com/content/dam/help/en/stock/how-to/visual-reverse-image-search/jcr_content/main-pars/image/visual-reverse-image-search-v2_intro.jpg)` }}>
-                <div className="context">
-                    <span className="title">Trending 1</span>
-                    <br />
-                    <span className="description">Description 1</span>
-                    <div className="subreddit">
-
-                        <span>r/trending1</span>
-                    </div>
-                </div>
-            </div>
-
-            <div className="trending-item hoverable" style={{ backgroundImage: `linear-gradient(to top, rgba(0, 0, 0, 0.7) 35%, transparent), url(https://helpx.adobe.com/content/dam/help/en/stock/how-to/visual-reverse-image-search/jcr_content/main-pars/image/visual-reverse-image-search-v2_intro.jpg)` }}>
-                <div className="context">
-                    <span className="title">Trending 1</span>
-                    <br />
-                    <span className="description">Description 1</span>
-                    <div className="subreddit">
-
-                        <span>r/trending1</span>
-                    </div>
-                </div>
-            </div>
-
-            <div className="trending-item hoverable" style={{ backgroundImage: `linear-gradient(to top, rgba(0, 0, 0, 0.7) 35%, transparent), url(https://helpx.adobe.com/content/dam/help/en/stock/how-to/visual-reverse-image-search/jcr_content/main-pars/image/visual-reverse-image-search-v2_intro.jpg)` }}>
-                <div className="context">
-                    <span className="title">Trending 1</span>
-                    <br />
-                    <span className="description">Description 1</span>
-                    <div className="subreddit">
-
-                        <span>r/trending1</span>
-                    </div>
-                </div>
-            </div>
-
+            {trendingItems.map(el => {
+                    return (
+                        <TrendingItem pid={el.pid} title={el.title} text={el.text} mediaURL={el.mediaURL} category={el.category} />
+                    );
+                })
+            }
         </div>
     </div>
 }

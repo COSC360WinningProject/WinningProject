@@ -11,8 +11,7 @@ router.post("/", function(req, res, next){
         if(err){
             throw err
         }
-        let admin = req.body.isAdmin;
-        if(admin){
+       
             console.log(uid);
             let query = "UPDATE users SET enabled=? WHERE uid=?";
             con.query(query,[newStatus, uid], function(err, results, field){
@@ -24,9 +23,7 @@ router.post("/", function(req, res, next){
 
             })
         }
-        else{
-            res.status(500).send('User not logged in as admin');
-        }
-    })
+       
+    )
 });
 module.exports = router;
