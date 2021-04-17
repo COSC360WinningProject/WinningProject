@@ -89,7 +89,7 @@ export const PostContent = (props) => {
                     </div>
                     <div className="body">
                         <span className="titletext">{postData.title}</span>
-                            <img alt = {"Title: " + postData.title + " Description: "+postData.text} src={postData.mediaURL ? "http://localhost:9000" + postData.mediaURL : "http://localhost:9000/images/users/blank-profile.png"} />
+                            <img alt = {"Title: " + postData.title + " Description: "+postData.text} src={postData.mediaURL ? "http://localhost:9000" + postData.mediaURL : "http://localhost:9000/images/posts/mybutterfly.jpg"} />
                         <span className="description">{postData.text}</span>
                     </div>
                     <div className="footer">
