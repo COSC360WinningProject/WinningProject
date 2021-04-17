@@ -30,7 +30,7 @@ router.post("/", function (req, res, next) {
             res.json({
                 'login': success,
                 'user': returnUser,
-                'isAdmin': results[0].admin ? results[0].admin : 0
+                'isAdmin': results[0] ? results[0].admin : 0
             });
 
 

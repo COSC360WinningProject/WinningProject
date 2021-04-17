@@ -59,9 +59,9 @@ const useForm = (callback, validate) => {
                 }
             });
             const content = await rawResponse.json();
-
-            success = content.login;
-            let loggedInUser = {
+            
+            let returnData = {
+                'success': content.login,
                 'user': content.user,
                 'isAdmin': content.isAdmin
             };
@@ -74,7 +74,7 @@ const useForm = (callback, validate) => {
                 password2: ''
             });
 
-            return loggedInUser;
+            return returnData ;
 
         }
 
