@@ -75,12 +75,12 @@ export const PostContent = (props) => {
             <div className="post">
                 <div className="actualpost">
                     <div className="sidebar">
-                        <ArrowUpwardIcon className="upvote" onClick={likeHandler} />
+                        <ArrowUpwardIcon className="upvote" onClick={likeHandler} alt="Upvote" tabindex="0"/>
                         <span>{postData.likes}</span>
-                        <ArrowDownwardIcon className="downvote" />
+                        <ArrowDownwardIcon className="downvote" alt="Downvote" tabindex="0"/>
                     </div>
                     <div className="title">
-                        <img className="profileimage" src={postData.profileImageURL ? "http://localhost:9000" + postData.profileImageURL : "http://localhost:9000/images/users/blank-profile.png"} />
+                        <img alt="Profile Image" className="profileimage" src={postData.profileImageURL ? "http://localhost:9000" + postData.profileImageURL : "http://localhost:9000/images/users/blank-profile.png"} />
 
                         <span className="username">Posted by</span>
                         <span className="username underline">{postData.username}</span>
@@ -89,8 +89,7 @@ export const PostContent = (props) => {
                     </div>
                     <div className="body">
                         <span className="titletext">{postData.title}</span>
-
-                        <img src={postData.mediaURL ? "http://localhost:9000" + postData.mediaURL : "http://localhost:9000/images/users/blank-profile.png"} />
+                            <img alt = {"Title: " + postData.title + " Description: "+postData.text} src={postData.mediaURL ? "http://localhost:9000" + postData.mediaURL : "http://localhost:9000/images/users/blank-profile.png"} />
                         <span className="description">{postData.text}</span>
                     </div>
                     <div className="footer">
@@ -99,11 +98,11 @@ export const PostContent = (props) => {
                             <span>{postData.commentcount} Comments</span>
                         </div>
                         <div className="share footer-action">
-                            <ShareIcon />
+                            <ShareIcon alt="Share" tabindex="0"/>
                             <span>Share</span>
                         </div>
                         <div className="save footer-action">
-                            <BookmarkIcon />
+                            <BookmarkIcon alt="Bookmark" tabindex="0"/>
                             <span>Save</span>
                         </div>
 
@@ -118,12 +117,12 @@ export const PostContent = (props) => {
                 })}
             </div>
             <div className="add-comment-container">
-                <h2>Leave A Comment</h2>
-                <form onSubmit={addCommentHandler} encType="multipart/form-data">
-                    <textarea name="commentText" placeholder='Add Your Comment'></textarea>
+                <h2 className="add-comment-title">Leave A Comment</h2>
+                <form onSubmit={addCommentHandler} encType="multipart/form-data" >
+                    <textarea name="commentText" placeholder='Add Your Comment' className="comment-input"></textarea>
                     <div className="comment-btn">
-                        <input type="submit" value='Comment' />
-                        <button id='clear' href='#'>Cancel</button>
+                        <input type="submit" value='Comment' className="comment-submit" />
+                        <button id='clear' href='#' className="comment-cancel">Cancel</button>
                     </div>
                 </form>
             </div>

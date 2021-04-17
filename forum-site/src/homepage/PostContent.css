@@ -175,12 +175,34 @@
   }
 
 
+
   .comment-container{
      
-      margin: 1rem 5rem 1rem 5rem;
-  }
+    margin: 1rem 5rem 1rem 5rem;
+}
 
-  
-  .add-comment-container{
-      margin-left: 6rem;
-  }
+
+.add-comment-container{
+  margin: 0rem 0rem 5rem 5rem;
+  background-color: lightsteelblue;
+  width: 30%;
+}
+.add-comment-title{
+  margin: 1rem;
+}
+
+.comment-input{
+  margin: 1rem;
+}
+
+.comment-submit{
+  margin: 1rem;
+  background-color: cadetblue;
+  color: black;
+}
+
+.comment-cancel{
+  margin: 1rem;
+  background-color: coral;
+  color: black;
+}

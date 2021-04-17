@@ -29,18 +29,20 @@ export function NavigationBar(props) {
 
     return (
         <nav className="NavbarItems">
-
-            <h1 className="navbar-logo">Evil Reddit</h1>
+            <header>
+                <h1 className="navbar-logo">Evil Reddit</h1>
+            </header>
             <div className="menu-icon" onClick={handleClick}>
                 <i className={clicked ? 'fas fa-times' : 'fas fa-bars'}></i>
             </div>
-            <h3 className="logged-in-user">{props.user ? props.user : ""}</h3>
-
+            <header>
+                <h3 className="logged-in-user">{props.user ? props.user : ""}</h3>
+            </header>
             <ul className={clicked ? 'nav-menu-active' : 'nav-menu'}>
                 {MenuItems.map((item, index) => {
                     return (
-                        <li key={index}>
-                            <Link className={item.styleName} to={item.url}>{item.title}</Link>
+                        <li key={index} data-message={item.title}>
+                            <Link className={item.styleName} to={item.url}tabindex="0">{item.title}</Link>
                         </li>
                     );
                 })}

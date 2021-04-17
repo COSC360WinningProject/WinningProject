@@ -16,15 +16,15 @@ export function Form(props) {
             <div className='form-container'>
 
                 <div className='form-content-left'>
-                    <img className='form-img' src='img/register.svg' alt='register' />
+                    <img className='form-img' src='img/register.svg' alt="registration image"/>
                 </div>
                 {props.isSignup === "true" ? (
-                    <FormSignup submitForm={submitForm} />
+                    <FormSignup submitForm={submitForm} data-message="signup"/>
                 ) : (
                     props.isResetPassword=== "true" ? (
-                        <ResetPassword submitForm = {submitForm} />
+                        <ResetPassword submitForm = {submitForm} data-message="reset password"/>
                     ) : (
-                        <FormLogin onLogin={props.onLogin} submitForm={submitForm} />
+                        <FormLogin onLogin={props.onLogin} submitForm={submitForm} data-message="login"/>
                     )
                     
                 )}

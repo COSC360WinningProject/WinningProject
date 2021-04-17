@@ -15,9 +15,11 @@ export const FormSignup = (props) => {
     return (
         <div className='form-content-right'>
             <form onSubmit={handleSubmit} className='form' noValidate>
+                <header>
                 <h1>
                     Create an account
-                    </h1>
+                </h1>
+                </header>
                 <div className='form-inputs'>
                     <label className='form-label'>Username</label>
                     <input
@@ -27,11 +29,12 @@ export const FormSignup = (props) => {
                         placeholder='Enter your username'
                         value={values.username}
                         onChange={handleChange}
+                        tabindex="0"
                     />
                     {errors.username && <p>{errors.username}</p>}
                 </div>
                 <div className='form-inputs'>
-                    <label className='form-label'>Email</label>
+                    <label className='form-label' >Email</label>
                     <input
                         className='form-input'
                         type='email'
@@ -39,6 +42,7 @@ export const FormSignup = (props) => {
                         placeholder='Enter your email'
                         value={values.email}
                         onChange={handleChange}
+                        tabindex="0"
                     />
                     {errors.email && <p>{errors.email}</p>}
                 </div>
@@ -51,6 +55,7 @@ export const FormSignup = (props) => {
                         placeholder='Enter your password'
                         value={values.password}
                         onChange={handleChange}
+                        tabindex="0"
                     />
                     {errors.password && <p>{errors.password}</p>}
                 </div>
@@ -63,14 +68,15 @@ export const FormSignup = (props) => {
                         placeholder='Confirm your password'
                         value={values.password2}
                         onChange={handleChange}
+                        tabindex="0"
                     />
                     {errors.password2 && <p>{errors.password2}</p>}
                 </div>
-                <button className='form-input-btn' type='submit'>
+                <button className='form-input-btn' type='submit'data-message="SignUp"tabindex="0">
                     Sign up
                     </button>
                 <span className='form-input-login'>
-                    Already have an account? Login <Link to="/login">here</Link>
+                    Already have an account? Login <Link to="/login"data-message="Login" tabindex="0">here</Link>
                 </span>
             </form>
         </div>

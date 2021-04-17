@@ -35,7 +35,7 @@ export const Post = (props) => {
             </div>
             <Link to={"/postcontent/" + pid}>
             <div className="title">
-                <img src={profilepic ? "http://localhost:9000" + profilepic : "http://localhost:9000/images/users/blank-profile.png"} />
+                <img src={profilepic ? "http://localhost:9000" + profilepic : "http://localhost:9000/images/users/blank-profile.png"} alt ="Profile pic: "/>
 
                 <span className="username">Posted by</span>
                 <span className="username underline">{username}</span>
@@ -45,25 +45,25 @@ export const Post = (props) => {
             <div className="body">
                 <span className="titletext">{title}</span>
 
-                <img src={imgsrc ? "http://localhost:9000" + imgsrc : ""} />
+                <img src={imgsrc ? "http://localhost:9000" + imgsrc : ""} alt={"Title: " + title + " Description: " + description} />
                 <span className="description">{description}</span>
             </div>
+            </Link>
             <div className="footer">
                 <div className="comments footer-action">
                     <ModeCommentIcon className="comment-icon" />
                     <span>{commentcount} Comments</span>
                 </div>
                 <div className="share footer-action">
-                    <ShareIcon />
+                    <ShareIcon data-message="Share" tabindex="0"/>
                     <span>Share</span>
                 </div>
                 <div className="save footer-action">
-                    <BookmarkIcon />
+                    <BookmarkIcon data-message="Bookmark" tabindex="0"/>
                     <span>Save</span>
                 </div>
 
             </div>
-            </Link>
         </div>
         
     )

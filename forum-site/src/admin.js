@@ -63,15 +63,13 @@ const handleFilterChange = (e) =>{
     setFilter(e.target.value);
 }
 
-
-
 if(chartData[0]&&props.isAdmin){
     return (
     <div className="App">
       <div className ="main">
           <Router>
             <div className ="leftSidebar">
-                <form onSubmit = {getReports}>
+                <form onSubmit = {getReports}data-message="Get Reports">
                     <div id ="reportType">
                         <label for ="reports">Report Type:</label><br/>
                         <select name ="reports" id ="reportSelect" onChange={handleReportChange}>

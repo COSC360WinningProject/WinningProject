@@ -23,7 +23,7 @@ export default function TrendingToday() {
         <div className="items">
             {trendingItems.map(el => {
                     return (
-                        <TrendingItem pid={el.pid} title={el.title} text={el.text} mediaURL={el.mediaURL} category={el.category} />
+                        <TrendingItem pid={el.pid} title={el.title} text={el.text} mediaURL={el.mediaURL} category={el.category} tabindex="0"/>
                     );
                 })
             }
