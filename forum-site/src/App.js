@@ -17,6 +17,7 @@ import { Content } from './homepage/content.js';
 import { PostContent } from './homepage/PostContent';
 // StyleSheet Imports
 import './styles/App.css';
+import Footer from './homepage/Footer';
 
 
 
@@ -48,10 +49,10 @@ function App() {
         <NavigationBar user={user} onLogout={handleLogout} />
         <Switch>
           <Route path="/admin">
-            <Admin user={user} isAdmin={isAdmin}/>
+            <Admin user={user} isAdmin={isAdmin} />
           </Route>
           <Route path="/postcontent/:pid">
-            <PostContent loggedInUser={user}/>
+            <PostContent loggedInUser={user} />
           </Route>
           <Route path="/signup">
             <Form isSignup='true' />
@@ -59,16 +60,17 @@ function App() {
           <Route path="/login">
             <Form onLogin={handleLogin} isSignup='false' />
           </Route>
-          <Route path ="/resetPassword">
-            <Form isResetPassword = 'true' />
+          <Route path="/resetPassword">
+            <Form isResetPassword='true' />
           </Route>
           <Route path="/profile">
             <Profile loggedInUser={user} />
           </Route>
           <Route path="/">
-            <Content loggedInUser={user}/>
+            <Content loggedInUser={user} />
           </Route>
         </Switch>
+        <Footer />
       </div>
     </Router>
   );
