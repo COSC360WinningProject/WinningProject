@@ -1,5 +1,5 @@
 # <div align="center">COSC 360 Team 30 Project Proposal</div>
-<div align="center">Jarod Algra, Sam Aliyev, Jesse Plamondon, Dakshin Sridhar</div>  
+<div align="center">Jarod Algra, Sam Aliyev, Jesse Plamondon, Dakshin Karthik Sridhar</div>  
 <br>
 
 >This project will fully implement a reddit-style discussion forum, from a hand-styled  
